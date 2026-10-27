@@ -109,8 +109,6 @@
 
     /* Contact */
     .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
-    .contact-info p { margin: 0 0 6px; }
-    .contact-info a { font-weight: 600; text-decoration: none; }
     form { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 16px; padding: 26px; display: grid; gap: 4px; }
     label { display: block; margin: 10px 0 0; color: var(--muted); font-size: 13px; }
     .input, textarea {
@@ -122,6 +120,8 @@
     .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .check { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; }
     .check input { margin-top: 3px; }
+    .honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .note.error { color: #ff5d73; }
     .note { color: var(--accent); font-size: 14px; min-height: 1.4em; margin: 8px 0 0; }
 
     footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
@@ -227,9 +227,7 @@
       <div class="contact-info">
         <div class="tag" data-i18n="ct.tag">Contact</div>
         <h2 data-i18n="ct.title">Contact us</h2>
-        <p class="muted" style="margin-bottom:24px" data-i18n="ct.intro">Would you like to use Helix Impulse in your teaching or learn more? Send us a request – we look forward to hearing from you.</p>
-        <p class="muted" data-i18n="ct.mail">Email</p>
-        <p><a href="mailto:info@heliximpulse.com">info@heliximpulse.com</a></p>
+        <p class="muted" data-i18n="ct.intro">Would you like to use Helix Impulse in your teaching or learn more? Send us a request – we look forward to hearing from you.</p>
       </div>
       <form id="contact-form" novalidate>
         <div class="pair">
@@ -238,6 +236,7 @@
         </div>
         <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
         <label><span data-i18n="f.msg">Message</span><textarea name="message" required></textarea></label>
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
         <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
         <p class="note" id="form-note" role="status"></p>
@@ -280,19 +279,22 @@
       'hi.p': 'Helix Impulse bündelt diese Erfahrung in einer modernen Marketing-Simulation – entwickelt von Menschen, die selbst lehren und wissen, worauf es in der Lehre ankommt.',
       'ct.tag': 'Kontakt', 'ct.title': 'Kontakt',
       'ct.intro': 'Sie möchten Helix Impulse in Ihrer Lehre einsetzen oder mehr erfahren? Senden Sie uns eine Anfrage – wir freuen uns auf Ihre Nachricht.',
-      'ct.mail': 'E-Mail',
       'f.name': 'Name', 'f.email': 'E-Mail', 'f.org': 'Institution (optional)', 'f.msg': 'Nachricht',
       'f.consent': 'Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.',
       'f.submit': 'Anfrage senden',
       'f.invalid': 'Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.',
-      'f.opened': 'Ihr E-Mail-Programm wurde geöffnet – bitte senden Sie die Nachricht dort ab.',
+      'f.sending': 'Wird gesendet …',
+      'f.sent': 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze.',
+      'f.failed': 'Ihre Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es später erneut.',
       'f.subject': 'Anfrage Helix Impulse',
     };
     const EN = {
       'meta.title': document.title,
       'meta.desc': document.querySelector('meta[name="description"]').content,
       'f.invalid': 'Please fill in name, email and message and confirm your consent.',
-      'f.opened': 'Your email app has opened – please send the message from there.',
+      'f.sending': 'Sending …',
+      'f.sent': 'Thank you! Your request has been sent. We will get back to you shortly.',
+      'f.failed': 'Sorry, your request could not be sent. Please try again later.',
       'f.subject': 'Request Helix Impulse'
     };
     // Capture the English markup so switching back restores it.
@@ -323,22 +325,47 @@
     document.getElementById('y').textContent = new Date().getFullYear();
 
 
-    // Static site without a backend: the form opens a prefilled email.
+    // Static site without a backend: requests are delivered by email through FormSubmit.
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@heliximpulse.com';
     const form = document.getElementById('contact-form');
     const note = document.getElementById('form-note');
-    form.addEventListener('submit', (e) => {
+    const submit = form.querySelector('button[type="submit"]');
+    const show = (key, isError = false) => { note.textContent = t(key); note.classList.toggle('error', isError); };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!form.checkValidity()) {
-        note.textContent = t('f.invalid');
+        show('f.invalid', true);
         form.reportValidity();
         return;
       }
       const d = new FormData(form);
-      const lines = [d.get('message'), '', `Name: ${d.get('name')}`, `Email: ${d.get('email')}`];
-      if (d.get('org')) lines.push(`Institution: ${d.get('org')}`);
-      const subject = `${t('f.subject')} – ${d.get('name')}`;
-      window.location.href = `mailto:info@heliximpulse.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-      note.textContent = t('f.opened');
+      if (d.get('_honey')) return;
+      submit.disabled = true;
+      show('f.sending');
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name: d.get('name'),
+            email: d.get('email'),
+            institution: d.get('org') || '–',
+            message: d.get('message'),
+            language: lang.toUpperCase(),
+            _subject: `${t('f.subject')} – ${d.get('name')}`,
+            _template: 'table'
+          })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || res.status);
+        form.reset();
+        show('f.sent');
+      } catch (err) {
+        show('f.failed', true);
+      } finally {
+        submit.disabled = false;
+      }
     });
   </script>
 </body>
