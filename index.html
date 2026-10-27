@@ -105,7 +105,8 @@
     .cols .n { display: block; color: var(--accent); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
 
     /* History quote */
-    .quote { font-size: 26px; line-height: 1.35; letter-spacing: -.02em; font-weight: 500; margin: 0 0 24px; }
+    .quote { font-size: 26px; line-height: 1.35; letter-spacing: -.02em; font-weight: 500; margin: 8px 0 28px; padding-left: 20px; border-left: 3px solid var(--accent); }
+    .cols.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     /* Contact */
     .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
@@ -133,7 +134,7 @@
     @media (max-width: 860px) {
       .hero { padding: 80px 0 64px; }
       .hero h1 { font-size: 42px; }
-      .cols, .contact { grid-template-columns: 1fr; gap: 32px; }
+      .cols, .cols.two, .contact { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -190,12 +191,14 @@
   <section id="about" class="alt">
     <div class="wrap">
       <div class="tag" data-i18n="ab.tag">About</div>
-      <h2 data-i18n="ab.title">Learning by doing – in a safe environment</h2>
-      <p class="muted narrow" data-i18n="ab.intro">In Helix Impulse, student teams run their own company and compete against each other. They make decisions, see the consequences and learn from them – without real-world risk.</p>
-      <div class="cols">
-        <div><span class="n">01</span><h3 data-i18n="ab.1t">Decide</h3><p data-i18n="ab.1p">Teams develop a marketing strategy and make the decisions of a marketing management team.</p></div>
-        <div><span class="n">02</span><h3 data-i18n="ab.2t">Compete</h3><p data-i18n="ab.2p">All teams act in the same market. Every decision affects the others.</p></div>
-        <div><span class="n">03</span><h3 data-i18n="ab.3t">Reflect</h3><p data-i18n="ab.3p">Results are discussed together – the debrief turns experience into understanding.</p></div>
+      <h2 data-i18n="ab.title">Business strategy and marketing, brought to life</h2>
+      <div class="narrow">
+        <p class="muted" data-i18n="ab.p1">Helix Impulse is a business simulation for universities, business schools, and professional training programs. It brings business strategy and marketing to life through competitive, team-based decision-making.</p>
+        <p class="muted" data-i18n="ab.p2">Participants manage virtual companies, develop products, define their market positioning, and make strategic marketing decisions. They compete for customers and market share, experiencing how their choices influence business performance over multiple rounds.</p>
+      </div>
+      <div class="cols two">
+        <div><h3 data-i18n="ab.1t">For universities and business schools</h3><p data-i18n="ab.1p">An interactive way to teach marketing, competitive strategy, and strategic decision-making.</p></div>
+        <div><h3 data-i18n="ab.2t">For companies and professional training providers</h3><p data-i18n="ab.2p">An environment where managers and teams can explore strategic choices, test their assumptions, and learn from the consequences without real-world business risk.</p></div>
       </div>
     </div>
   </section>
@@ -216,9 +219,12 @@
   <section id="history" class="alt">
     <div class="wrap narrow">
       <div class="tag" data-i18n="hi.tag">History</div>
-      <h2 data-i18n="hi.title">By educators, for educators</h2>
-      <p class="quote" data-i18n="hi.quote">We have been running business games for 20 years.</p>
-      <p class="muted" data-i18n="hi.p">Helix Impulse brings this experience together in a modern marketing simulation – developed by people who teach themselves and know what matters in the classroom.</p>
+      <h2 data-i18n="hi.title">Developed from teaching experience. Designed for better learning.</h2>
+      <p class="muted" data-i18n="hi.p1">Helix Impulse is developed by educators with more than 20 years of experience using business simulations in higher education. We know how valuable simulation-based learning can be, but also how challenging existing tools can be to prepare, explain, and integrate into teaching.</p>
+      <p class="muted" data-i18n="hi.p2">That's why we're taking a different approach:</p>
+      <p class="quote" data-i18n="hi.quote">Less unnecessary complexity. More focus on the decisions that matter.</p>
+      <p class="muted" data-i18n="hi.p3">Helix Impulse combines an intuitive, contemporary interface with a focused simulation model that makes business decisions and their consequences easier to understand, discuss, and evaluate.</p>
+      <p class="muted" data-i18n="hi.p4">Our goal is simple: to make business simulations easier to use, more engaging to experience, and more relevant to the people learning from them.</p>
     </div>
   </section>
 
@@ -264,19 +270,22 @@
       'hero.secondary': 'Mehr erfahren',
       'p.1v': '20 Jahre', 'p.1': 'Erfahrung mit Business Games',
       'p.2v': 'Von Lehrenden', 'p.2': 'für Lehrende',
-      'ab.tag': 'Über uns', 'ab.title': 'Lernen durch Handeln – ohne echtes Risiko',
-      'ab.intro': 'In Helix Impulse führen studentische Teams ihr eigenes Unternehmen und treten gegeneinander an. Sie treffen Entscheidungen, sehen die Folgen und lernen daraus – ohne Risiko in der realen Welt.',
-      'ab.1t': 'Entscheiden', 'ab.1p': 'Teams entwickeln eine Marketingstrategie und treffen die Entscheidungen eines Marketing-Managements.',
-      'ab.2t': 'Im Wettbewerb', 'ab.2p': 'Alle Teams handeln im selben Markt. Jede Entscheidung wirkt sich auf die anderen aus.',
-      'ab.3t': 'Reflektieren', 'ab.3p': 'Die Ergebnisse werden gemeinsam besprochen – im Debriefing wird aus Erfahrung Verständnis.',
+      'ab.tag': 'Über uns', 'ab.title': 'Unternehmensstrategie und Marketing zum Erleben',
+      'ab.p1': 'Helix Impulse ist eine Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Sie macht Unternehmensstrategie und Marketing durch wettbewerbsorientierte Entscheidungen im Team erlebbar.',
+      'ab.p2': 'Die Teilnehmenden führen virtuelle Unternehmen, entwickeln Produkte, legen ihre Marktpositionierung fest und treffen strategische Marketingentscheidungen. Sie konkurrieren um Kundschaft und Marktanteile und erleben über mehrere Runden, wie ihre Entscheidungen den Unternehmenserfolg beeinflussen.',
+      'ab.1t': 'Für Hochschulen und Business Schools', 'ab.1p': 'Eine interaktive Möglichkeit, Marketing, Wettbewerbsstrategie und strategische Entscheidungsfindung zu lehren.',
+      'ab.2t': 'Für Unternehmen und Weiterbildungsanbieter', 'ab.2p': 'Ein Umfeld, in dem Führungskräfte und Teams strategische Optionen erkunden, ihre Annahmen überprüfen und aus den Folgen lernen können – ohne reales unternehmerisches Risiko.',
       'te.tag': 'Lehre', 'te.title': 'Passt in Ihre Lehre',
       'te.intro': 'Helix Impulse ergänzt Vorlesungen und Fallstudien. Sie bestimmen Umfang, Tempo und Schwerpunkt.',
       'te.1t': 'Intensivkurse', 'te.1p': 'Eine vollständige Simulation in kurzer Zeit – fokussiert und intensiv.',
       'te.2t': 'Seminare', 'te.2p': 'Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.',
       'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
-      'hi.tag': 'Geschichte', 'hi.title': 'Von Lehrenden für Lehrende',
-      'hi.quote': 'Seit 20 Jahren führen wir Business Games durch.',
-      'hi.p': 'Helix Impulse bündelt diese Erfahrung in einer modernen Marketing-Simulation – entwickelt von Menschen, die selbst lehren und wissen, worauf es in der Lehre ankommt.',
+      'hi.tag': 'Geschichte', 'hi.title': 'Aus der Lehrpraxis entwickelt. Für besseres Lernen gestaltet.',
+      'hi.p1': 'Helix Impulse wird von Lehrenden entwickelt, die seit mehr als 20 Jahren Unternehmenssimulationen in der Hochschullehre einsetzen. Wir wissen, wie wertvoll simulationsbasiertes Lernen sein kann – aber auch, wie aufwendig es ist, bestehende Tools vorzubereiten, zu erklären und in die Lehre einzubinden.',
+      'hi.p2': 'Deshalb gehen wir einen anderen Weg:',
+      'hi.quote': 'Weniger unnötige Komplexität. Mehr Fokus auf die Entscheidungen, die zählen.',
+      'hi.p3': 'Helix Impulse verbindet eine intuitive, zeitgemäße Oberfläche mit einem fokussierten Simulationsmodell, das unternehmerische Entscheidungen und ihre Folgen leichter verständlich, diskutierbar und bewertbar macht.',
+      'hi.p4': 'Unser Ziel ist einfach: Unternehmenssimulationen sollen leichter einzusetzen, spannender zu erleben und relevanter für die Menschen sein, die mit ihnen lernen.',
       'ct.tag': 'Kontakt', 'ct.title': 'Kontakt',
       'ct.intro': 'Sie möchten Helix Impulse in Ihrer Lehre einsetzen oder mehr erfahren? Senden Sie uns eine Anfrage – wir freuen uns auf Ihre Nachricht.',
       'f.name': 'Name', 'f.email': 'E-Mail', 'f.org': 'Institution (optional)', 'f.msg': 'Nachricht',
