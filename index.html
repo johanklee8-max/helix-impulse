@@ -87,6 +87,7 @@
       text-decoration: none; box-shadow: 0 8px 22px rgba(46, 180, 239, .22);
     }
     .btn:hover { filter: brightness(1.05); }
+    .topbar-contact .short { display: none; }
     .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
     .btn.cta { min-height: 52px; padding: 14px 28px; border-radius: 14px; letter-spacing: -.01em; }
 
@@ -103,8 +104,7 @@
     .hero { padding: 120px 0 96px; text-align: center; }
     .hero h1 { font-size: 60px; line-height: 1.05; font-weight: 650; letter-spacing: -.035em; max-width: 820px; margin: 0 auto 24px; }
     .hero .lead { font-size: 20px; line-height: 1.5; color: var(--muted); max-width: 680px; margin: 0 auto; }
-    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 36px; }
-    .pillars { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 40px; margin-top: 64px; color: var(--muted); font-size: 15px; }
+    .pillars { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 40px; margin-top: 56px; color: var(--muted); font-size: 15px; }
     .pillars strong { display: block; color: var(--ink); font-size: 22px; letter-spacing: -.02em; }
 
     /* Simple three-column text blocks */
@@ -138,7 +138,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--ink); }
 
-    @media (max-width: 1000px) { .nav { display: none; } }
+    @media (max-width: 1140px) { .nav { display: none; } }
     @media (max-width: 860px) {
       .hero { padding: 80px 0 64px; }
       .hero h1 { font-size: 42px; }
@@ -153,6 +153,11 @@
       .quote { font-size: 21px; }
       .pair { grid-template-columns: 1fr; }
       .topbar-cta { display: none; }
+      .topbar-contact { min-height: 40px; padding: 8px 12px; font-size: 14px; white-space: nowrap; }
+      .topbar-contact .long { display: none; }
+      .topbar-contact .short { display: inline; }
+      .row { gap: 4px; }
+      .theme-toggle { padding: 8px 10px; }
       .pillars { gap: 20px 28px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -173,7 +178,8 @@
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <a class="btn topbar-cta" href="#contact" data-i18n="nav.cta">Contact us</a>
+      <a class="btn ghost topbar-cta" href="#about" data-i18n="hero.secondary">Learn more</a>
+      <a class="btn topbar-contact" href="#contact"><span class="long" data-i18n="nav.cta">Contact us</span><span class="short" data-i18n="nav.ctaShort">Contact</span></a>
     </div>
   </header>
 
@@ -182,10 +188,6 @@
       <div class="tag" data-i18n="hero.tag">Business simulation for higher education</div>
       <h1 data-i18n="hero.title">Strategy is learned by making decisions.</h1>
       <p class="lead" data-i18n="hero.lead">Helix Impulse is a business simulation that can be built into your teaching – in intensive courses, seminars and business schools.</p>
-      <div class="actions">
-        <a class="btn cta" href="#contact" data-i18n="hero.primary">Contact us</a>
-        <a class="btn cta ghost" href="#about" data-i18n="hero.secondary">Learn more</a>
-      </div>
       <div class="pillars">
         <div><strong data-i18n="p.1v">20 years</strong><span data-i18n="p.1">of experience with business games</span></div>
         <div><strong data-i18n="p.2v">By educators</strong><span data-i18n="p.2">for educators</span></div>
@@ -264,12 +266,12 @@
     const DE = {
       'meta.title': 'Helix Impulse – Unternehmenssimulation für die Hochschullehre',
       'meta.desc': 'Helix Impulse ist eine Unternehmenssimulation für die Lehre in Intensivkursen, Seminaren und Business Schools. Von Lehrenden für Lehrende.',
-      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen',
+      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
       'theme.label': 'Darstellung wechseln', 'theme.light': 'Hell', 'theme.dark': 'Dunkel',
       'hero.tag': 'Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Helix Impulse ist eine Unternehmenssimulation, die sich in Ihre Lehre einbinden lässt – in Intensivkursen, Seminaren und an Business Schools.',
-      'hero.primary': 'Kontakt aufnehmen', 'hero.secondary': 'Mehr erfahren',
+      'hero.secondary': 'Mehr erfahren',
       'p.1v': '20 Jahre', 'p.1': 'Erfahrung mit Business Games',
       'p.2v': 'Von Lehrenden', 'p.2': 'für Lehrende',
       'ab.tag': 'Über uns', 'ab.title': 'Lernen durch Handeln – ohne echtes Risiko',
