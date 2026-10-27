@@ -1,47 +1,38 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Helix Impulse – Marketing Business Simulation for Higher Education</title>
   <meta name="description" content="Helix Impulse is a marketing business simulation for teaching in intensive courses, seminars and business schools. By educators, for educators.">
-  <meta name="theme-color" content="#f4f8fb">
-  <link rel="alternate" hreflang="en" href="https://heliximpulse.com/">
-  <link rel="alternate" hreflang="de" href="https://heliximpulse.com/?lang=de">
-  <link rel="alternate" hreflang="x-default" href="https://heliximpulse.com/">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230c6f96'/><text x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'>H</text></svg>">
+  <meta name="theme-color" content="#071018">
+  <link rel="alternate" hreflang="en" href="https://www.heliximpulse.com/">
+  <link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/?lang=de">
+  <link rel="alternate" hreflang="x-default" href="https://www.heliximpulse.com/">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="canonical" href="https://www.heliximpulse.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Helix Impulse">
+  <meta property="og:title" content="Helix Impulse – Marketing Business Simulation for Higher Education">
+  <meta property="og:description" content="A marketing business simulation for intensive courses, seminars and business schools. By educators, for educators.">
+  <meta property="og:url" content="https://www.heliximpulse.com/">
+  <meta property="og:image" content="https://www.heliximpulse.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('helix-theme');
-        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = t;
-      } catch (e) {}
-    })();
-  </script>
   <style>
     /* Design tokens taken from the Helix Impulse app */
     :root {
-      --bg: #f4f8fb; --bg-2: #ffffff; --surf: #ffffff; --surf-2: #e7f2f8;
-      --line: rgba(16, 52, 78, .14);
-      --ink: #10202e; --muted: #4a6272;
-      --accent: #0c6f96; --accent-ink: #041018;
-      --glow: rgba(12, 111, 150, .16);
-      --font: "DM Sans", "Segoe UI", sans-serif;
-      color-scheme: light;
-    }
-    html[data-theme="dark"] {
       --bg: #071018; --bg-2: #0c1824; --surf: #10202e; --surf-2: #162838;
       --line: rgba(150, 196, 224, .18);
       --ink: #e8f2f8; --muted: #8ea4b5;
-      --accent: #3ec6ff;
+      --accent: #3ec6ff; --accent-ink: #041018;
       --glow: rgba(62, 198, 255, .16);
+      --font: "DM Sans", "Segoe UI", sans-serif;
       color-scheme: dark;
     }
-    html:not([data-theme="dark"]) .when-dark, html[data-theme="dark"] .when-light { display: none; }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 72px; }
@@ -66,15 +57,13 @@
       background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px);
     }
     .brand { color: var(--ink); font-weight: 600; font-size: 20px; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
-    .brand span { color: var(--accent); }
+    .brand { display: inline-flex; align-items: center; }
+    .brand-mark { height: 36px; width: auto; margin-right: 10px; }
+    .brand span { color: var(--accent); margin-left: .25em; }
     .row { display: flex; align-items: center; gap: 8px; }
     .nav { display: flex; gap: 2px; margin-right: 8px; }
     .nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; font-size: 15px; }
     .nav a:hover { color: var(--ink); }
-    .theme-toggle {
-      min-height: 40px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line);
-      background: var(--surf); color: var(--ink); cursor: pointer; font: inherit; font-size: 13px; font-weight: 600;
-    }
     .locale { display: flex; gap: 2px; }
     .locale button { padding: 8px; min-height: 40px; background: transparent; border: 0; cursor: pointer; color: var(--muted); font: inherit; font-size: 15px; }
     .locale button[aria-pressed="true"] { color: var(--accent); font-weight: 600; }
@@ -102,6 +91,8 @@
 
     /* Hero */
     .hero { padding: 120px 0 96px; text-align: center; }
+    .hero-logo { height: 128px; width: auto; margin: 0 auto 28px; }
+    .hero-logo { display: block; }
     .hero h1 { font-size: 60px; line-height: 1.05; font-weight: 650; letter-spacing: -.035em; max-width: 820px; margin: 0 auto 24px; }
     .hero .lead { font-size: 20px; line-height: 1.5; color: var(--muted); max-width: 680px; margin: 0 auto; }
     .pillars { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 40px; margin-top: 56px; color: var(--muted); font-size: 15px; }
@@ -147,6 +138,8 @@
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
       .hero h1 { font-size: 34px; line-height: 1.1; }
+      .hero-logo { height: 96px; margin-bottom: 20px; }
+      .brand-mark { height: 30px; margin-right: 8px; }
       .hero .lead { font-size: 17px; }
       section { padding: 60px 0; }
       section h2 { font-size: 28px; }
@@ -157,7 +150,6 @@
       .topbar-contact .long { display: none; }
       .topbar-contact .short { display: inline; }
       .row { gap: 4px; }
-      .theme-toggle { padding: 8px 10px; }
       .pillars { gap: 20px 28px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -165,7 +157,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top">Helix <span>Impulse</span></a>
+    <a class="brand" href="#top"><img class="brand-mark" src="assets/logo-mark.png" alt="" width="14" height="36">Helix<span>Impulse</span></a>
     <div class="row">
       <nav class="nav" aria-label="Main">
         <a href="#about" data-i18n="nav.about">About</a>
@@ -173,7 +165,6 @@
         <a href="#history" data-i18n="nav.history">History</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
-      <button type="button" class="theme-toggle" id="theme-toggle" data-i18n-aria="theme.label" aria-label="Toggle appearance"><span class="when-dark" data-i18n="theme.light">Light</span><span class="when-light" data-i18n="theme.dark">Dark</span></button>
       <div class="locale" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="de" aria-pressed="false">DE</button>
@@ -185,6 +176,7 @@
 
   <main id="top">
     <div class="hero wrap">
+      <img class="hero-logo" src="assets/logo-mark.png" alt="Helix Impulse" width="50" height="128">
       <div class="tag" data-i18n="hero.tag">Marketing business simulation for higher education</div>
       <h1 data-i18n="hero.title">Strategy is learned by making decisions.</h1>
       <p class="lead" data-i18n="hero.lead">Helix Impulse is a marketing business simulation that can be built into your teaching – in intensive courses, seminars and business schools.</p>
@@ -267,7 +259,6 @@
       'meta.title': 'Helix Impulse – Marketing-Unternehmenssimulation für die Hochschullehre',
       'meta.desc': 'Helix Impulse ist eine Marketing-Unternehmenssimulation für die Lehre in Intensivkursen, Seminaren und Business Schools. Von Lehrenden für Lehrende.',
       'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
-      'theme.label': 'Darstellung wechseln', 'theme.light': 'Hell', 'theme.dark': 'Dunkel',
       'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Helix Impulse ist eine Marketing-Unternehmenssimulation, die sich in Ihre Lehre einbinden lässt – in Intensivkursen, Seminaren und an Business Schools.',
@@ -300,7 +291,6 @@
     const EN = {
       'meta.title': document.title,
       'meta.desc': document.querySelector('meta[name="description"]').content,
-      'theme.label': 'Toggle appearance',
       'f.invalid': 'Please fill in name, email and message and confirm your consent.',
       'f.opened': 'Your email app has opened – please send the message from there.',
       'f.subject': 'Request Helix Impulse'
@@ -317,7 +307,6 @@
       document.title = t('meta.title');
       document.querySelector('meta[name="description"]').content = t('meta.desc');
       document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
-      document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
       document.querySelectorAll('.locale button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
       document.getElementById('form-note').textContent = '';
       try { localStorage.setItem('helix-locale', lang); } catch (e) {}
@@ -333,11 +322,6 @@
 
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      try { localStorage.setItem('helix-theme', next); } catch (e) {}
-    });
 
     // Static site without a backend: the form opens a prefilled email.
     const form = document.getElementById('contact-form');
