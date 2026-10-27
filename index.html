@@ -236,7 +236,7 @@
         </div>
         <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
         <label><span data-i18n="f.msg">Message</span><textarea name="message" required></textarea></label>
-        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="text" name="botcheck" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
         <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
         <p class="note" id="form-note" role="status"></p>
@@ -325,8 +325,10 @@
     document.getElementById('y').textContent = new Date().getFullYear();
 
 
-    // Static site without a backend: requests are delivered by email through FormSubmit.
-    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@heliximpulse.com';
+    // Static site without a backend: requests are delivered by email through Web3Forms.
+    // The access key is public by design; it only allows sending to the inbox it was issued for.
+    const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+    const FORM_KEY = 'WEB3FORMS_ACCESS_KEY';
     const form = document.getElementById('contact-form');
     const note = document.getElementById('form-note');
     const submit = form.querySelector('button[type="submit"]');
@@ -340,7 +342,7 @@
         return;
       }
       const d = new FormData(form);
-      if (d.get('_honey')) return;
+      if (d.get('botcheck')) return;
       submit.disabled = true;
       show('f.sending');
       try {
@@ -348,17 +350,19 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
+            access_key: FORM_KEY,
             name: d.get('name'),
             email: d.get('email'),
             institution: d.get('org') || '–',
             message: d.get('message'),
             language: lang.toUpperCase(),
-            _subject: `${t('f.subject')} – ${d.get('name')}`,
-            _template: 'table'
+            subject: `${t('f.subject')} – ${d.get('name')}`,
+            from_name: 'Helix Impulse Website',
+            botcheck: ''
           })
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || res.status);
+        if (!res.ok || data.success !== true) throw new Error(data.message || res.status);
         form.reset();
         show('f.sent');
       } catch (err) {
