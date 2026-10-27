@@ -1,11 +1,14 @@
 <!doctype html>
-<html lang="de" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Helix Impulse</title>
-  <meta name="description" content="Helix Impulse – die Marketing-Strategie-Simulation fürs Seminar. Teams führen eine Kopfhörermarke durch mehrere Geschäftsjahre.">
+  <title>Helix Impulse – Marketing Strategy Simulation for Higher Education</title>
+  <meta name="description" content="Helix Impulse is a browser-based marketing strategy simulation for university courses. Student teams run a headphone brand over several fiscal years.">
   <meta name="theme-color" content="#f4f8fb">
+  <link rel="alternate" hreflang="en" href="https://heliximpulse.com/">
+  <link rel="alternate" hreflang="de" href="https://heliximpulse.com/?lang=de">
+  <link rel="alternate" hreflang="x-default" href="https://heliximpulse.com/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230c6f96'/><text x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'>H</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +67,7 @@
       position: sticky; top: 0; z-index: 8;
       background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px);
     }
-    .brand { color: var(--ink); font-weight: 600; font-size: 20px; letter-spacing: -.02em; text-decoration: none; }
+    .brand { color: var(--ink); font-weight: 600; font-size: 20px; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
     .brand span { color: var(--accent); }
     .row { display: flex; align-items: center; gap: 8px; }
     .nav { display: flex; gap: 4px; margin-right: 8px; }
@@ -74,6 +77,9 @@
       min-height: 40px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line);
       background: var(--surf); color: var(--ink); cursor: pointer; font: inherit; font-size: 13px; font-weight: 600;
     }
+    .locale { display: flex; gap: 2px; }
+    .locale button { padding: 8px 8px; min-height: 40px; background: transparent; border: 0; cursor: pointer; color: var(--muted); font: inherit; font-size: 15px; }
+    .locale button[aria-pressed="true"] { color: var(--accent); font-weight: 600; }
 
     /* Buttons */
     .btn {
@@ -92,13 +98,17 @@
     .lead { font-size: 18px; line-height: 1.45; max-width: 40rem; color: var(--muted); }
     section { padding: 72px 0; }
     section h2 { font-size: 32px; line-height: 1.15; letter-spacing: -.03em; }
-    .intro { color: var(--muted); max-width: 40rem; margin-bottom: 32px; }
+    .intro { color: var(--muted); max-width: 42rem; margin-bottom: 32px; }
+    .alt { background: color-mix(in srgb, var(--surf-2) 45%, transparent); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
     .card { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 16px; padding: 20px; transition: border-color .15s ease; }
     .card:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
-    .card h3 { font-size: 20px; }
+    .card h3 { font-size: 19px; }
     .card p { color: var(--muted); margin: 0; }
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .badge { width: 36px; height: 36px; border-radius: 10px; display: inline-grid; place-items: center; background: var(--surf-2); color: var(--accent); font-weight: 700; margin-bottom: 14px; }
+    .badge svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* Hero */
     .hero { padding: 88px 0 48px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
@@ -121,11 +131,7 @@
     .kpi small { display: block; color: var(--muted); font-size: 12px; }
     .kpi strong { font-size: 18px; }
 
-    /* Doors */
-    .door-num { width: 36px; height: 36px; border-radius: 10px; display: inline-grid; place-items: center; background: var(--surf-2); color: var(--accent); font-weight: 700; margin-bottom: 14px; }
-
     /* Segments */
-    .alt { background: color-mix(in srgb, var(--surf-2) 45%, transparent); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .segments { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
     .seg { border-top: 4px solid var(--c); }
     .seg h3 { font-size: 17px; margin-bottom: 4px; }
@@ -137,6 +143,20 @@
     .steps li::before { content: "0" counter(s); display: block; color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .08em; margin-bottom: 6px; }
     .steps h3 { font-size: 18px; }
     .steps p { color: var(--muted); }
+
+    /* Course formats */
+    .format dl { margin: 14px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 14px; }
+    .format dt { color: var(--muted); }
+    .format dd { margin: 0; font-weight: 600; }
+
+    /* FAQ */
+    .faq { display: grid; gap: 12px; max-width: 860px; }
+    .faq details { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 14px; padding: 4px 20px; }
+    .faq summary { cursor: pointer; font-weight: 600; padding: 14px 0; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--accent); font-weight: 700; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { color: var(--muted); margin: 0 0 16px; }
 
     /* Contact */
     .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
@@ -161,13 +181,14 @@
 
     @media (max-width: 1100px) {
       .segments { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid.four { grid-template-columns: 1fr 1fr; }
+      .nav { display: none; }
     }
     @media (max-width: 960px) {
       .hero, .contact { grid-template-columns: 1fr; }
       .hero { padding-top: 48px; }
       .hero h1 { font-size: 36px; }
       .grid, .steps { grid-template-columns: 1fr 1fr; }
-      .nav { display: none; }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -175,8 +196,8 @@
       .lead { font-size: 16px; }
       section { padding: 48px 0; }
       section h2 { font-size: 26px; }
-      .grid, .steps, .two, .segments { grid-template-columns: 1fr; }
-      .topbar .btn { min-height: 40px; padding: 8px 12px; }
+      .grid, .grid.four, .steps, .two, .segments { grid-template-columns: 1fr; }
+      .topbar-cta { display: none; }
       .bar { grid-template-columns: 80px 1fr 40px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -186,121 +207,170 @@
   <header class="topbar">
     <a class="brand" href="#top">Helix <span>Impulse</span></a>
     <div class="row">
-      <nav class="nav" aria-label="Hauptnavigation">
-        <a href="#ablauf">So funktioniert's</a>
-        <a href="#markt">Der Markt</a>
-        <a href="#seminar">Fürs Seminar</a>
-        <a href="#kontakt">Kontakt</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#outcomes" data-i18n="nav.outcomes">Learning outcomes</a>
+        <a href="#formats" data-i18n="nav.formats">Course formats</a>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Darstellung wechseln"><span class="when-dark">Hell</span><span class="when-light">Dunkel</span></button>
-      <a class="btn" href="https://pulse-five-lemon.vercel.app/">Zur Simulation</a>
+      <button type="button" class="theme-toggle" id="theme-toggle" data-i18n-aria="theme.label" aria-label="Toggle appearance"><span class="when-dark" data-i18n="theme.light">Light</span><span class="when-light" data-i18n="theme.dark">Dark</span></button>
+      <div class="locale" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+      <a class="btn topbar-cta" href="#contact" data-i18n="nav.cta">Request a pilot</a>
     </div>
   </header>
 
   <main id="top" class="wrap">
     <div class="hero">
       <div>
-        <div class="tag">Marketing-Strategie-Simulation</div>
-        <h1>Ihr führt eine Kopfhörermarke durch mehrere Geschäftsjahre.</h1>
-        <p class="lead">Helix Impulse macht Marketing-Strategie erlebbar: Teams treffen Entscheidungen zu Produkt, Preis, Kommunikation und Produktion – und sehen nach jedem Jahr, was ihre Strategie im Wettbewerb bewirkt hat.</p>
+        <div class="tag" data-i18n="hero.tag">For lecturers and professors</div>
+        <h1 data-i18n="hero.title">Bring marketing strategy to life in your course.</h1>
+        <p class="lead" data-i18n="hero.lead">In Helix Impulse, student teams run a headphone brand over several fiscal years. They segment the market, position their products and make marketing-mix decisions – and see after every year how their strategy holds up against the competition.</p>
         <div class="actions">
-          <a class="btn cta" href="https://pulse-five-lemon.vercel.app/">Demo starten</a>
-          <a class="btn cta ghost" href="#kontakt">Fürs Seminar anfragen</a>
+          <a class="btn cta" href="#contact" data-i18n="hero.primary">Request a course pilot</a>
+          <a class="btn cta ghost" href="https://pulse-five-lemon.vercel.app/" data-i18n="hero.secondary">Try the demo</a>
         </div>
-        <div class="facts"><span>Direkt im Browser</span><span>2 bis 10 Teams</span><span>Bots füllen freie Plätze</span></div>
+        <div class="facts">
+          <span data-i18n="hero.f1">Runs in the browser</span>
+          <span data-i18n="hero.f2">No student accounts</span>
+          <span data-i18n="hero.f3">English and German</span>
+        </div>
       </div>
       <div class="card preview" aria-hidden="true">
-        <div class="preview-head"><strong>Marktanteil · Jahr 3</strong><span>Beispielrunde</span></div>
+        <div class="preview-head"><strong data-i18n="preview.title">Market share · Year 3</strong><span data-i18n="preview.sub">Sample round</span></div>
         <div class="bars">
-          <div class="bar">Team Alpha<i style="--w:82%;--c:var(--accent)"></i><b>27 %</b></div>
-          <div class="bar">Team Nova<i style="--w:64%;--c:var(--seg-lifestyle)"></i><b>21 %</b></div>
-          <div class="bar">Bot Sonora<i style="--w:55%;--c:var(--seg-budget)"></i><b>18 %</b></div>
-          <div class="bar">Team Delta<i style="--w:47%;--c:var(--seg-eco)"></i><b>15 %</b></div>
-          <div class="bar">Bot Volt<i style="--w:39%;--c:var(--seg-performance)"></i><b>12 %</b></div>
+          <div class="bar">Team Alpha<i style="--w:82%;--c:var(--accent)"></i><b>27%</b></div>
+          <div class="bar">Team Nova<i style="--w:64%;--c:var(--seg-lifestyle)"></i><b>21%</b></div>
+          <div class="bar">Bot Sonora<i style="--w:55%;--c:var(--seg-budget)"></i><b>18%</b></div>
+          <div class="bar">Team Delta<i style="--w:47%;--c:var(--seg-eco)"></i><b>15%</b></div>
+          <div class="bar">Bot Volt<i style="--w:39%;--c:var(--seg-performance)"></i><b>12%</b></div>
         </div>
         <div class="kpis">
-          <div class="kpi"><small>Umsatz</small><strong>4,8 Mio.</strong></div>
-          <div class="kpi"><small>Gewinn</small><strong>+620 T</strong></div>
-          <div class="kpi"><small>Markenstärke</small><strong>71</strong></div>
+          <div class="kpi"><small data-i18n="preview.k1">Revenue</small><strong data-i18n="preview.v1">4.8 M</strong></div>
+          <div class="kpi"><small data-i18n="preview.k2">Profit</small><strong data-i18n="preview.v2">+620 K</strong></div>
+          <div class="kpi"><small data-i18n="preview.k3">Brand strength</small><strong>71</strong></div>
         </div>
       </div>
     </div>
   </main>
 
-  <section id="ablauf">
+  <section id="outcomes">
     <div class="wrap">
-      <div class="tag">So funktioniert's</div>
-      <h2>Drei Wege ins Spiel</h2>
-      <p class="intro">Ob zum Ausprobieren, im Team oder als Leitung einer Seminarrunde – Helix Impulse passt sich eurem Rahmen an.</p>
-      <div class="grid">
+      <div class="tag" data-i18n="out.tag">Learning outcomes</div>
+      <h2 data-i18n="out.title">From lecture theory to strategic decisions</h2>
+      <p class="intro" data-i18n="out.intro">The simulation turns core marketing concepts into decisions with consequences. Students experience how their choices interact with the market and with competing teams.</p>
+      <div class="grid four">
         <article class="card">
-          <div class="door-num">1</div>
-          <h3>Allein gegen Bots</h3>
-          <p>Ohne PIN direkt loslegen: Ihr spielt in einer eigenen Simulation gegen Bots und startet die Jahresberechnung selbst.</p>
+          <div class="badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+          <h3 data-i18n="out.1t">Segmentation &amp; targeting</h3>
+          <p data-i18n="out.1p">Analyse five customer segments, choose target markets and position a brand deliberately.</p>
         </article>
         <article class="card">
-          <div class="door-num">2</div>
-          <h3>Mitspielen</h3>
-          <p>Mit Name, Teamname und PIN der Seminarrunde beitreten. Eure Marke wird automatisch zufällig zugeteilt.</p>
+          <div class="badge"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <h3 data-i18n="out.2t">Marketing mix</h3>
+          <p data-i18n="out.2p">Decide on product, price, channels and budget – and weigh the trade-offs between them.</p>
         </article>
         <article class="card">
-          <div class="door-num">3</div>
-          <h3>Als Tutor</h3>
-          <p>Eine neue Runde anlegen, Teamplätze und Spieljahre festlegen und die PIN weitergeben. Bots übernehmen unbesetzte Plätze.</p>
+          <div class="badge"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+          <h3 data-i18n="out.3t">Financial impact</h3>
+          <p data-i18n="out.3p">Connect marketing decisions with revenue, cost, production and profit over several years.</p>
+        </article>
+        <article class="card">
+          <div class="badge"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/></svg></div>
+          <h3 data-i18n="out.4t">Teamwork under competition</h3>
+          <p data-i18n="out.4p">Negotiate a shared strategy in the team, respond to competitors and justify decisions.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="markt" class="alt">
+  <section id="market" class="alt">
     <div class="wrap">
-      <div class="tag">Der Markt</div>
-      <h2>Fünf Kundensegmente, ein Wettbewerb</h2>
-      <p class="intro">Jedes Segment hat eigene Bedürfnisse und Preisbereitschaft. Wer seine Zielgruppe klar wählt und konsequent bedient, gewinnt Marktanteile.</p>
+      <div class="tag" data-i18n="mkt.tag">The market</div>
+      <h2 data-i18n="mkt.title">Five customer segments, one competitive market</h2>
+      <p class="intro" data-i18n="mkt.intro">Each segment has its own needs and willingness to pay. Teams that choose their target group clearly and serve it consistently gain market share.</p>
       <div class="segments">
-        <article class="card seg" style="--c:var(--seg-budget)"><h3>Budget</h3><p>Preisbewusst, wenig Markenbindung.</p></article>
-        <article class="card seg" style="--c:var(--seg-commute)"><h3>Pendler</h3><p>Komfort und Alltagstauglichkeit unterwegs.</p></article>
-        <article class="card seg" style="--c:var(--seg-performance)"><h3>Performance</h3><p>Klang und Technik stehen an erster Stelle.</p></article>
-        <article class="card seg" style="--c:var(--seg-lifestyle)"><h3>Lifestyle</h3><p>Design und Marke als Statement.</p></article>
-        <article class="card seg" style="--c:var(--seg-eco)"><h3>Öko</h3><p>Nachhaltigkeit als Kaufentscheidung.</p></article>
+        <article class="card seg" style="--c:var(--seg-budget)"><h3 data-i18n="mkt.s1t">Budget</h3><p data-i18n="mkt.s1p">Price-sensitive, low brand loyalty.</p></article>
+        <article class="card seg" style="--c:var(--seg-commute)"><h3 data-i18n="mkt.s2t">Commuters</h3><p data-i18n="mkt.s2p">Comfort and everyday use on the go.</p></article>
+        <article class="card seg" style="--c:var(--seg-performance)"><h3 data-i18n="mkt.s3t">Performance</h3><p data-i18n="mkt.s3p">Sound quality and technology come first.</p></article>
+        <article class="card seg" style="--c:var(--seg-lifestyle)"><h3 data-i18n="mkt.s4t">Lifestyle</h3><p data-i18n="mkt.s4p">Design and brand as a statement.</p></article>
+        <article class="card seg" style="--c:var(--seg-eco)"><h3 data-i18n="mkt.s5t">Eco</h3><p data-i18n="mkt.s5p">Sustainability drives the purchase.</p></article>
       </div>
     </div>
   </section>
 
-  <section id="seminar">
+  <section id="formats">
     <div class="wrap">
-      <div class="tag">Fürs Seminar</div>
-      <h2>Ein Geschäftsjahr pro Runde</h2>
-      <p class="intro">Der Ablauf ist bewusst einfach gehalten, damit die Zeit im Seminar in Diskussion und Reflexion fließt.</p>
+      <div class="tag" data-i18n="fmt.tag">Course formats</div>
+      <h2 data-i18n="fmt.title">Fits the way you teach</h2>
+      <p class="intro" data-i18n="fmt.intro">You choose the number of company slots and fiscal years per round. Bots take over unfilled slots, so the market stays competitive even with small groups.</p>
+      <div class="grid">
+        <article class="card format">
+          <h3 data-i18n="fmt.1t">Block seminar</h3>
+          <p data-i18n="fmt.1p">An intensive simulation over one or two days, with a debrief after every fiscal year.</p>
+        </article>
+        <article class="card format">
+          <h3 data-i18n="fmt.2t">Semester course</h3>
+          <p data-i18n="fmt.2p">One fiscal year per session, accompanying the lecture and linking each round to the current topic.</p>
+        </article>
+        <article class="card format">
+          <h3 data-i18n="fmt.3t">Self-study</h3>
+          <p data-i18n="fmt.3p">Students play alone against bots – ideal as preparation or as an introduction to the model.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <div class="tag" data-i18n="how.tag">How it works</div>
+      <h2 data-i18n="how.title">Ready for class in minutes</h2>
+      <p class="intro" data-i18n="how.intro">The process is deliberately simple, so class time goes into discussion and reflection rather than administration.</p>
       <ol class="steps">
-        <li><h3>Runde anlegen</h3><p>Als Tutor Teamplätze (2–10) und Anzahl der Spieljahre wählen.</p></li>
-        <li><h3>Teams beitreten</h3><p>Teams melden sich mit Name, Teamname und PIN an und erhalten ihre Marke.</p></li>
-        <li><h3>Entscheiden</h3><p>Jedes Team plant Produkt, Preis, Kanäle, Budget und Produktion.</p></li>
-        <li><h3>Auswerten</h3><p>Jahresberechnung starten, Ergebnisse vergleichen, Strategie anpassen.</p></li>
+        <li><h3 data-i18n="how.1t">Create a round</h3><p data-i18n="how.1p">In the tutor room, set 2–10 company slots and the number of fiscal years.</p></li>
+        <li><h3 data-i18n="how.2t">Teams join</h3><p data-i18n="how.2p">Students join with name, team name and PIN. Each team is assigned a brand.</p></li>
+        <li><h3 data-i18n="how.3t">Teams decide</h3><p data-i18n="how.3p">Each team plans product, price, channels, budget and production for the year.</p></li>
+        <li><h3 data-i18n="how.4t">Debrief</h3><p data-i18n="how.4p">You run the annual calculation; teams compare results and refine their strategy.</p></li>
       </ol>
     </div>
   </section>
 
-  <section id="kontakt" class="alt">
+  <section id="faq">
+    <div class="wrap">
+      <div class="tag" data-i18n="faq.tag">FAQ</div>
+      <h2 data-i18n="faq.title">Questions from lecturers</h2>
+      <div class="faq">
+        <details><summary data-i18n="faq.1q">Do students need an account?</summary><p data-i18n="faq.1a">No. Students join with a name, a team name and the PIN you hand out. Nothing needs to be installed.</p></details>
+        <details><summary data-i18n="faq.2q">How many students can take part?</summary><p data-i18n="faq.2a">A round has 2 to 10 company slots, and each company can be run by a team of several students. Bots take over slots that are not filled.</p></details>
+        <details><summary data-i18n="faq.3q">Which languages are supported?</summary><p data-i18n="faq.3a">The simulation is available in English and German, so it works for international and German-language programmes alike.</p></details>
+        <details><summary data-i18n="faq.4q">Can I try it before using it in class?</summary><p data-i18n="faq.4a">Yes. Start a demo against bots right away, or contact us for a pilot round with your course.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
     <div class="wrap contact">
       <div>
-        <div class="tag">Kontakt</div>
-        <h2>Helix Impulse in eurem Seminar</h2>
-        <p class="intro">Ihr möchtet die Simulation in einer Lehrveranstaltung, einem Workshop oder Training einsetzen? Schreibt uns – wir melden uns zeitnah.</p>
-        <p style="color:var(--muted)">Oder direkt per E-Mail:<br><a href="mailto:johanklee8@gmail.com">johanklee8@gmail.com</a></p>
+        <div class="tag" data-i18n="ct.tag">Contact</div>
+        <h2 data-i18n="ct.title">Use Helix Impulse in your course</h2>
+        <p class="intro" data-i18n="ct.intro">Tell us about your course – level, group size and timing. We'll get back to you to plan a pilot.</p>
+        <p style="color:var(--muted)"><span data-i18n="ct.direct">Or email us directly:</span><br><a href="mailto:johanklee8@gmail.com">johanklee8@gmail.com</a></p>
       </div>
       <form class="card" id="contact-form" novalidate>
         <div class="two">
-          <label>Name<input class="input" name="name" autocomplete="name" placeholder="z. B. Leon Weber" required></label>
-          <label>E-Mail<input class="input" name="email" type="email" autocomplete="email" placeholder="name@hochschule.de" required></label>
+          <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" data-i18n-ph="f.nameph" placeholder="e.g. Prof. Dr. Anna Weber" required></label>
+          <label><span data-i18n="f.email">Email</span><input class="input" name="email" type="email" autocomplete="email" data-i18n-ph="f.emailph" placeholder="name@university.edu" required></label>
         </div>
         <div class="two">
-          <label>Institution (optional)<input class="input" name="org" autocomplete="organization" placeholder="z. B. Hochschule München"></label>
-          <label>Teilnehmende (ca.)<input class="input" name="size" inputmode="numeric" placeholder="z. B. 30"></label>
+          <label><span data-i18n="f.org">University / institution</span><input class="input" name="org" autocomplete="organization" data-i18n-ph="f.orgph" placeholder="e.g. University of Mannheim"></label>
+          <label><span data-i18n="f.size">Students (approx.)</span><input class="input" name="size" inputmode="numeric" data-i18n-ph="f.sizeph" placeholder="e.g. 40"></label>
         </div>
-        <label>Nachricht<textarea name="message" placeholder="Wann und in welchem Rahmen möchtet ihr spielen?" required></textarea></label>
-        <label class="check"><input type="checkbox" name="consent" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.</span></label>
-        <div style="margin-top:14px"><button class="btn" type="submit">Anfrage senden</button></div>
+        <label><span data-i18n="f.course">Course &amp; level</span><input class="input" name="course" data-i18n-ph="f.courseph" placeholder="e.g. Marketing Management, Bachelor 4th semester"></label>
+        <label><span data-i18n="f.msg">Message</span><textarea name="message" data-i18n-ph="f.msgph" placeholder="When and in which format would you like to use the simulation?" required></textarea></label>
+        <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
+        <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
         <p class="note" id="form-note" role="status"></p>
       </form>
     </div>
@@ -309,11 +379,105 @@
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="https://pulse-five-lemon.vercel.app/">Zur Simulation</a> · <a href="#kontakt">Kontakt</a></span>
+      <span><a href="https://pulse-five-lemon.vercel.app/" data-i18n="ft.sim">Open the simulation</a> · <a href="#contact" data-i18n="ft.contact">Contact</a></span>
     </div>
   </footer>
 
   <script>
+    // English is the source text in the markup; German is applied on demand.
+    const DE = {
+      'meta.title': 'Helix Impulse – Marketing-Strategie-Simulation für die Hochschullehre',
+      'meta.desc': 'Helix Impulse ist eine browserbasierte Marketing-Strategie-Simulation für Lehrveranstaltungen. Studierende führen eine Kopfhörermarke durch mehrere Geschäftsjahre.',
+      'nav.outcomes': 'Lernziele', 'nav.formats': 'Formate', 'nav.how': 'Ablauf', 'nav.faq': 'FAQ', 'nav.cta': 'Pilot anfragen',
+      'theme.label': 'Darstellung wechseln', 'theme.light': 'Hell', 'theme.dark': 'Dunkel',
+      'hero.tag': 'Für Lehrende an Hochschulen',
+      'hero.title': 'Marketing-Strategie in Ihrer Lehrveranstaltung erlebbar machen.',
+      'hero.lead': 'In Helix Impulse führen studentische Teams eine Kopfhörermarke durch mehrere Geschäftsjahre. Sie segmentieren den Markt, positionieren ihre Produkte und treffen Entscheidungen zum Marketing-Mix – und sehen nach jedem Jahr, wie ihre Strategie im Wettbewerb besteht.',
+      'hero.primary': 'Pilotkurs anfragen', 'hero.secondary': 'Demo ausprobieren',
+      'hero.f1': 'Läuft im Browser', 'hero.f2': 'Keine Accounts für Studierende', 'hero.f3': 'Deutsch und Englisch',
+      'preview.title': 'Marktanteil · Jahr 3', 'preview.sub': 'Beispielrunde',
+      'preview.k1': 'Umsatz', 'preview.v1': '4,8 Mio.', 'preview.k2': 'Gewinn', 'preview.v2': '+620 T', 'preview.k3': 'Markenstärke',
+      'out.tag': 'Lernziele', 'out.title': 'Von der Theorie zur strategischen Entscheidung',
+      'out.intro': 'Die Simulation übersetzt zentrale Marketingkonzepte in Entscheidungen mit Konsequenzen. Studierende erleben, wie ihre Entscheidungen mit dem Markt und den konkurrierenden Teams zusammenwirken.',
+      'out.1t': 'Segmentierung &amp; Targeting', 'out.1p': 'Fünf Kundensegmente analysieren, Zielmärkte wählen und eine Marke bewusst positionieren.',
+      'out.2t': 'Marketing-Mix', 'out.2p': 'Über Produkt, Preis, Kanäle und Budget entscheiden – und die Zielkonflikte dazwischen abwägen.',
+      'out.3t': 'Finanzielle Wirkung', 'out.3p': 'Marketingentscheidungen mit Umsatz, Kosten, Produktion und Gewinn über mehrere Jahre verknüpfen.',
+      'out.4t': 'Teamarbeit im Wettbewerb', 'out.4p': 'Im Team eine gemeinsame Strategie aushandeln, auf Wettbewerber reagieren und Entscheidungen begründen.',
+      'mkt.tag': 'Der Markt', 'mkt.title': 'Fünf Kundensegmente, ein Wettbewerbsmarkt',
+      'mkt.intro': 'Jedes Segment hat eigene Bedürfnisse und Preisbereitschaft. Teams, die ihre Zielgruppe klar wählen und konsequent bedienen, gewinnen Marktanteile.',
+      'mkt.s1t': 'Budget', 'mkt.s1p': 'Preisbewusst, geringe Markenbindung.',
+      'mkt.s2t': 'Pendler', 'mkt.s2p': 'Komfort und Alltagstauglichkeit unterwegs.',
+      'mkt.s3t': 'Performance', 'mkt.s3p': 'Klang und Technik stehen an erster Stelle.',
+      'mkt.s4t': 'Lifestyle', 'mkt.s4p': 'Design und Marke als Statement.',
+      'mkt.s5t': 'Öko', 'mkt.s5p': 'Nachhaltigkeit entscheidet den Kauf.',
+      'fmt.tag': 'Formate', 'fmt.title': 'Passt zu Ihrer Lehre',
+      'fmt.intro': 'Sie legen die Zahl der Firmenplätze und Geschäftsjahre pro Runde fest. Bots übernehmen unbesetzte Plätze, sodass der Markt auch bei kleinen Gruppen umkämpft bleibt.',
+      'fmt.1t': 'Blockseminar', 'fmt.1p': 'Eine intensive Simulation über ein bis zwei Tage, mit Debriefing nach jedem Geschäftsjahr.',
+      'fmt.2t': 'Semesterbegleitend', 'fmt.2p': 'Ein Geschäftsjahr pro Sitzung, begleitend zur Vorlesung und jeweils mit dem aktuellen Thema verknüpft.',
+      'fmt.3t': 'Selbststudium', 'fmt.3p': 'Studierende spielen allein gegen Bots – ideal zur Vorbereitung oder als Einstieg ins Modell.',
+      'how.tag': 'Ablauf', 'how.title': 'In wenigen Minuten startklar',
+      'how.intro': 'Der Ablauf ist bewusst einfach gehalten, damit die Zeit in der Veranstaltung in Diskussion und Reflexion fließt statt in Organisation.',
+      'how.1t': 'Runde anlegen', 'how.1p': 'Im Tutor-Raum 2–10 Firmenplätze und die Zahl der Geschäftsjahre festlegen.',
+      'how.2t': 'Teams treten bei', 'how.2p': 'Studierende melden sich mit Name, Teamname und PIN an. Jedes Team erhält eine Marke.',
+      'how.3t': 'Teams entscheiden', 'how.3p': 'Jedes Team plant Produkt, Preis, Kanäle, Budget und Produktion für das Jahr.',
+      'how.4t': 'Debriefing', 'how.4p': 'Sie starten die Jahresberechnung; die Teams vergleichen Ergebnisse und schärfen ihre Strategie.',
+      'faq.tag': 'FAQ', 'faq.title': 'Fragen von Lehrenden',
+      'faq.1q': 'Brauchen Studierende einen Account?', 'faq.1a': 'Nein. Studierende treten mit Name, Teamname und der von Ihnen ausgegebenen PIN bei. Es muss nichts installiert werden.',
+      'faq.2q': 'Wie viele Studierende können teilnehmen?', 'faq.2a': 'Eine Runde hat 2 bis 10 Firmenplätze, und jede Firma kann von einem Team aus mehreren Studierenden geführt werden. Bots übernehmen unbesetzte Plätze.',
+      'faq.3q': 'Welche Sprachen werden unterstützt?', 'faq.3a': 'Die Simulation ist auf Deutsch und Englisch verfügbar und eignet sich damit für internationale wie deutschsprachige Studiengänge.',
+      'faq.4q': 'Kann ich die Simulation vorab testen?', 'faq.4a': 'Ja. Starten Sie direkt eine Demo gegen Bots oder kontaktieren Sie uns für eine Pilotrunde mit Ihrem Kurs.',
+      'ct.tag': 'Kontakt', 'ct.title': 'Helix Impulse in Ihrer Lehrveranstaltung',
+      'ct.intro': 'Erzählen Sie uns von Ihrem Kurs – Niveau, Gruppengröße und Zeitraum. Wir melden uns, um eine Pilotrunde zu planen.',
+      'ct.direct': 'Oder direkt per E-Mail:',
+      'f.name': 'Name', 'f.nameph': 'z. B. Prof. Dr. Anna Weber',
+      'f.email': 'E-Mail', 'f.emailph': 'name@hochschule.de',
+      'f.org': 'Hochschule / Institution', 'f.orgph': 'z. B. Universität Mannheim',
+      'f.size': 'Studierende (ca.)', 'f.sizeph': 'z. B. 40',
+      'f.course': 'Veranstaltung &amp; Niveau', 'f.courseph': 'z. B. Marketing Management, Bachelor 4. Semester',
+      'f.msg': 'Nachricht', 'f.msgph': 'Wann und in welchem Format möchten Sie die Simulation einsetzen?',
+      'f.consent': 'Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.',
+      'f.submit': 'Anfrage senden',
+      'f.invalid': 'Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.',
+      'f.opened': 'Ihr E-Mail-Programm wurde geöffnet – bitte senden Sie die Nachricht dort ab.',
+      'f.subject': 'Pilotanfrage Helix Impulse',
+      'ft.sim': 'Zur Simulation', 'ft.contact': 'Kontakt'
+    };
+    const EN = {
+      'meta.title': document.title,
+      'meta.desc': document.querySelector('meta[name="description"]').content,
+      'theme.label': 'Toggle appearance',
+      'f.invalid': 'Please fill in name, email and message and confirm your consent.',
+      'f.opened': 'Your email app has opened – please send the message from there.',
+      'f.subject': 'Pilot request Helix Impulse'
+    };
+    // Capture the English markup so switching back restores it.
+    document.querySelectorAll('[data-i18n]').forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => { EN[el.dataset.i18nPh] = el.placeholder; });
+
+    let lang = 'en';
+    const t = (k) => (lang === 'de' ? DE : EN)[k] ?? EN[k];
+
+    function setLang(next) {
+      lang = next === 'de' ? 'de' : 'en';
+      document.documentElement.lang = lang;
+      document.title = t('meta.title');
+      document.querySelector('meta[name="description"]').content = t('meta.desc');
+      document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+      document.querySelectorAll('.locale button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+      document.getElementById('form-note').textContent = '';
+      try { localStorage.setItem('helix-locale', lang); } catch (e) {}
+      const url = new URL(location.href);
+      if (lang === 'de') url.searchParams.set('lang', 'de'); else url.searchParams.delete('lang');
+      history.replaceState(null, '', url);
+    }
+
+    document.querySelectorAll('.locale button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    let initial = new URLSearchParams(location.search).get('lang');
+    if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
+    if (initial === 'de') setLang('de');
+
     document.getElementById('y').textContent = new Date().getFullYear();
 
     document.getElementById('theme-toggle').addEventListener('click', () => {
@@ -328,17 +492,18 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!form.checkValidity()) {
-        note.textContent = 'Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.';
+        note.textContent = t('f.invalid');
         form.reportValidity();
         return;
       }
       const d = new FormData(form);
-      const subject = `Seminar-Anfrage Helix Impulse – ${d.get('name')}`;
-      const lines = [d.get('message'), '', `Name: ${d.get('name')}`, `E-Mail: ${d.get('email')}`];
+      const lines = [d.get('message'), '', `Name: ${d.get('name')}`, `Email: ${d.get('email')}`];
       if (d.get('org')) lines.push(`Institution: ${d.get('org')}`);
-      if (d.get('size')) lines.push(`Teilnehmende: ${d.get('size')}`);
+      if (d.get('course')) lines.push(`Course: ${d.get('course')}`);
+      if (d.get('size')) lines.push(`Students: ${d.get('size')}`);
+      const subject = `${t('f.subject')} – ${d.get('name')}`;
       window.location.href = `mailto:johanklee8@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-      note.textContent = 'Euer E-Mail-Programm wurde geöffnet – bitte die Nachricht dort absenden.';
+      note.textContent = t('f.opened');
     });
   </script>
 </body>
