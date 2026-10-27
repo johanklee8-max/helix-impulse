@@ -133,16 +133,6 @@
     .check input { margin-top: 3px; }
     .note { color: var(--accent); font-size: 14px; min-height: 1.4em; margin: 8px 0 0; }
 
-    /* Videos */
-    .videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 40px; }
-    .video { margin: 0; }
-    .frame { aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surf-2); display: grid; place-items: center; }
-    .frame iframe, .frame video { width: 100%; height: 100%; border: 0; display: block; }
-    .frame .soon { display: grid; justify-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
-    .frame .play { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--surf); border: 1px solid var(--line); color: var(--accent); }
-    .frame .play svg { width: 20px; height: 20px; margin-left: 3px; fill: currentColor; }
-    .video figcaption { margin-top: 12px; font-weight: 600; }
-
     footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
     footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     footer a { color: var(--muted); text-decoration: none; }
@@ -152,7 +142,7 @@
     @media (max-width: 860px) {
       .hero { padding: 80px 0 64px; }
       .hero h1 { font-size: 42px; }
-      .cols, .contact, .videos { grid-template-columns: 1fr; gap: 32px; }
+      .cols, .contact { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -177,7 +167,6 @@
         <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
         <a href="#history" data-i18n="nav.history">History</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a href="#videos" data-i18n="nav.videos">Videos</a>
       </nav>
       <button type="button" class="theme-toggle" id="theme-toggle" data-i18n-aria="theme.label" aria-label="Toggle appearance"><span class="when-dark" data-i18n="theme.light">Light</span><span class="when-light" data-i18n="theme.dark">Dark</span></button>
       <div class="locale" role="group" aria-label="Language">
@@ -195,7 +184,7 @@
       <p class="lead" data-i18n="hero.lead">Helix Impulse is a business simulation that can be built into your teaching – in intensive courses, seminars and business schools.</p>
       <div class="actions">
         <a class="btn cta" href="#contact" data-i18n="hero.primary">Contact us</a>
-        <a class="btn cta ghost" href="#videos" data-i18n="hero.secondary">Watch the videos</a>
+        <a class="btn cta ghost" href="#about" data-i18n="hero.secondary">Learn more</a>
       </div>
       <div class="pillars">
         <div><strong data-i18n="p.1v">20 years</strong><span data-i18n="p.1">of experience with business games</span></div>
@@ -263,32 +252,11 @@
     </div>
   </section>
 
-  <section id="videos" class="alt">
-    <div class="wrap">
-      <div class="tag" data-i18n="vi.tag">Videos</div>
-      <h2 data-i18n="vi.title">See Helix Impulse in action</h2>
-      <div class="videos">
-        <!--
-          To add a video, replace the <div class="soon">…</div> inside .frame with either
-          a YouTube/Vimeo embed:  <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="…" allowfullscreen></iframe>
-          or a file in the repo: <video src="videos/intro.mp4" controls preload="metadata"></video>
-        -->
-        <figure class="video">
-          <div class="frame"><div class="soon"><span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span data-i18n="vi.soon">Video coming soon</span></div></div>
-          <figcaption data-i18n="vi.1">Introduction to Helix Impulse</figcaption>
-        </figure>
-        <figure class="video">
-          <div class="frame"><div class="soon"><span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span data-i18n="vi.soon">Video coming soon</span></div></div>
-          <figcaption data-i18n="vi.2">Helix Impulse in the classroom</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="#videos" data-i18n="nav.videos">Videos</a></span>
+      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#contact" data-i18n="nav.contact">Contact</a></span>
     </div>
   </footer>
 
@@ -297,12 +265,12 @@
     const DE = {
       'meta.title': 'Helix Impulse – Unternehmenssimulation für die Hochschullehre',
       'meta.desc': 'Helix Impulse ist eine Unternehmenssimulation für die Lehre in Intensivkursen, Seminaren und Business Schools. Von Lehrenden für Lehrende.',
-      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.contact': 'Kontakt', 'nav.videos': 'Videos', 'nav.cta': 'Kontakt aufnehmen',
+      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen',
       'theme.label': 'Darstellung wechseln', 'theme.light': 'Hell', 'theme.dark': 'Dunkel',
       'hero.tag': 'Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Helix Impulse ist eine Unternehmenssimulation, die sich in Ihre Lehre einbinden lässt – in Intensivkursen, Seminaren und an Business Schools.',
-      'hero.primary': 'Kontakt aufnehmen', 'hero.secondary': 'Videos ansehen',
+      'hero.primary': 'Kontakt aufnehmen', 'hero.secondary': 'Mehr erfahren',
       'p.1v': '20 Jahre', 'p.1': 'Erfahrung mit Business Games',
       'p.2v': 'Von Lehrenden', 'p.2': 'für Lehrende',
       'p.3v': 'Deutsch &amp; Englisch', 'p.3': 'für jeden Studiengang',
@@ -328,8 +296,6 @@
       'f.invalid': 'Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.',
       'f.opened': 'Ihr E-Mail-Programm wurde geöffnet – bitte senden Sie die Nachricht dort ab.',
       'f.subject': 'Anfrage Helix Impulse',
-      'vi.tag': 'Videos', 'vi.title': 'Helix Impulse in Aktion',
-      'vi.soon': 'Video folgt in Kürze', 'vi.1': 'Einführung in Helix Impulse', 'vi.2': 'Helix Impulse in der Lehre'
     };
     const EN = {
       'meta.title': document.title,
