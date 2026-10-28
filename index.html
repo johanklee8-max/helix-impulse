@@ -106,7 +106,10 @@
     /* History quote */
     .quote { font-size: 26px; line-height: 1.35; letter-spacing: -.02em; font-weight: 500; margin: 8px 0 28px; padding-left: 20px; border-left: 3px solid var(--accent); }
     .cols.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .soon { display: inline-block; vertical-align: middle; margin-left: 6px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    /* Upcoming offers: label sits above the heading so headings stay aligned across columns */
+    .upcoming { position: relative; }
+    .upcoming h3, .upcoming p { opacity: .7; }
+    .soon { position: absolute; left: 0; bottom: calc(100% + 8px); padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
     .sub { font-size: 20px; margin: 64px 0 0; }
     .get { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
     .get li { border-top: 1px solid var(--line); padding-top: 16px; }
@@ -162,6 +165,7 @@
       .people { gap: 64px; }
       .portrait { max-width: 340px; }
       .cols.four, .get { grid-template-columns: 1fr 1fr; }
+      .soon { position: static; display: inline-block; margin-bottom: 8px; }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -172,7 +176,7 @@
       section { padding: 60px 0; }
       section h2 { font-size: 28px; }
       .quote { font-size: 21px; }
-      .pair, .get { grid-template-columns: 1fr; }
+      .pair, .get, .cols.four { grid-template-columns: 1fr; }
       .topbar-cta { display: none; }
       .topbar-contact { min-height: 40px; padding: 8px 12px; font-size: 14px; white-space: nowrap; }
       .topbar-contact .long { display: none; }
@@ -226,7 +230,7 @@
       </div>
       <div class="cols two">
         <div><h3 data-i18n="ab.1t">For universities and business schools</h3><p data-i18n="ab.1p">An interactive way to teach marketing, competitive strategy, and strategic decision-making.</p></div>
-        <div><h3><span data-i18n="ab.2t">For companies and professional training providers</span> <span class="soon" data-i18n="soon">Coming soon</span></h3><p data-i18n="ab.2p">An environment where managers and teams can explore strategic choices, test their assumptions, and learn from the consequences without real-world business risk.</p></div>
+        <div class="upcoming"><span class="soon" data-i18n="soon">Coming soon</span><h3 data-i18n="ab.2t">For companies and professional training providers</h3><p data-i18n="ab.2p">An environment where managers and teams can explore strategic choices, test their assumptions, and learn from the consequences without real-world business risk.</p></div>
       </div>
     </div>
   </section>
@@ -240,7 +244,7 @@
         <div><h3 data-i18n="te.1t">Intensive courses</h3><p data-i18n="te.1p">A complete simulation in a short time – focused and intensive.</p></div>
         <div><h3 data-i18n="te.2t">Seminars</h3><p data-i18n="te.2p">Spread across the semester and linked to the content of your course.</p></div>
         <div><h3 data-i18n="te.3t">Business schools</h3><p data-i18n="te.3p">For bachelor's, master's, MBA and executive education programmes.</p></div>
-        <div><h3><span data-i18n="te.4t">Professional training</span> <span class="soon" data-i18n="soon">Coming soon</span></h3><p data-i18n="te.4p">For managers and teams – in company programs and with training providers.</p></div>
+        <div class="upcoming"><span class="soon" data-i18n="soon">Coming soon</span><h3 data-i18n="te.4t">Professional training</h3><p data-i18n="te.4p">For managers and teams – in company programs and with training providers.</p></div>
       </div>
 
       <h3 class="sub" data-i18n="te.getTitle">What you get as an educator</h3>
