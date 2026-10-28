@@ -160,7 +160,22 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--ink); }
 
-    @media (max-width: 1220px) { .nav { display: none; } }
+    /* Dropdown menu, shown wherever the inline nav is hidden */
+    .menu-toggle { display: none; position: relative; width: 44px; height: 40px; border: 1px solid var(--line); border-radius: 12px; background: transparent; cursor: pointer; }
+    .menu-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .25s ease, opacity .2s ease; }
+    .menu-toggle span:nth-child(1) { top: 13px; }
+    .menu-toggle span:nth-child(2) { top: 19px; }
+    .menu-toggle span:nth-child(3) { top: 25px; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu { position: absolute; left: 0; right: 0; top: 100%; display: grid; padding: 8px 28px 24px; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .75); animation: menu-in .22s ease; }
+    .mobile-menu[hidden] { display: none; }
+    .mobile-menu a:not(.btn) { color: var(--ink); text-decoration: none; font-size: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .mobile-menu a:not(.btn):hover { color: var(--accent); }
+    .mobile-menu .btn { margin-top: 20px; }
+    @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 1220px) { .nav { display: none; } .menu-toggle { display: inline-block; } }
     @media (max-width: 860px) {
       .hero { padding: 80px 0 64px; }
       .hero h1 { font-size: 42px; }
@@ -174,6 +189,7 @@
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
+      .mobile-menu { padding: 4px 16px 20px; }
       .hero h1 { font-size: 34px; line-height: 1.1; }
       .hero-logo { height: 96px; margin-bottom: 20px; }
       .brand-mark { height: 30px; margin-right: 8px; }
@@ -212,7 +228,16 @@
       </div>
       <a class="btn ghost topbar-cta" href="#about" data-i18n="hero.secondary">Learn more</a>
       <a class="btn topbar-contact" href="#contact"><span class="long" data-i18n="nav.cta">Contact us</span><span class="short" data-i18n="nav.ctaShort">Contact</span></a>
+      <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
     </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Main" hidden>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
+      <a href="#history" data-i18n="nav.history">History</a>
+      <a href="#team" data-i18n="nav.team">Team</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <a class="btn" href="#contact" data-i18n="hero.cta">Contact us</a>
+    </nav>
   </header>
 
   <main id="top">
@@ -222,7 +247,7 @@
       <h1 data-i18n="hero.title">Strategy is learned by making decisions.</h1>
       <p class="lead" data-i18n="hero.lead">A team-based marketing and strategy simulation for universities and business schools – built by educators, for educators.</p>
       <div class="hero-actions">
-        <a class="btn cta" href="#contact" data-i18n="hero.cta">Request a demo</a>
+        <a class="btn cta" href="#contact" data-i18n="hero.cta">Contact us</a>
         <a class="btn cta ghost" href="#team" data-i18n="hero.cta2">Meet the team</a>
       </div>
       <a class="team-strip" href="#team">
@@ -389,7 +414,7 @@
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools – von Lehrenden für Lehrende.',
       'hero.secondary': 'Mehr erfahren',
-      'hero.cta': 'Demo anfragen', 'hero.cta2': 'Das Team kennenlernen',
+      'hero.cta': 'Kontakt aufnehmen', 'hero.cta2': 'Das Team kennenlernen',
       'hero.strip': '<strong>Über 20 Jahre</strong> Erfahrung mit Unternehmenssimulationen · Zum Team',
       'ab.tag': 'Über uns', 'ab.title': 'Unternehmensstrategie und Marketing zum Erleben',
       'ab.p1': 'Helix Impulse ist eine Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Sie macht Unternehmensstrategie und Marketing durch wettbewerbsorientierte Entscheidungen im Team erlebbar.',
@@ -476,6 +501,16 @@
     if (initial) setLang(initial);
 
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Dropdown menu for narrow screens
+    const menuBtn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const setMenu = (open) => { menu.hidden = !open; menuBtn.setAttribute('aria-expanded', String(open)); };
+    menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener('click', (e) => { if (!menu.hidden && !e.target.closest('.topbar')) setMenu(false); });
+    matchMedia('(min-width: 1221px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
     // Fade sections in as they scroll into view; skipped when the visitor prefers reduced motion.
     if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
