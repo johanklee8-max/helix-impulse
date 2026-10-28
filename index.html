@@ -473,7 +473,7 @@
     document.querySelectorAll('.locale button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
     let initial = new URLSearchParams(location.search).get('lang');
     if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
-    if (initial === 'de') setLang('de');
+    if (initial) setLang(initial);
 
     document.getElementById('y').textContent = new Date().getFullYear();
 

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Impressum – Helix Impulse</title>
+  <title>Legal notice – Helix Impulse</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#071018">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -15,9 +15,45 @@
 <body>
   <header class="topbar">
     <a class="brand" href="./"><img src="assets/logo-mark.png" alt="" width="14" height="36">Helix<span>Impulse</span></a>
-    <a class="back" href="./">← Zurück zur Startseite</a>
+    <div class="top-right">
+      <div class="locale" role="group" aria-label="Language">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="de" aria-pressed="false">DE</button>
+      </div>
+      <a class="back" href="./"><span data-lang="en">← Back to home</span><span data-lang="de" hidden>← Zurück zur Startseite</span></a>
+    </div>
   </header>
   <main>
+    <div data-lang="en" lang="en">
+    <div class="tag">Impressum</div>
+    <h1>Legal notice</h1>
+
+    <h2>Information pursuant to Section 5 DDG (German Digital Services Act)</h2>
+    <p><strong>Helix Impulse GbR</strong><br>
+    Represented by the partners:<br>
+    Johan Klee<br>
+    Leon Müller</p>
+    <p>Sommerweg 13<br>
+    34266 Niestetal<br>
+    Germany</p>
+    <p>Email: <a href="mailto:info@heliximpulse.com">info@heliximpulse.com</a></p>
+
+    <h2>Responsible for content pursuant to Section 18 (2) MStV</h2>
+    <p>Johan Klee<br>
+    Address as above</p>
+
+    <h2>Liability for content</h2>
+    <p>We create the content of this website with care. However, we cannot guarantee that it is accurate, complete or up to date. As a service provider, we are responsible for our own content in accordance with general law.</p>
+
+    <h2>Liability for links</h2>
+    <p>Our website contains links to external websites, such as LinkedIn. We have no influence on their content; the respective provider is responsible for it. If we become aware of any legal violations, we will remove such links immediately.</p>
+
+    <h2>Copyright</h2>
+    <p>The content of this website, in particular texts, images and the logo, is subject to German copyright law. Any use beyond the limits of copyright law requires our prior consent.</p>
+
+    <p class="note">This English version is provided for convenience. In case of discrepancies, the German version prevails.</p>
+    </div>
+    <div data-lang="de" lang="de" hidden>
     <div class="tag">Legal notice</div>
     <h1>Impressum</h1>
 
@@ -43,10 +79,29 @@
 
     <h2>Urheberrecht</h2>
     <p>Die Inhalte dieser Website, insbesondere Texte, Bilder und das Logo, unterliegen dem deutschen Urheberrecht. Eine Verwendung außerhalb der Grenzen des Urheberrechts bedarf unserer vorherigen Zustimmung.</p>
+    </div>
   </main>
   <footer>
     <span>© 2026 Helix Impulse</span>
-    <span><a href="./">Startseite</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    <span><a href="./"><span data-lang="en">Home</span><span data-lang="de" hidden>Startseite</span></a> · <a href="impressum.html"><span data-lang="en">Imprint</span><span data-lang="de" hidden>Impressum</span></a> · <a href="datenschutz.html"><span data-lang="en">Privacy</span><span data-lang="de" hidden>Datenschutz</span></a></span>
   </footer>
+  <script>
+    // Same language preference as the home page: ?lang=de, then the stored choice, otherwise English.
+    (function () {
+      var titles = { en: 'Legal notice – Helix Impulse', de: 'Impressum – Helix Impulse' };
+      function setLang(lang) {
+        lang = lang === 'de' ? 'de' : 'en';
+        document.documentElement.lang = lang;
+        document.title = titles[lang];
+        document.querySelectorAll('[data-lang]').forEach(function (el) { el.hidden = el.getAttribute('data-lang') !== lang; });
+        document.querySelectorAll('.locale button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+        try { localStorage.setItem('helix-locale', lang); } catch (e) {}
+      }
+      document.querySelectorAll('.locale button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
+      var initial = new URLSearchParams(location.search).get('lang');
+      if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
+      setLang(initial);
+    })();
+  </script>
 </body>
 </html>
