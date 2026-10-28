@@ -1,0 +1,36 @@
+/* Shared styles for the legal pages; tokens match index.html */
+:root {
+  --bg: #071018; --bg-2: #0c1824; --surf: #10202e;
+  --line: rgba(150, 196, 224, .18);
+  --ink: #e8f2f8; --muted: #8ea4b5;
+  --accent: #3ec6ff;
+  --font: "DM Sans", "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.65; color: var(--ink); background: var(--bg); }
+a { color: var(--accent); }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 28px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); }
+.brand { display: inline-flex; align-items: center; color: var(--ink); font-weight: 600; font-size: 20px; letter-spacing: -.02em; text-decoration: none; }
+.brand img { height: 36px; width: auto; margin-right: 10px; }
+.brand span { color: var(--accent); margin-left: .25em; }
+.back { color: var(--muted); text-decoration: none; font-size: 15px; }
+.back:hover { color: var(--ink); }
+main { max-width: 760px; margin: 0 auto; padding: 64px 28px 96px; }
+.tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 500; }
+h1 { font-size: 40px; line-height: 1.1; letter-spacing: -.03em; font-weight: 650; margin: 0 0 32px; }
+h2 { font-size: 20px; letter-spacing: -.01em; font-weight: 600; margin: 40px 0 10px; }
+p, ul { margin: 0 0 14px; color: var(--muted); }
+strong { color: var(--ink); font-weight: 600; }
+ul { padding-left: 20px; }
+.todo { color: #ffb347; background: rgba(255, 179, 71, .1); border-radius: 4px; padding: 0 4px; }
+.note { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+footer { border-top: 1px solid var(--line); padding: 28px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; max-width: 1100px; margin: 0 auto; }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+@media (max-width: 640px) {
+  .topbar { padding: 12px 16px; }
+  .brand img { height: 30px; margin-right: 8px; }
+  main { padding: 40px 16px 72px; }
+  h1 { font-size: 30px; }
+}
