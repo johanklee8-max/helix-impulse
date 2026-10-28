@@ -34,3 +34,9 @@ footer a:hover { color: var(--ink); }
   main { padding: 40px 16px 72px; }
   h1 { font-size: 30px; }
 }
+.top-right { display: flex; align-items: center; gap: 16px; }
+.locale { display: flex; gap: 2px; }
+.locale button { padding: 8px; min-height: 40px; background: transparent; border: 0; cursor: pointer; color: var(--muted); font: inherit; font-size: 15px; }
+.locale button[aria-pressed="true"] { color: var(--accent); font-weight: 600; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) { .back { display: none; } }
