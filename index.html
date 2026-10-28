@@ -94,8 +94,13 @@
     .hero-logo { display: block; }
     .hero h1 { font-size: 60px; line-height: 1.05; font-weight: 650; letter-spacing: -.035em; max-width: 820px; margin: 0 auto 24px; }
     .hero .lead { font-size: 20px; line-height: 1.5; color: var(--muted); max-width: 680px; margin: 0 auto; }
-    .pillars { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 40px; margin-top: 56px; color: var(--muted); font-size: 15px; }
-    .pillars strong { display: block; color: var(--ink); font-size: 22px; letter-spacing: -.02em; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
+    .team-strip { display: inline-flex; align-items: center; gap: 14px; margin-top: 48px; padding: 8px 18px 8px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 15px; text-decoration: none; transition: border-color .2s; }
+    .team-strip:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+    .team-strip strong { color: var(--ink); font-weight: 600; }
+    .faces { display: flex; }
+    .faces img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--bg); filter: grayscale(1); }
+    .faces img + img { margin-left: -10px; }
 
     /* Simple three-column text blocks */
     .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 40px; }
@@ -182,8 +187,11 @@
       .topbar-contact .long { display: none; }
       .topbar-contact .short { display: inline; }
       .row { gap: 4px; }
-      .pillars { gap: 20px 28px; }
+      .team-strip { border-radius: 18px; text-align: left; font-size: 14px; }
+      .hero-actions .btn { flex: 1 1 100%; }
     }
+    .js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .js-reveal .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
@@ -212,11 +220,20 @@
       <img class="hero-logo" src="assets/logo-mark.png" alt="Helix Impulse" width="50" height="128">
       <div class="tag" data-i18n="hero.tag">Marketing business simulation for higher education</div>
       <h1 data-i18n="hero.title">Strategy is learned by making decisions.</h1>
-      <p class="lead" data-i18n="hero.lead">Helix Impulse is a team-based marketing and strategy simulation for universities and business schools. Participants manage virtual companies, compete in dynamic markets, and experience how their decisions shape business outcomes.</p>
-      <div class="pillars">
-        <div><strong data-i18n="p.1v">20 years</strong><span data-i18n="p.1">of experience with business games</span></div>
-        <div><strong data-i18n="p.2v">By educators</strong><span data-i18n="p.2">for educators</span></div>
+      <p class="lead" data-i18n="hero.lead">A team-based marketing and strategy simulation for universities and business schools – built by educators, for educators.</p>
+      <div class="hero-actions">
+        <a class="btn cta" href="#contact" data-i18n="hero.cta">Request a demo</a>
+        <a class="btn cta ghost" href="#team" data-i18n="hero.cta2">Meet the team</a>
       </div>
+      <a class="team-strip" href="#team">
+        <span class="faces" aria-hidden="true">
+          <img src="assets/team-johan-klee.jpg" alt="" width="44" height="44">
+          <img src="assets/team-leon-mueller.jpg" alt="" width="44" height="44">
+          <img src="assets/team-sarah-kniel.jpg" alt="" width="44" height="44">
+          <img src="assets/team-alexander-hartmann.jpg" alt="" width="44" height="44">
+        </span>
+        <span data-i18n="hero.strip"><strong>20+ years</strong> of experience with business simulations · Meet the team</span>
+      </a>
     </div>
   </main>
 
@@ -273,13 +290,14 @@
     <div class="wrap">
       <div class="tag" data-i18n="tm.tag">Team</div>
       <h2 data-i18n="tm.title">The educators behind Helix Impulse</h2>
+      <p class="muted narrow" data-i18n="tm.intro">Educators and practitioners with academic backgrounds in Germany, Spain, Italy and Poland – united by years of experience with business simulations.</p>
       <div class="people">
         <article class="person">
           <figure class="portrait"><img src="assets/team-johan-klee.jpg" alt="Johan Klee" width="640" height="800" loading="lazy"></figure>
           <div class="person-body">
             <p class="role">Founder</p>
             <h3 class="person-name">Johan Klee</h3>
-            <p class="person-meta" data-i18n="tm.2meta">M.Sc. Customer Relationship Marketing</p>
+            <p class="person-meta" data-i18n="tm.2meta">M.Sc. Customer Relationship Marketing · Valencia · Katowice · Aschaffenburg · Bergamo</p>
             <p class="muted" data-i18n="tm.2p1">I'm a recent graduate of a quadruple master's program in Customer Relationship Marketing, with over four years of experience as a tutor in an international business simulation course. Working closely with students from different countries has shown me how powerful experiential learning can be in bridging the gap between academic theory and real-world business decisions.</p>
             <p class="muted" data-i18n="tm.2p2">What motivates me most is seeing students develop their strategic thinking, challenge their assumptions, and gain confidence in making complex business decisions. With Helix Impulse, I want to build on these experiences and make interactive, practice-oriented business education more accessible, engaging, and impactful for students and educators worldwide.</p>
             <a class="btn ghost linkedin" href="https://www.linkedin.com/in/johan-klee-14b252242/" target="_blank" rel="noopener" aria-label="Johan Klee on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg>LinkedIn</a>
@@ -291,7 +309,7 @@
             <p class="role">Founder</p>
             <h3 class="person-name">Leon Müller</h3>
             <p class="person-meta" data-i18n="tm.4meta">Master's student in Business Administration · University of Cologne</p>
-            <p class="muted" data-i18n="tm.4p1">I'm a Master's student in Business Administration at the University of Cologne, focusing on Corporate Development. My interests lie in corporate strategy, M&amp;A, and private equity and venture capital.</p>
+            <p class="muted" data-i18n="tm.4p1">I'm a Master's student in Business Administration at the University of Cologne, focusing on Corporate Development. My interests lie in corporate strategy, M&amp;A, private equity and venture capital.</p>
             <p class="muted" data-i18n="tm.4p2">During my studies, I've seen how much more I learn when I actually have to make business decisions, rather than just read about them. Analyzing business models, weighing trade-offs, and seeing the consequences of a choice play out is what makes strategy click.</p>
             <p class="muted" data-i18n="tm.4p3">With Helix Impulse, I want to help more students move beyond theory, challenge their assumptions, and discover how business decisions really work, and to make experiential learning accessible to more educators and students.</p>
             <a class="btn ghost linkedin" href="https://www.linkedin.com/in/leon-m%C3%BCller1208/" target="_blank" rel="noopener" aria-label="Leon Müller on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg>LinkedIn</a>
@@ -369,10 +387,10 @@
       'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
       'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
-      'hero.lead': 'Helix Impulse ist eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren in dynamischen Märkten und erleben, wie ihre Entscheidungen den Unternehmenserfolg prägen.',
+      'hero.lead': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools – von Lehrenden für Lehrende.',
       'hero.secondary': 'Mehr erfahren',
-      'p.1v': '20 Jahre', 'p.1': 'Erfahrung mit Business Games',
-      'p.2v': 'Von Lehrenden', 'p.2': 'für Lehrende',
+      'hero.cta': 'Demo anfragen', 'hero.cta2': 'Das Team kennenlernen',
+      'hero.strip': '<strong>Über 20 Jahre</strong> Erfahrung mit Unternehmenssimulationen · Zum Team',
       'ab.tag': 'Über uns', 'ab.title': 'Unternehmensstrategie und Marketing zum Erleben',
       'ab.p1': 'Helix Impulse ist eine Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Sie macht Unternehmensstrategie und Marketing durch wettbewerbsorientierte Entscheidungen im Team erlebbar.',
       'ab.p2': 'Die Teilnehmenden führen virtuelle Unternehmen, entwickeln Produkte, legen ihre Marktpositionierung fest und treffen strategische Marketingentscheidungen. Sie konkurrieren um Kundschaft und Marktanteile und erleben über mehrere Runden, wie ihre Entscheidungen den Unternehmenserfolg beeinflussen.',
@@ -397,17 +415,18 @@
       'hi.p3': 'Das Ergebnis ist eine fokussierte Marketing- und Strategiesimulation mit intuitiver Oberfläche – ausgerichtet auf echte Anforderungen der Lehre und leichter zu nutzen für Teilnehmende wie Lehrende.',
       'hi.p4': 'Unser Ziel ist einfach: Unternehmenssimulationen sollen leichter einzusetzen, spannender zu erleben und relevanter für die Menschen sein, die mit ihnen lernen.',
       'tm.tag': 'Team', 'tm.title': 'Die Lehrenden hinter Helix Impulse',
+      'tm.intro': 'Lehrende und Praktiker mit akademischem Hintergrund in Deutschland, Spanien, Italien und Polen – verbunden durch langjährige Erfahrung mit Unternehmenssimulationen.',
       'tm.1meta': 'Hochschuldozent &amp; Unternehmensberater',
       'tm.1p1': 'Ich bin Hochschuldozent und Unternehmensberater mit einem Hintergrund in Strategie, Organisationsforschung und Managementausbildung. Über die Jahre habe ich Studierende aus vielen Ländern unterrichtet und selbst erlebt, wie wirkungsvoll Unternehmenssimulationen sein können.',
       'tm.1p2': 'Am meisten begeistert mich, wenn Studierende über die Theorie hinausgehen, ihre Annahmen hinterfragen und entdecken, wie unternehmerische Entscheidungen tatsächlich funktionieren. Mit Helix Impulse möchte ich mehr dieser Momente in die Lehre bringen und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.',
-      'tm.2meta': 'M.Sc. Customer Relationship Marketing',
+      'tm.2meta': 'M.Sc. Customer Relationship Marketing · Valencia · Katowice · Aschaffenburg · Bergamo',
       'tm.2p1': 'Ich habe kürzlich ein vierfaches Masterprogramm in Customer Relationship Marketing abgeschlossen und bringe über vier Jahre Erfahrung als Tutor in einem internationalen Kurs mit Unternehmenssimulation mit. Die enge Arbeit mit Studierenden aus vielen Ländern hat mir gezeigt, wie wirkungsvoll erfahrungsbasiertes Lernen die Lücke zwischen akademischer Theorie und realen unternehmerischen Entscheidungen schließen kann.',
       'tm.2p2': 'Am meisten motiviert mich, wenn Studierende ihr strategisches Denken entwickeln, ihre Annahmen hinterfragen und Sicherheit bei komplexen unternehmerischen Entscheidungen gewinnen. Mit Helix Impulse möchte ich auf diesen Erfahrungen aufbauen und interaktive, praxisnahe Managementausbildung für Studierende und Lehrende weltweit zugänglicher, spannender und wirkungsvoller machen.',
       'tm.3meta': 'Projektmanagement bei Volkswagen · Lehrauftrag an der Universität Kassel',
       'tm.3p1': 'Ich arbeite im Projektmanagement bei Volkswagen und lehre an der Universität Kassel, wo ich auch einen Kurs mit Unternehmenssimulation entwickelt habe. Seit mehr als 15 Jahren leite ich Projekte mit Unternehmenssimulationen und verbinde dabei meine Expertise in Technologie, Unternehmensstrategie und Bildung, um spannende, praxisnahe Lernerfahrungen zu schaffen.',
       'tm.3p2': 'Was mich an Helix Impulse begeistert, ist das Potenzial, komplexe unternehmerische Herausforderungen in spannende Lernerfahrungen zum Anfassen zu verwandeln. Ich bin fest davon überzeugt, dass Unternehmenssimulationen strategisches Denken, Entscheidungskompetenz und ein tieferes Verständnis wirtschaftlicher Zusammenhänge fördern. Helix Impulse gibt Studierenden die Möglichkeit, zu experimentieren, Entscheidungen zu treffen, ihre Folgen zu erleben und in einem realistischen, aber risikofreien Umfeld zu lernen – genau deshalb glaube ich an diesen Bildungsansatz und unterstütze ihn.',
       'tm.4meta': 'Masterstudium BWL · Universität zu Köln',
-      'tm.4p1': 'Ich studiere im Master Betriebswirtschaftslehre an der Universität zu Köln mit dem Schwerpunkt Corporate Development. Mich interessieren vor allem Unternehmensstrategie, M&amp;A sowie Private Equity und Venture Capital.',
+      'tm.4p1': 'Ich studiere im Master Betriebswirtschaftslehre an der Universität zu Köln mit dem Schwerpunkt Corporate Development. Mich interessieren vor allem Unternehmensstrategie, M&amp;A, Private Equity und Venture Capital.',
       'tm.4p2': 'Im Studium habe ich gemerkt, wie viel mehr ich lerne, wenn ich unternehmerische Entscheidungen tatsächlich treffen muss, statt nur darüber zu lesen. Geschäftsmodelle analysieren, Zielkonflikte abwägen und sehen, wie sich die Folgen einer Entscheidung entfalten – genau dadurch wird Strategie greifbar.',
       'tm.4p3': 'Mit Helix Impulse möchte ich mehr Studierenden helfen, über die Theorie hinauszugehen, ihre Annahmen zu hinterfragen und zu entdecken, wie unternehmerische Entscheidungen wirklich funktionieren – und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.',
       'ct.tag': 'Kontakt', 'ct.title': 'Kontakt',
@@ -457,6 +476,16 @@
     if (initial === 'de') setLang('de');
 
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Fade sections in as they scroll into view; skipped when the visitor prefers reduced motion.
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const items = document.querySelectorAll('section h2, section .narrow, .cols > div, .get li, .person, .quote, #contact form');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      items.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+      document.documentElement.classList.add('js-reveal');
+    }
 
 
     // Static site without a backend: requests are delivered by email through Web3Forms.
