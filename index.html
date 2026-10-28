@@ -19,9 +19,8 @@
   <meta property="og:url" content="https://www.heliximpulse.com/">
   <meta property="og:image" content="https://www.heliximpulse.com/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+  <link rel="preload" href="assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
   <style>
     /* Design tokens taken from the Helix Impulse app */
     :root {
@@ -331,7 +330,7 @@
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a></span>
+      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
     </div>
   </footer>
 
@@ -340,7 +339,7 @@
     const DE = {
       'meta.title': 'Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung',
       'meta.desc': 'Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.',
-      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
+      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'ft.imprint': 'Impressum', 'ft.privacy': 'Datenschutz', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
       'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Helix Impulse ist eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren in dynamischen Märkten und erleben, wie ihre Entscheidungen den Unternehmenserfolg prägen.',
