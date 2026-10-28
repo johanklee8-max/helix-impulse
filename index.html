@@ -107,6 +107,14 @@
     /* History quote */
     .quote { font-size: 26px; line-height: 1.35; letter-spacing: -.02em; font-weight: 500; margin: 8px 0 28px; padding-left: 20px; border-left: 3px solid var(--accent); }
     .cols.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .soon { display: inline-block; vertical-align: middle; margin-left: 6px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    .sub { font-size: 20px; margin: 64px 0 0; }
+    .get { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+    .get li { border-top: 1px solid var(--line); padding-top: 16px; }
+    .get strong { display: block; margin-bottom: 4px; }
+    .get span { color: var(--muted); font-size: 15px; }
+    select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 36px; cursor: pointer; }
+    select.input option { background: var(--bg-2); }
     .cols.four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
 
     /* Contact */
@@ -136,7 +144,7 @@
       .hero { padding: 80px 0 64px; }
       .hero h1 { font-size: 42px; }
       .cols, .cols.two, .contact { grid-template-columns: 1fr; gap: 32px; }
-      .cols.four { grid-template-columns: 1fr 1fr; }
+      .cols.four, .get { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -147,7 +155,7 @@
       section { padding: 60px 0; }
       section h2 { font-size: 28px; }
       .quote { font-size: 21px; }
-      .pair { grid-template-columns: 1fr; }
+      .pair, .get { grid-template-columns: 1fr; }
       .topbar-cta { display: none; }
       .topbar-contact { min-height: 40px; padding: 8px 12px; font-size: 14px; white-space: nowrap; }
       .topbar-contact .long { display: none; }
@@ -180,9 +188,9 @@
   <main id="top">
     <div class="hero wrap">
       <img class="hero-logo" src="assets/logo-mark.png" alt="Helix Impulse" width="50" height="128">
-      <div class="tag" data-i18n="hero.tag">Marketing business simulation for higher education and training</div>
+      <div class="tag" data-i18n="hero.tag">Marketing business simulation for higher education</div>
       <h1 data-i18n="hero.title">Strategy is learned by making decisions.</h1>
-      <p class="lead" data-i18n="hero.lead">Helix Impulse is a marketing business simulation that can be built into your teaching and training – at universities, business schools and in professional training programs.</p>
+      <p class="lead" data-i18n="hero.lead">Helix Impulse is a team-based marketing and strategy simulation for universities and business schools. Participants manage virtual companies, compete in dynamic markets, and experience how their decisions shape business outcomes.</p>
       <div class="pillars">
         <div><strong data-i18n="p.1v">20 years</strong><span data-i18n="p.1">of experience with business games</span></div>
         <div><strong data-i18n="p.2v">By educators</strong><span data-i18n="p.2">for educators</span></div>
@@ -200,7 +208,7 @@
       </div>
       <div class="cols two">
         <div><h3 data-i18n="ab.1t">For universities and business schools</h3><p data-i18n="ab.1p">An interactive way to teach marketing, competitive strategy, and strategic decision-making.</p></div>
-        <div><h3 data-i18n="ab.2t">For companies and professional training providers</h3><p data-i18n="ab.2p">An environment where managers and teams can explore strategic choices, test their assumptions, and learn from the consequences without real-world business risk.</p></div>
+        <div><h3><span data-i18n="ab.2t">For companies and professional training providers</span> <span class="soon" data-i18n="soon">Coming soon</span></h3><p data-i18n="ab.2p">An environment where managers and teams can explore strategic choices, test their assumptions, and learn from the consequences without real-world business risk.</p></div>
       </div>
     </div>
   </section>
@@ -208,14 +216,22 @@
   <section id="teaching">
     <div class="wrap">
       <div class="tag" data-i18n="te.tag">Teaching</div>
-      <h2 data-i18n="te.title">Fits into your teaching and training</h2>
-      <p class="muted narrow" data-i18n="te.intro">Helix Impulse complements lectures, case studies and training programs. You decide on the scope, pace and focus.</p>
+      <h2 data-i18n="te.title">Fits into your teaching</h2>
+      <p class="muted narrow" data-i18n="te.intro">You decide how many rounds your participants play and how the simulation fits into your course. We provide recommendations for different course formats.</p>
       <div class="cols four">
         <div><h3 data-i18n="te.1t">Intensive courses</h3><p data-i18n="te.1p">A complete simulation in a short time – focused and intensive.</p></div>
         <div><h3 data-i18n="te.2t">Seminars</h3><p data-i18n="te.2p">Spread across the semester and linked to the content of your course.</p></div>
         <div><h3 data-i18n="te.3t">Business schools</h3><p data-i18n="te.3p">For bachelor's, master's, MBA and executive education programmes.</p></div>
-        <div><h3 data-i18n="te.4t">Professional training</h3><p data-i18n="te.4p">For managers and teams – in company programs and with training providers.</p></div>
+        <div><h3><span data-i18n="te.4t">Professional training</span> <span class="soon" data-i18n="soon">Coming soon</span></h3><p data-i18n="te.4p">For managers and teams – in company programs and with training providers.</p></div>
       </div>
+
+      <h3 class="sub" data-i18n="te.getTitle">What you get as an educator</h3>
+      <ul class="get">
+        <li><strong data-i18n="te.g1t">Introduction videos</strong><span data-i18n="te.g1p">Short videos that introduce you and your participants to the simulation.</span></li>
+        <li><strong data-i18n="te.g2t">Materials and documents</strong><span data-i18n="te.g2p">Teaching materials and documents to prepare and run your course.</span></li>
+        <li><strong data-i18n="te.g3t">Recommendations</strong><span data-i18n="te.g3p">Suggestions on the number of rounds and the schedule for your course format.</span></li>
+        <li><strong data-i18n="te.g4t">Support in the background</strong><span data-i18n="te.g4p">We are there for you while you run the simulation.</span></li>
+      </ul>
     </div>
   </section>
 
@@ -223,10 +239,10 @@
     <div class="wrap narrow">
       <div class="tag" data-i18n="hi.tag">History</div>
       <h2 data-i18n="hi.title">Developed from teaching experience. Designed for better learning.</h2>
-      <p class="muted" data-i18n="hi.p1">Helix Impulse is developed by educators with more than 20 years of experience using business simulations in higher education. We know how valuable simulation-based learning can be, but also how challenging existing tools can be to prepare, explain, and integrate into teaching.</p>
-      <p class="muted" data-i18n="hi.p2">That's why we're taking a different approach:</p>
-      <p class="quote" data-i18n="hi.quote">Less unnecessary complexity. More focus on the decisions that matter.</p>
-      <p class="muted" data-i18n="hi.p3">Helix Impulse combines an intuitive, contemporary interface with a focused simulation model that makes business decisions and their consequences easier to understand, discuss, and evaluate.</p>
+      <p class="muted" data-i18n="hi.p1">We have taught with business simulations in higher education for more than 20 years. We know what makes them valuable – and what can make them difficult to prepare, explain, and integrate into teaching.</p>
+      <p class="muted" data-i18n="hi.p2">So we built Helix Impulse around a simple idea:</p>
+      <p class="quote" data-i18n="hi.quote">Keep the strategic decisions that matter. Remove unnecessary complexity.</p>
+      <p class="muted" data-i18n="hi.p3">The result is a focused marketing and strategy simulation with an intuitive interface – designed around real teaching needs and easier to use for participants and educators alike.</p>
       <p class="muted" data-i18n="hi.p4">Our goal is simple: to make business simulations easier to use, more engaging to experience, and more relevant to the people learning from them.</p>
     </div>
   </section>
@@ -236,9 +252,16 @@
       <div class="contact-info">
         <div class="tag" data-i18n="ct.tag">Contact</div>
         <h2 data-i18n="ct.title">Contact us</h2>
-        <p class="muted" data-i18n="ct.intro">Would you like to use Helix Impulse in your teaching or training, or learn more? Send us a request – we look forward to hearing from you.</p>
+        <p class="muted" data-i18n="ct.intro">Would you like to see Helix Impulse in action or use it in your course? Choose what you are interested in and send us a short message.</p>
       </div>
       <form id="contact-form" novalidate>
+        <label style="margin-top:0"><span data-i18n="f.type">I'm interested in</span>
+          <select class="input" name="type">
+            <option value="Demo for a course" data-i18n="f.t1">A demo for my course</option>
+            <option value="General question" data-i18n="f.t2">A general question</option>
+            <option value="Professional training" data-i18n="f.t3">Professional training (coming soon)</option>
+          </select>
+        </label>
         <div class="pair">
           <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" required></label>
           <label><span data-i18n="f.email">Email</span><input class="input" name="email" type="email" autocomplete="email" required></label>
@@ -267,9 +290,9 @@
       'meta.title': 'Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung',
       'meta.desc': 'Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.',
       'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
-      'hero.tag': 'Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung',
+      'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
-      'hero.lead': 'Helix Impulse ist eine Marketing-Unternehmenssimulation, die sich in Lehre und Weiterbildung einbinden lässt – an Hochschulen, Business Schools und in beruflichen Trainingsprogrammen.',
+      'hero.lead': 'Helix Impulse ist eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren in dynamischen Märkten und erleben, wie ihre Entscheidungen den Unternehmenserfolg prägen.',
       'hero.secondary': 'Mehr erfahren',
       'p.1v': '20 Jahre', 'p.1': 'Erfahrung mit Business Games',
       'p.2v': 'Von Lehrenden', 'p.2': 'für Lehrende',
@@ -278,20 +301,27 @@
       'ab.p2': 'Die Teilnehmenden führen virtuelle Unternehmen, entwickeln Produkte, legen ihre Marktpositionierung fest und treffen strategische Marketingentscheidungen. Sie konkurrieren um Kundschaft und Marktanteile und erleben über mehrere Runden, wie ihre Entscheidungen den Unternehmenserfolg beeinflussen.',
       'ab.1t': 'Für Hochschulen und Business Schools', 'ab.1p': 'Eine interaktive Möglichkeit, Marketing, Wettbewerbsstrategie und strategische Entscheidungsfindung zu lehren.',
       'ab.2t': 'Für Unternehmen und Weiterbildungsanbieter', 'ab.2p': 'Ein Umfeld, in dem Führungskräfte und Teams strategische Optionen erkunden, ihre Annahmen überprüfen und aus den Folgen lernen können – ohne reales unternehmerisches Risiko.',
-      'te.tag': 'Lehre', 'te.title': 'Passt in Ihre Lehre und Weiterbildung',
-      'te.intro': 'Helix Impulse ergänzt Vorlesungen, Fallstudien und Trainingsprogramme. Sie bestimmen Umfang, Tempo und Schwerpunkt.',
+      'soon': 'Demnächst',
+      'te.tag': 'Lehre', 'te.title': 'Passt in Ihre Lehre',
+      'te.intro': 'Sie entscheiden, wie viele Runden gespielt werden und wie sich die Simulation in Ihre Veranstaltung einfügt. Wir geben Ihnen Empfehlungen für verschiedene Formate.',
       'te.1t': 'Intensivkurse', 'te.1p': 'Eine vollständige Simulation in kurzer Zeit – fokussiert und intensiv.',
       'te.2t': 'Seminare', 'te.2p': 'Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.',
       'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
       'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
+      'te.getTitle': 'Was Sie als Lehrende erhalten',
+      'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
+      'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
+      'te.g3t': 'Empfehlungen', 'te.g3p': 'Vorschläge zur Zahl der Runden und zum Zeitplan für Ihr Format.',
+      'te.g4t': 'Support im Hintergrund', 'te.g4p': 'Wir sind für Sie da, während Sie die Simulation durchführen.',
       'hi.tag': 'Geschichte', 'hi.title': 'Aus der Lehrpraxis entwickelt. Für besseres Lernen gestaltet.',
-      'hi.p1': 'Helix Impulse wird von Lehrenden entwickelt, die seit mehr als 20 Jahren Unternehmenssimulationen in der Hochschullehre einsetzen. Wir wissen, wie wertvoll simulationsbasiertes Lernen sein kann – aber auch, wie aufwendig es ist, bestehende Tools vorzubereiten, zu erklären und in die Lehre einzubinden.',
-      'hi.p2': 'Deshalb gehen wir einen anderen Weg:',
-      'hi.quote': 'Weniger unnötige Komplexität. Mehr Fokus auf die Entscheidungen, die zählen.',
-      'hi.p3': 'Helix Impulse verbindet eine intuitive, zeitgemäße Oberfläche mit einem fokussierten Simulationsmodell, das unternehmerische Entscheidungen und ihre Folgen leichter verständlich, diskutierbar und bewertbar macht.',
+      'hi.p1': 'Wir unterrichten seit mehr als 20 Jahren mit Unternehmenssimulationen an Hochschulen. Wir wissen, was sie wertvoll macht – und was es schwer machen kann, sie vorzubereiten, zu erklären und in die Lehre einzubinden.',
+      'hi.p2': 'Deshalb haben wir Helix Impulse um eine einfache Idee herum gebaut:',
+      'hi.quote': 'Die strategischen Entscheidungen behalten, die zählen. Unnötige Komplexität weglassen.',
+      'hi.p3': 'Das Ergebnis ist eine fokussierte Marketing- und Strategiesimulation mit intuitiver Oberfläche – ausgerichtet auf echte Anforderungen der Lehre und leichter zu nutzen für Teilnehmende wie Lehrende.',
       'hi.p4': 'Unser Ziel ist einfach: Unternehmenssimulationen sollen leichter einzusetzen, spannender zu erleben und relevanter für die Menschen sein, die mit ihnen lernen.',
       'ct.tag': 'Kontakt', 'ct.title': 'Kontakt',
-      'ct.intro': 'Sie möchten Helix Impulse in Lehre oder Weiterbildung einsetzen oder mehr erfahren? Senden Sie uns eine Anfrage – wir freuen uns auf Ihre Nachricht.',
+      'ct.intro': 'Sie möchten Helix Impulse in Aktion sehen oder in Ihrer Veranstaltung einsetzen? Wählen Sie Ihr Anliegen und senden Sie uns eine kurze Nachricht.',
+      'f.type': 'Ich interessiere mich für', 'f.t1': 'Eine Demo für meine Veranstaltung', 'f.t2': 'Eine allgemeine Frage', 'f.t3': 'Berufliche Weiterbildung (demnächst)',
       'f.name': 'Name', 'f.email': 'E-Mail', 'f.org': 'Institution (optional)', 'f.msg': 'Nachricht',
       'f.consent': 'Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.',
       'f.submit': 'Anfrage senden',
@@ -365,10 +395,11 @@
           access_key: FORM_KEY,
           name: d.get('name'),
           email: d.get('email'),
+          request: form.type.selectedOptions[0].textContent,
           institution: d.get('org') || '–',
           message: d.get('message'),
           language: lang.toUpperCase(),
-          subject: `${t('f.subject')} – ${d.get('name')}`,
+          subject: `${t('f.subject')} – ${form.type.selectedOptions[0].textContent} – ${d.get('name')}`,
           from_name: 'Helix Impulse Website',
           botcheck: ''
         }).forEach(([k, v]) => payload.append(k, v));
