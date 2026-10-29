@@ -147,7 +147,13 @@
     .faq summary::after { content: "+"; flex: none; color: var(--accent); font-size: 22px; font-weight: 400; line-height: 1; transition: transform .2s ease; }
     .faq details[open] summary::after { transform: rotate(45deg); }
     .faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
-    .faq details p { color: var(--muted); margin: 0 0 18px; max-width: 46rem; }
+    .faq details:hover { border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .faq details[open] summary { color: var(--accent); }
+    .faq-a { overflow: hidden; }
+    .faq-a p { color: var(--muted); margin: 0 0 18px; max-width: 46rem; }
+    .faq-more { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; max-width: 860px; margin-top: 24px; padding: 22px; border-radius: 14px; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .faq-more h3 { font-size: 18px; margin: 0 0 4px; }
+    .faq-more p { color: var(--muted); margin: 0; }
 
     /* Contact */
     .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
@@ -417,32 +423,39 @@
       <div class="faq">
         <details>
           <summary data-i18n="faq.q1">What is Helix Impulse?</summary>
-          <p data-i18n="faq.a1">A team-based marketing and strategy simulation for universities and business schools. Participants run virtual companies, compete for customers and market share, and make strategic decisions over several rounds.</p>
+          <div class="faq-a"><p data-i18n="faq.a1">A team-based marketing and strategy simulation for universities and business schools. Participants run virtual companies, compete for customers and market share, and make strategic decisions over several rounds.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q2">Which course formats is it suitable for?</summary>
-          <p data-i18n="faq.a2">Intensive courses, seminars spread across the semester and programmes at business schools – from bachelor's and master's to MBA and executive education.</p>
+          <div class="faq-a"><p data-i18n="faq.a2">Intensive courses, seminars spread across the semester and programmes at business schools – from bachelor's and master's to MBA and executive education.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q3">How many rounds are played?</summary>
-          <p data-i18n="faq.a3">You decide. The number of fiscal years varies depending on your course, and we provide recommendations for different formats.</p>
+          <div class="faq-a"><p data-i18n="faq.a3">You decide. The number of fiscal years varies depending on your course, and we provide recommendations for different formats.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q4">How many teams can take part?</summary>
-          <p data-i18n="faq.a4">Between 2 and 10 teams compete in one simulation. Each team runs its own company.</p>
+          <div class="faq-a"><p data-i18n="faq.a4">Between 2 and 10 teams compete in one simulation. Each team runs its own company.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q5">What do educators get?</summary>
-          <p data-i18n="faq.a5">Introduction videos, teaching materials and documents, recommendations for your course format and support in the background while you run the simulation.</p>
+          <div class="faq-a"><p data-i18n="faq.a5">Introduction videos, teaching materials and documents, recommendations for your course format and support in the background while you run the simulation.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q6">What do participants need?</summary>
-          <p data-i18n="faq.a6">Just a web browser. Nothing needs to be installed.</p>
+          <div class="faq-a"><p data-i18n="faq.a6">Just a web browser. Nothing needs to be installed.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q7">Which languages is the simulation available in?</summary>
-          <p data-i18n="faq.a7">Currently in English and German.</p>
+          <div class="faq-a"><p data-i18n="faq.a7">Currently in English and German.</p></div>
         </details>
+      </div>
+      <div class="faq-more">
+        <div>
+          <h3 data-i18n="faq.moreTitle">Didn't find your question?</h3>
+          <p data-i18n="faq.moreText">Send it to us – we'll get back to you personally.</p>
+        </div>
+        <a class="btn" href="#contact" id="ask-question" data-i18n="faq.moreCta">Ask your question</a>
       </div>
     </div>
   </section>
@@ -505,6 +518,7 @@
       'tm.4p2': 'Im Studium habe ich gemerkt, wie viel mehr ich lerne, wenn ich unternehmerische Entscheidungen tatsächlich treffen muss, statt nur darüber zu lesen. Geschäftsmodelle analysieren, Zielkonflikte abwägen und sehen, wie sich die Folgen einer Entscheidung entfalten – genau dadurch wird Strategie greifbar.',
       'tm.4p3': 'Mit Helix Impulse möchte ich mehr Studierenden helfen, über die Theorie hinauszugehen, ihre Annahmen zu hinterfragen und zu entdecken, wie unternehmerische Entscheidungen wirklich funktionieren – und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.',
       'faq.tag': 'FAQ', 'faq.title': 'Fragen von Lehrenden',
+      'faq.moreTitle': 'Ihre Frage ist nicht dabei?', 'faq.moreText': 'Schicken Sie sie uns – wir melden uns persönlich bei Ihnen.', 'faq.moreCta': 'Frage stellen',
       'faq.q1': 'Was ist Helix Impulse?',
       'faq.a1': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren um Kundschaft und Marktanteile und treffen über mehrere Runden strategische Entscheidungen.',
       'faq.q2': 'Für welche Kursformate eignet sich die Simulation?',
@@ -566,6 +580,31 @@
     if (initial) setLang(initial);
 
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // FAQ: animated accordion, one question open at a time
+    const faqItems = [...document.querySelectorAll('.faq details')];
+    const animate = (d, open) => {
+      const body = d.querySelector('.faq-a');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { d.open = open; return; }
+      if (open) d.open = true;
+      const full = body.scrollHeight;
+      const anim = body.animate({ height: open ? ['0px', full + 'px'] : [full + 'px', '0px'], opacity: open ? [0, 1] : [1, 0] }, { duration: 260, easing: 'ease' });
+      anim.onfinish = () => { if (!open) d.open = false; };
+    };
+    faqItems.forEach(d => d.querySelector('summary').addEventListener('click', (e) => {
+      e.preventDefault();
+      const opening = !d.open;
+      if (opening) faqItems.forEach(o => { if (o !== d && o.open) animate(o, false); });
+      animate(d, opening);
+    }));
+
+    // "Ask your question": jump to the form with a general question preselected
+    document.getElementById('ask-question').addEventListener('click', (e) => {
+      e.preventDefault();
+      form.type.value = 'General question';
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => form.message.focus({ preventScroll: true }), 600);
+    });
 
     // Dropdown menu for narrow screens
     const menuBtn = document.querySelector('.menu-toggle');
