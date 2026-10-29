@@ -161,6 +161,9 @@
     .video-play:hover svg, .video-play:focus-visible svg { transform: scale(1.08); }
     .video-play:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
     .video-frame.playing .video-play { display: none; }
+    .corner-play .video-play { flex-direction: row; justify-content: flex-start; align-items: flex-end; gap: 12px; padding: 0 0 20px 20px; background: linear-gradient(180deg, transparent 60%, rgba(4, 10, 18, .7)); }
+    .corner-play .video-play svg { width: 52px; height: 52px; padding: 15px 13px 15px 17px; }
+    .corner-play .video-play span { padding-bottom: 14px; }
 
     /* FAQ */
     .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
@@ -234,6 +237,9 @@
       .video-play { flex-direction: row; justify-content: flex-start; align-items: flex-end; gap: 10px; padding: 0 0 12px 12px; font-size: 13px; background: linear-gradient(180deg, transparent 55%, rgba(4, 10, 18, .7)); }
       .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
       .video-play span { padding-bottom: 10px; }
+      .corner-play .video-play { padding: 0 0 10px 10px; }
+      .corner-play .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
+      .corner-play .video-play span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -321,9 +327,9 @@
         <p class="muted" data-i18n="ab.p2">Participants manage virtual companies, develop products, define their market positioning, and make strategic marketing decisions. They compete for customers and market share, experiencing how their choices influence business performance over multiple rounds.</p>
       </div>
       <figure class="video-card">
-        <div class="video-frame">
-          <video src="assets/video/how-a-round-works.mp4" poster="assets/video/how-a-round-works-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
-          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.round">See how a round works in 30 seconds</span></button>
+        <div class="video-frame corner-play">
+          <video src="assets/video/how-the-simulation-works.mp4" poster="assets/video/how-the-simulation-works-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.round">See how the simulation works in 30 seconds</span></button>
         </div>
       </figure>
       <div class="cols two">
@@ -340,7 +346,7 @@
       <p class="muted narrow" data-i18n="te.intro">You decide how many rounds your participants play and how the simulation fits into your course. We provide recommendations for different course formats.</p>
       <figure class="video-card">
         <div class="video-frame">
-          <video src="assets/video/educators.mp4" poster="assets/video/educators-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <video src="assets/video/what-you-get.mp4" poster="assets/video/what-you-get-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
           <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.play">Watch the 30-second overview</span></button>
         </div>
       </figure>
@@ -535,7 +541,7 @@
       'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
       'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
       'vid.play': 'Überblick in 30 Sekunden ansehen',
-      'vid.round': 'In 30 Sekunden sehen, wie eine Runde abläuft',
+      'vid.round': 'In 30 Sekunden sehen, wie die Simulation funktioniert',
       'te.getTitle': 'Was Sie als Lehrende erhalten',
       'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
       'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
