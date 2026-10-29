@@ -138,6 +138,17 @@
     .linkedin { gap: 8px; margin-top: 8px; }
     .linkedin svg { width: 18px; height: 18px; fill: currentColor; }
 
+    /* FAQ */
+    .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
+    .faq details { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 14px; padding: 0 22px; transition: border-color .15s ease; }
+    .faq details[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; font-weight: 600; font-size: 17px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; flex: none; color: var(--accent); font-size: 22px; font-weight: 400; line-height: 1; transition: transform .2s ease; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    .faq details p { color: var(--muted); margin: 0 0 18px; max-width: 46rem; }
+
     /* Contact */
     .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
     form { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 16px; padding: 26px; display: grid; gap: 4px; }
@@ -220,6 +231,7 @@
         <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
         <a href="#history" data-i18n="nav.history">History</a>
         <a href="#team" data-i18n="nav.team">Team</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="locale" role="group" aria-label="Language">
@@ -235,6 +247,7 @@
       <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
       <a href="#history" data-i18n="nav.history">History</a>
       <a href="#team" data-i18n="nav.team">Team</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a class="btn" href="#contact" data-i18n="hero.cta">Contact us</a>
     </nav>
@@ -366,6 +379,43 @@
     </div>
   </section>
 
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="tag" data-i18n="faq.tag">FAQ</div>
+      <h2 data-i18n="faq.title">Questions from educators</h2>
+      <div class="faq">
+        <details>
+          <summary data-i18n="faq.q1">What is Helix Impulse?</summary>
+          <p data-i18n="faq.a1">A team-based marketing and strategy simulation for universities and business schools. Participants run virtual companies, compete for customers and market share, and make strategic decisions over several rounds.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q2">Which course formats is it suitable for?</summary>
+          <p data-i18n="faq.a2">Intensive courses, seminars spread across the semester and programmes at business schools – from bachelor's and master's to MBA and executive education.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q3">How many rounds are played?</summary>
+          <p data-i18n="faq.a3">You decide. The number of fiscal years varies depending on your course, and we provide recommendations for different formats.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q4">How many teams can take part?</summary>
+          <p data-i18n="faq.a4">Between 2 and 10 teams compete in one simulation. Each team runs its own company.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q5">What do educators get?</summary>
+          <p data-i18n="faq.a5">Introduction videos, teaching materials and documents, recommendations for your course format and support in the background while you run the simulation.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q6">What do participants need?</summary>
+          <p data-i18n="faq.a6">Just a web browser. Nothing needs to be installed.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q7">Which languages is the simulation available in?</summary>
+          <p data-i18n="faq.a7">Currently in English and German.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="wrap contact">
       <div class="contact-info">
@@ -400,7 +450,7 @@
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
+      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
     </div>
   </footer>
 
@@ -409,7 +459,7 @@
     const DE = {
       'meta.title': 'Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung',
       'meta.desc': 'Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.',
-      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'ft.imprint': 'Impressum', 'ft.privacy': 'Datenschutz', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
+      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'nav.faq': 'FAQ', 'ft.imprint': 'Impressum', 'ft.privacy': 'Datenschutz', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
       'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools – von Lehrenden für Lehrende.',
@@ -454,6 +504,21 @@
       'tm.4p1': 'Ich studiere im Master Betriebswirtschaftslehre an der Universität zu Köln mit dem Schwerpunkt Corporate Development. Mich interessieren vor allem Unternehmensstrategie, M&amp;A, Private Equity und Venture Capital.',
       'tm.4p2': 'Im Studium habe ich gemerkt, wie viel mehr ich lerne, wenn ich unternehmerische Entscheidungen tatsächlich treffen muss, statt nur darüber zu lesen. Geschäftsmodelle analysieren, Zielkonflikte abwägen und sehen, wie sich die Folgen einer Entscheidung entfalten – genau dadurch wird Strategie greifbar.',
       'tm.4p3': 'Mit Helix Impulse möchte ich mehr Studierenden helfen, über die Theorie hinauszugehen, ihre Annahmen zu hinterfragen und zu entdecken, wie unternehmerische Entscheidungen wirklich funktionieren – und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.',
+      'faq.tag': 'FAQ', 'faq.title': 'Fragen von Lehrenden',
+      'faq.q1': 'Was ist Helix Impulse?',
+      'faq.a1': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren um Kundschaft und Marktanteile und treffen über mehrere Runden strategische Entscheidungen.',
+      'faq.q2': 'Für welche Kursformate eignet sich die Simulation?',
+      'faq.a2': 'Für Intensivkurse, semesterbegleitende Seminare und Programme an Business Schools – vom Bachelor und Master bis zu MBA und Executive Education.',
+      'faq.q3': 'Wie viele Runden werden gespielt?',
+      'faq.a3': 'Das entscheiden Sie. Die Zahl der Geschäftsjahre richtet sich nach Ihrer Veranstaltung, und wir geben Ihnen Empfehlungen für verschiedene Formate.',
+      'faq.q4': 'Wie viele Teams können teilnehmen?',
+      'faq.a4': 'In einer Simulation treten 2 bis 10 Teams gegeneinander an. Jedes Team führt ein eigenes Unternehmen.',
+      'faq.q5': 'Was erhalten Lehrende?',
+      'faq.a5': 'Einführungsvideos, Lehrmaterialien und Unterlagen, Empfehlungen für Ihr Kursformat und Support im Hintergrund, während Sie die Simulation durchführen.',
+      'faq.q6': 'Was brauchen die Teilnehmenden?',
+      'faq.a6': 'Nur einen Webbrowser. Es muss nichts installiert werden.',
+      'faq.q7': 'In welchen Sprachen ist die Simulation verfügbar?',
+      'faq.a7': 'Aktuell auf Deutsch und Englisch.',
       'ct.tag': 'Kontakt', 'ct.title': 'Kontakt',
       'ct.intro': 'Sie möchten Helix Impulse in Aktion sehen oder in Ihrer Veranstaltung einsetzen? Wählen Sie Ihr Anliegen und senden Sie uns eine kurze Nachricht.',
       'f.type': 'Ich interessiere mich für', 'f.t1': 'Eine Demo für meine Veranstaltung', 'f.t4': 'Eine Lizenz für meine Institution', 'f.t2': 'Eine allgemeine Frage', 'f.t3': 'Berufliche Weiterbildung (demnächst)',
@@ -514,7 +579,7 @@
 
     // Fade sections in as they scroll into view; skipped when the visitor prefers reduced motion.
     if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const items = document.querySelectorAll('section h2, section .narrow, .cols > div, .get li, .person, .quote, #contact form');
+      const items = document.querySelectorAll('section h2, section .narrow, .cols > div, .get li, .person, .quote, .faq details, #contact form');
       const io = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
       }, { rootMargin: '0px 0px -8% 0px' });
