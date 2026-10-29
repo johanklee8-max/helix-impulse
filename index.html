@@ -114,7 +114,7 @@
     /* Upcoming offers: label sits above the heading so headings stay aligned across columns */
     .upcoming { position: relative; }
     .upcoming h3, .upcoming p { opacity: .7; }
-    .soon { position: absolute; left: 0; bottom: calc(100% + 8px); padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
+    .soon { position: absolute; left: 54px; top: 10px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
     .sub { font-size: 20px; margin: 64px 0 0; }
     .get { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
     .get li { border-top: 1px solid var(--line); padding-top: 16px; }
@@ -232,7 +232,6 @@
       #history::before { right: -140px; }
       #about::before, #faq::before { left: -140px; }
       #about::before, #history::before, #faq::before { opacity: .05; }
-      .soon { position: static; display: block; width: fit-content; margin-bottom: 10px; }
       .video-frame { border-radius: 14px; }
       .video-play { flex-direction: row; justify-content: flex-start; align-items: flex-end; gap: 10px; padding: 0 0 12px 12px; font-size: 13px; background: linear-gradient(180deg, transparent 55%, rgba(4, 10, 18, .7)); }
       .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
