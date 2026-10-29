@@ -145,10 +145,12 @@
     .get .ico svg { width: 18px; height: 18px; }
     .upcoming .ico { opacity: .7; }
 
-    /* Helix motif behind the history section */
-    #history { position: relative; overflow: hidden; }
-    #history::before { content: ""; position: absolute; top: 50%; right: max(-120px, calc((100vw - 1100px) / 2 - 200px)); width: 340px; height: 880px; transform: translateY(-50%) rotate(8deg); background: url("assets/logo-mark.png") no-repeat center / contain; opacity: .065; pointer-events: none; }
-    #history .wrap { position: relative; }
+    /* Helix motif from the logo behind the tinted sections, alternating sides */
+    #about, #history, #faq { position: relative; overflow: hidden; }
+    #about::before, #history::before, #faq::before { content: ""; position: absolute; top: 50%; width: 340px; height: 880px; background: url("assets/logo-mark.png") no-repeat center / contain; opacity: .065; pointer-events: none; }
+    #history::before { right: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(8deg); }
+    #about::before, #faq::before { left: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(-8deg) scaleX(-1); }
+    #about .wrap, #history .wrap, #faq .wrap { position: relative; }
 
     /* FAQ */
     .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
@@ -214,7 +216,9 @@
       .people { gap: 64px; }
       .portrait { max-width: 340px; }
       .cols.four, .get { grid-template-columns: 1fr 1fr; }
-      #history::before { right: -140px; opacity: .06; }
+      #history::before { right: -140px; }
+      #about::before, #faq::before { left: -140px; }
+      #about::before, #history::before, #faq::before { opacity: .05; }
       .soon { position: static; display: block; width: fit-content; margin-bottom: 10px; }
     }
     @media (max-width: 640px) {
