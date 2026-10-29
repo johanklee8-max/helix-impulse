@@ -231,8 +231,8 @@
         <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
         <a href="#history" data-i18n="nav.history">History</a>
         <a href="#team" data-i18n="nav.team">Team</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
       <div class="locale" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -247,8 +247,8 @@
       <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
       <a href="#history" data-i18n="nav.history">History</a>
       <a href="#team" data-i18n="nav.team">Team</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a class="btn" href="#contact" data-i18n="hero.cta">Contact us</a>
     </nav>
   </header>
@@ -379,6 +379,37 @@
     </div>
   </section>
 
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <div class="tag" data-i18n="ct.tag">Contact</div>
+        <h2 data-i18n="ct.title">Contact us</h2>
+        <p class="muted" data-i18n="ct.intro">Would you like to see Helix Impulse in action or use it in your course? Choose what you are interested in and send us a short message.</p>
+      </div>
+      <form id="contact-form" novalidate>
+        <label style="margin-top:0"><span data-i18n="f.type">I'm interested in</span>
+          <select class="input" name="type">
+            <option value="Demo for a course" data-i18n="f.t1">A demo for my course</option>
+            <option value="License" data-i18n="f.t4">A license for my institution</option>
+            <option value="General question" data-i18n="f.t2">A general question</option>
+            <option value="Professional training" data-i18n="f.t3">Professional training (coming soon)</option>
+          </select>
+        </label>
+        <div class="pair">
+          <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" required></label>
+          <label><span data-i18n="f.email">Email</span><input class="input" name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
+        <label><span data-i18n="f.msg">Message</span><textarea name="message" required></textarea></label>
+        <input type="text" name="botcheck" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
+        <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
+        <p class="note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+
   <section id="faq" class="alt">
     <div class="wrap">
       <div class="tag" data-i18n="faq.tag">FAQ</div>
@@ -416,41 +447,10 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="wrap contact">
-      <div class="contact-info">
-        <div class="tag" data-i18n="ct.tag">Contact</div>
-        <h2 data-i18n="ct.title">Contact us</h2>
-        <p class="muted" data-i18n="ct.intro">Would you like to see Helix Impulse in action or use it in your course? Choose what you are interested in and send us a short message.</p>
-      </div>
-      <form id="contact-form" novalidate>
-        <label style="margin-top:0"><span data-i18n="f.type">I'm interested in</span>
-          <select class="input" name="type">
-            <option value="Demo for a course" data-i18n="f.t1">A demo for my course</option>
-            <option value="License" data-i18n="f.t4">A license for my institution</option>
-            <option value="General question" data-i18n="f.t2">A general question</option>
-            <option value="Professional training" data-i18n="f.t3">Professional training (coming soon)</option>
-          </select>
-        </label>
-        <div class="pair">
-          <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" required></label>
-          <label><span data-i18n="f.email">Email</span><input class="input" name="email" type="email" autocomplete="email" required></label>
-        </div>
-        <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
-        <label><span data-i18n="f.msg">Message</span><textarea name="message" required></textarea></label>
-        <input type="text" name="botcheck" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
-        <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
-        <p class="note" id="form-note" role="status"></p>
-      </form>
-    </div>
-  </section>
-
-
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
+      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
     </div>
   </footer>
 
