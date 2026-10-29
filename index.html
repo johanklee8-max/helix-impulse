@@ -114,7 +114,7 @@
     /* Upcoming offers: label sits above the heading so headings stay aligned across columns */
     .upcoming { position: relative; }
     .upcoming h3, .upcoming p { opacity: .7; }
-    .soon { position: absolute; left: 0; bottom: calc(100% + 8px); padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
+    .soon { position: absolute; left: 54px; top: 10px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
     .sub { font-size: 20px; margin: 64px 0 0; }
     .get { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
     .get li { border-top: 1px solid var(--line); padding-top: 16px; }
@@ -151,6 +151,17 @@
     #history::before { right: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(8deg); }
     #about::before, #faq::before { left: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(-8deg) scaleX(-1); }
     #about .wrap, #history .wrap, #faq .wrap { position: relative; }
+
+    /* Overview video */
+    .video-card { margin: 40px 0 8px; max-width: 960px; }
+    .video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); box-shadow: 0 30px 80px -30px var(--glow); background: #050b12; }
+    .video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; inset: 0; display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 12px; padding: 0 0 20px 20px; border: 0; background: linear-gradient(180deg, transparent 60%, rgba(4, 10, 18, .7)); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+    .video-play svg { width: 52px; height: 52px; padding: 15px 13px 15px 17px; border-radius: 50%; background: linear-gradient(180deg, #6ad4ff, #2eb4ef); fill: var(--accent-ink); box-shadow: 0 10px 30px rgba(46, 180, 239, .35); transition: transform .2s ease; }
+    .video-play:hover svg, .video-play:focus-visible svg { transform: scale(1.08); }
+    .video-play:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+    .video-frame.playing .video-play { display: none; }
+    .video-play span { padding-bottom: 14px; }
 
     /* FAQ */
     .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
@@ -219,7 +230,10 @@
       #history::before { right: -140px; }
       #about::before, #faq::before { left: -140px; }
       #about::before, #history::before, #faq::before { opacity: .05; }
-      .soon { position: static; display: block; width: fit-content; margin-bottom: 10px; }
+      .video-frame { border-radius: 14px; }
+      .video-play { padding: 0 0 10px 10px; }
+      .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
+      .video-play span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -306,6 +320,12 @@
         <p class="muted" data-i18n="ab.p1">Helix Impulse is a business simulation for universities, business schools, and professional training programs. It brings business strategy and marketing to life through competitive, team-based decision-making.</p>
         <p class="muted" data-i18n="ab.p2">Participants manage virtual companies, develop products, define their market positioning, and make strategic marketing decisions. They compete for customers and market share, experiencing how their choices influence business performance over multiple rounds.</p>
       </div>
+      <figure class="video-card">
+        <div class="video-frame">
+          <video src="assets/video/how-the-simulation-works.mp4" poster="assets/video/how-the-simulation-works-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.round">See how the simulation works in 30 seconds</span></button>
+        </div>
+      </figure>
       <div class="cols two">
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><h3 data-i18n="ab.1t">For universities and business schools</h3><p data-i18n="ab.1p">An interactive way to teach marketing, competitive strategy, and strategic decision-making.</p></div>
         <div class="upcoming"><span class="soon" data-i18n="soon">Coming soon</span><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg></span><h3 data-i18n="ab.2t">For companies and professional training providers</h3><p data-i18n="ab.2p">An environment where managers and teams can explore strategic choices, test their assumptions, and learn from the consequences without real-world business risk.</p></div>
@@ -318,6 +338,12 @@
       <div class="tag" data-i18n="te.tag">Teaching</div>
       <h2 data-i18n="te.title">Fits into your teaching</h2>
       <p class="muted narrow" data-i18n="te.intro">You decide how many rounds your participants play and how the simulation fits into your course. We provide recommendations for different course formats.</p>
+      <figure class="video-card">
+        <div class="video-frame">
+          <video src="assets/video/what-you-get.mp4" poster="assets/video/what-you-get-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.play">Watch the 30-second overview</span></button>
+        </div>
+      </figure>
       <div class="cols four">
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span><h3 data-i18n="te.1t">Intensive courses</h3><p data-i18n="te.1p">A complete simulation in a short time – focused and intensive.</p></div>
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3 data-i18n="te.2t">Seminars</h3><p data-i18n="te.2p">Spread across the semester and linked to the content of your course.</p></div>
@@ -508,6 +534,8 @@
       'te.2t': 'Seminare', 'te.2p': 'Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.',
       'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
       'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
+      'vid.play': 'Überblick in 30 Sekunden ansehen',
+      'vid.round': 'In 30 Sekunden sehen, wie die Simulation funktioniert',
       'te.getTitle': 'Was Sie als Lehrende erhalten',
       'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
       'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
@@ -621,6 +649,18 @@
       form.type.value = 'General question';
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => form.message.focus({ preventScroll: true }), 600);
+    });
+
+    // Overview video: poster with a play button; native controls once it plays
+    document.querySelectorAll('.video-frame').forEach(frame => {
+      const video = frame.querySelector('video');
+      frame.querySelector('.video-play').addEventListener('click', () => {
+        // only one video plays at a time
+        document.querySelectorAll('.video-frame video').forEach(v => { if (v !== video) v.pause(); });
+        frame.classList.add('playing');
+        video.controls = true;
+        video.play();
+      });
     });
 
     // Dropdown menu for narrow screens
