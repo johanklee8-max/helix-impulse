@@ -152,6 +152,16 @@
     #about::before, #faq::before { left: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(-8deg) scaleX(-1); }
     #about .wrap, #history .wrap, #faq .wrap { position: relative; }
 
+    /* Overview video */
+    .video-card { margin: 40px 0 8px; max-width: 960px; }
+    .video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); box-shadow: 0 30px 80px -30px var(--glow); background: #050b12; }
+    .video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 14px; padding-bottom: 9%; border: 0; background: linear-gradient(180deg, transparent 45%, rgba(4, 10, 18, .65)); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+    .video-play svg { width: 64px; height: 64px; padding: 18px 16px 18px 20px; border-radius: 50%; background: linear-gradient(180deg, #6ad4ff, #2eb4ef); fill: var(--accent-ink); box-shadow: 0 10px 30px rgba(46, 180, 239, .35); transition: transform .2s ease; }
+    .video-play:hover svg, .video-play:focus-visible svg { transform: scale(1.08); }
+    .video-play:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+    .video-frame.playing .video-play { display: none; }
+
     /* FAQ */
     .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
     .faq details { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 14px; padding: 0 22px; transition: border-color .15s ease; }
@@ -220,6 +230,10 @@
       #about::before, #faq::before { left: -140px; }
       #about::before, #history::before, #faq::before { opacity: .05; }
       .soon { position: static; display: block; width: fit-content; margin-bottom: 10px; }
+      .video-frame { border-radius: 14px; }
+      .video-play { flex-direction: row; justify-content: flex-start; align-items: flex-end; gap: 10px; padding: 0 0 12px 12px; font-size: 13px; background: linear-gradient(180deg, transparent 55%, rgba(4, 10, 18, .7)); }
+      .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
+      .video-play span { padding-bottom: 10px; }
     }
     @media (max-width: 640px) {
       .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
@@ -318,6 +332,12 @@
       <div class="tag" data-i18n="te.tag">Teaching</div>
       <h2 data-i18n="te.title">Fits into your teaching</h2>
       <p class="muted narrow" data-i18n="te.intro">You decide how many rounds your participants play and how the simulation fits into your course. We provide recommendations for different course formats.</p>
+      <figure class="video-card">
+        <div class="video-frame">
+          <video id="edu-video" src="assets/video/educators.mp4" poster="assets/video/educators-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.play">Watch the 30-second overview</span></button>
+        </div>
+      </figure>
       <div class="cols four">
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span><h3 data-i18n="te.1t">Intensive courses</h3><p data-i18n="te.1p">A complete simulation in a short time – focused and intensive.</p></div>
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3 data-i18n="te.2t">Seminars</h3><p data-i18n="te.2p">Spread across the semester and linked to the content of your course.</p></div>
@@ -508,6 +528,7 @@
       'te.2t': 'Seminare', 'te.2p': 'Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.',
       'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
       'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
+      'vid.play': 'Überblick in 30 Sekunden ansehen',
       'te.getTitle': 'Was Sie als Lehrende erhalten',
       'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
       'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
@@ -621,6 +642,14 @@
       form.type.value = 'General question';
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => form.message.focus({ preventScroll: true }), 600);
+    });
+
+    // Overview video: poster with a play button; native controls once it plays
+    const eduVideo = document.getElementById('edu-video');
+    document.querySelector('.video-play').addEventListener('click', () => {
+      eduVideo.closest('.video-frame').classList.add('playing');
+      eduVideo.controls = true;
+      eduVideo.play();
     });
 
     // Dropdown menu for narrow screens
