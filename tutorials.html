@@ -29,6 +29,7 @@
     /* Tutorial grid */
     .tut-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
     .tut { margin: 0; }
+    .tut.featured { grid-column: 1 / -1; max-width: 900px; }
     .tut h2 { font-size: 19px; margin: 16px 0 6px; }
     .tut p { margin: 0; font-size: 15px; }
     .tut .meta { display: inline-block; margin-top: 10px; padding: 2px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-size: 12px; font-weight: 600; }
@@ -74,7 +75,17 @@
     <p class="intro"><span data-lang="en">Short videos that explain the simulation and how to use it in your course.</span><span data-lang="de" hidden>Kurze Videos, die die Simulation erklären und zeigen, wie Sie sie in Ihrer Veranstaltung einsetzen.</span></p>
 
     <div class="tut-grid">
-<!-- TUTORIALS -->
+      <figure class="tut featured">
+        <div class="video-frame">
+          <video src="assets/video/tutorials/welcome-to-helix-impulse.mp4" poster="assets/video/tutorials/welcome-to-helix-impulse-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the overview</span><span data-lang="de" hidden>Überblick ansehen</span></span></button>
+        </div>
+        <figcaption>
+          <h2><span data-lang="en">Welcome to Helix Impulse</span><span data-lang="de" hidden>Willkommen bei Helix Impulse</span></h2>
+          <p><span data-lang="en">An overview of the simulation: your starting point, the goal, the market, the areas you steer and your first fiscal year.</span><span data-lang="de" hidden>Ein Überblick über die Simulation: Ihre Ausgangslage, das Ziel, der Markt, die Bereiche, die Sie steuern, und Ihr erstes Geschäftsjahr.</span></p>
+          <span class="meta"><span data-lang="en">4 min · English</span><span data-lang="de" hidden>4 Min. · Englisch</span></span>
+        </figcaption>
+      </figure>
     </div>
 
     <div class="tut-cta">
