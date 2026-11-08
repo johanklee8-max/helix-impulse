@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="assets/legal.css">
   <style>
     :root { --surf-2: #162838; --accent-ink: #041018; --glow: rgba(62, 198, 255, .16); }
+    html { background: var(--bg); }
     body {
+      min-height: 100vh;
+      background-repeat: no-repeat;
       background:
         radial-gradient(900px 420px at 100% -10%, var(--glow), transparent 55%),
         radial-gradient(700px 380px at -10% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 50%),
