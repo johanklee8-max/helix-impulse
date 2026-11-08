@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tutorials – Helix Impulse</title>
+  <meta name="description" content="Short video tutorials about the Helix Impulse marketing business simulation.">
+  <meta name="theme-color" content="#071018">
+  <link rel="canonical" href="https://www.heliximpulse.com/tutorials.html">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/legal.css">
+  <style>
+    :root { --surf-2: #162838; --accent-ink: #041018; --glow: rgba(62, 198, 255, .16); }
+    body {
+      background:
+        radial-gradient(900px 420px at 100% -10%, var(--glow), transparent 55%),
+        radial-gradient(700px 380px at -10% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 50%),
+        var(--bg);
+    }
+    main.tutorials { max-width: 1100px; padding-top: 72px; }
+    .intro { color: var(--muted); max-width: 44rem; font-size: 17px; margin-bottom: 40px; }
+
+    /* Tutorial grid */
+    .tut-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    .tut { margin: 0; }
+    .tut h2 { font-size: 19px; margin: 16px 0 6px; }
+    .tut p { margin: 0; font-size: 15px; }
+    .tut .meta { display: inline-block; margin-top: 10px; padding: 2px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-size: 12px; font-weight: 600; }
+
+    /* Video frame and play button, same as on the home page */
+    .video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); box-shadow: 0 24px 60px -30px var(--glow); background: #050b12; }
+    .video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; inset: 0; display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 12px; padding: 0 0 16px 16px; border: 0; background: linear-gradient(180deg, transparent 60%, rgba(4, 10, 18, .7)); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .video-play svg { width: 46px; height: 46px; padding: 13px 11px 13px 15px; border-radius: 50%; background: linear-gradient(180deg, #6ad4ff, #2eb4ef); fill: var(--accent-ink); box-shadow: 0 10px 30px rgba(46, 180, 239, .35); transition: transform .2s ease; }
+    .video-play:hover svg, .video-play:focus-visible svg { transform: scale(1.08); }
+    .video-play:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+    .video-play span { padding-bottom: 12px; }
+    .video-frame.playing .video-play { display: none; }
+
+    .tut-cta { margin-top: 56px; padding: 22px; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .tut-cta h2 { font-size: 18px; margin: 0 0 4px; }
+    .tut-cta p { margin: 0; }
+    .btn { background: linear-gradient(180deg, #6ad4ff, #2eb4ef); color: var(--accent-ink); border: 0; padding: 10px 16px; border-radius: 12px; font: inherit; font-weight: 650; min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; box-shadow: 0 8px 22px rgba(46, 180, 239, .22); }
+
+    @media (max-width: 760px) {
+      .tut-grid { grid-template-columns: 1fr; }
+      .video-play { padding: 0 0 10px 10px; }
+      .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
+      .video-play span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><img src="assets/logo-mark.png" alt="" width="14" height="36">Helix<span>Impulse</span></a>
+    <div class="top-right">
+      <div class="locale" role="group" aria-label="Language">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="de" aria-pressed="false">DE</button>
+      </div>
+      <a class="back" href="./"><span data-lang="en">← Back to home</span><span data-lang="de" hidden>← Zurück zur Startseite</span></a>
+    </div>
+  </header>
+
+  <main class="tutorials">
+    <div class="tag">Tutorials</div>
+    <h1><span data-lang="en">Get to know Helix Impulse</span><span data-lang="de" hidden>Helix Impulse kennenlernen</span></h1>
+    <p class="intro"><span data-lang="en">Short videos that explain the simulation and how to use it in your course.</span><span data-lang="de" hidden>Kurze Videos, die die Simulation erklären und zeigen, wie Sie sie in Ihrer Veranstaltung einsetzen.</span></p>
+
+    <div class="tut-grid">
+<!-- TUTORIALS -->
+    </div>
+
+    <div class="tut-cta">
+      <div>
+        <h2><span data-lang="en">Questions about the simulation?</span><span data-lang="de" hidden>Fragen zur Simulation?</span></h2>
+        <p><span data-lang="en">We'd be happy to hear from you.</span><span data-lang="de" hidden>Wir freuen uns auf Ihre Nachricht.</span></p>
+      </div>
+      <a class="btn" href="./#contact"><span data-lang="en">Contact us</span><span data-lang="de" hidden>Kontakt aufnehmen</span></a>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Helix Impulse</span>
+    <span><a href="./"><span data-lang="en">Home</span><span data-lang="de" hidden>Startseite</span></a> · <a href="impressum.html"><span data-lang="en">Imprint</span><span data-lang="de" hidden>Impressum</span></a> · <a href="datenschutz.html"><span data-lang="en">Privacy</span><span data-lang="de" hidden>Datenschutz</span></a></span>
+  </footer>
+
+  <script>
+    // Same language preference as the home page: ?lang=de, then the stored choice, otherwise English.
+    (function () {
+      var titles = { en: 'Tutorials – Helix Impulse', de: 'Tutorials – Helix Impulse' };
+      function setLang(lang) {
+        lang = lang === 'de' ? 'de' : 'en';
+        document.documentElement.lang = lang;
+        document.title = titles[lang];
+        document.querySelectorAll('[data-lang]').forEach(function (el) { el.hidden = el.getAttribute('data-lang') !== lang; });
+        document.querySelectorAll('.locale button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+        try { localStorage.setItem('helix-locale', lang); } catch (e) {}
+      }
+      document.querySelectorAll('.locale button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
+      var initial = new URLSearchParams(location.search).get('lang');
+      if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
+      setLang(initial);
+
+      // Poster with a play button; native controls once a video plays, and only one plays at a time
+      document.querySelectorAll('.video-frame').forEach(function (frame) {
+        var video = frame.querySelector('video');
+        frame.querySelector('.video-play').addEventListener('click', function () {
+          document.querySelectorAll('.video-frame video').forEach(function (v) { if (v !== video) v.pause(); });
+          frame.classList.add('playing');
+          video.controls = true;
+          video.play();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

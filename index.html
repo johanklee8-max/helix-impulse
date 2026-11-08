@@ -163,6 +163,15 @@
     .video-frame.playing .video-play { display: none; }
     .video-play span { padding-bottom: 14px; }
 
+    /* Link to the tutorials page */
+    .tut-link { display: flex; align-items: center; gap: 16px; margin-top: 32px; padding: 16px 20px; max-width: 560px; border-radius: 14px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surf) 92%, transparent); color: var(--ink); text-decoration: none; transition: border-color .15s ease; }
+    .tut-link:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+    .tut-link .ico { margin: 0; flex: none; }
+    .tut-link strong { display: block; }
+    .tut-link strong + span { color: var(--muted); font-size: 15px; }
+    .tut-arrow { margin-left: auto; color: var(--accent); font-size: 20px; transition: transform .15s ease; }
+    .tut-link:hover .tut-arrow { transform: translateX(4px); }
+
     /* FAQ */
     .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
     .faq details { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 14px; padding: 0 22px; transition: border-color .15s ease; }
@@ -270,6 +279,7 @@
         <a href="#team" data-i18n="nav.team">Team</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
       </nav>
       <div class="locale" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -286,6 +296,7 @@
       <a href="#team" data-i18n="nav.team">Team</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
       <a class="btn" href="#contact" data-i18n="hero.cta">Contact us</a>
     </nav>
   </header>
@@ -358,6 +369,11 @@
         <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></svg></span><strong data-i18n="te.g3t">Recommendations</strong><span data-i18n="te.g3p">Suggestions on the number of rounds and the schedule for your course format.</span></li>
         <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><strong data-i18n="te.g4t">Support in the background</strong><span data-i18n="te.g4p">We are there for you while you run the simulation.</span></li>
       </ul>
+      <a class="tut-link" href="tutorials.html">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4V8Z"/></svg></span>
+        <span><strong data-i18n="tl.title">Tutorials</strong><span data-i18n="tl.text">Short videos that explain the simulation step by step.</span></span>
+        <span class="tut-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
@@ -506,7 +522,7 @@
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
+      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
     </div>
   </footer>
 
@@ -515,7 +531,7 @@
     const DE = {
       'meta.title': 'Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung',
       'meta.desc': 'Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.',
-      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'nav.faq': 'FAQ', 'ft.imprint': 'Impressum', 'ft.privacy': 'Datenschutz', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
+      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'nav.faq': 'FAQ', 'nav.tutorials': 'Tutorials', 'ft.imprint': 'Impressum', 'ft.privacy': 'Datenschutz', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
       'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
       'hero.title': 'Strategie lernt man, indem man entscheidet.',
       'hero.lead': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools – von Lehrenden für Lehrende.',
@@ -536,6 +552,7 @@
       'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
       'vid.play': 'Überblick in 30 Sekunden ansehen',
       'vid.round': 'In 30 Sekunden sehen, wie die Simulation funktioniert',
+      'tl.title': 'Tutorials', 'tl.text': 'Kurze Videos, die die Simulation Schritt für Schritt erklären.',
       'te.getTitle': 'Was Sie als Lehrende erhalten',
       'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
       'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
