@@ -30,7 +30,9 @@
     .tut-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
     .tut { margin: 0; }
     .tut.featured { grid-column: 1 / -1; max-width: 900px; }
-    .tut figcaption { margin-bottom: 18px; }
+    .tut { display: flex; flex-direction: column; }
+    .tut figcaption { margin-bottom: 18px; flex: 1; }
+    .tut.featured figcaption { flex: none; }
     .tut h2 { font-size: 21px; margin: 0 0 6px; }
     .tut p { margin: 0; font-size: 15px; }
     .tut .meta { display: inline-block; margin-top: 12px; padding: 2px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-size: 12px; font-weight: 600; }
@@ -138,11 +140,66 @@
         <figcaption>
           <h2><span data-lang="en">Welcome to Helix Impulse</span><span data-lang="de" hidden>Willkommen bei Helix Impulse</span></h2>
           <p><span data-lang="en">An overview of the simulation: your starting point, the goal, the market, the areas you steer and your first fiscal year.</span><span data-lang="de" hidden>Ein Überblick über die Simulation: Ihre Ausgangslage, das Ziel, der Markt, die Bereiche, die Sie steuern, und Ihr erstes Geschäftsjahr.</span></p>
-          <span class="meta"><span data-lang="en">4 min · English</span><span data-lang="de" hidden>4 Min. · Englisch</span></span>
+          <span class="meta"><span data-lang="en">4:08 min · English</span><span data-lang="de" hidden>4:08 Min. · Englisch</span></span>
         </figcaption>
         <div class="video-frame">
           <video src="assets/video/tutorials/welcome-to-helix-impulse.mp4" poster="assets/video/tutorials/welcome-to-helix-impulse-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
           <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the overview</span><span data-lang="de" hidden>Überblick ansehen</span></span></button>
+        </div>
+      </figure>
+      <figure class="tut">
+        <figcaption>
+          <h2><span data-lang="en">Target groups</span><span data-lang="de" hidden>Zielgruppen</span></h2>
+          <p><span data-lang="en">The five customer groups: what matters to each of them, how big they are, their price level and where they shop – and how to pick the right group for your product.</span><span data-lang="de" hidden>Die fünf Kundengruppen: was ihnen wichtig ist, wie groß sie sind, welches Preisniveau sie haben und wo sie einkaufen – und wie Sie die passende Gruppe für Ihr Produkt wählen.</span></p>
+          <span class="meta"><span data-lang="en">3:41 min · English</span><span data-lang="de" hidden>3:41 Min. · Englisch</span></span>
+        </figcaption>
+        <div class="video-frame">
+          <video src="assets/video/tutorials/target-groups.mp4" poster="assets/video/tutorials/target-groups-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the tutorial</span><span data-lang="de" hidden>Tutorial ansehen</span></span></button>
+        </div>
+      </figure>
+      <figure class="tut">
+        <figcaption>
+          <h2><span data-lang="en">The Production tab</span><span data-lang="de" hidden>Der Bereich Produktion</span></h2>
+          <p><span data-lang="en">How to plan your production step by step: supplier stock, your order, the automatic range and keeping production in sync with your sales.</span><span data-lang="de" hidden>So planen Sie Ihre Produktion Schritt für Schritt: Lagerbestand beim Lieferanten, Ihre Bestellung, die automatische Anpassung und wie Produktion und Vertrieb zusammenpassen.</span></p>
+          <span class="meta"><span data-lang="en">1:56 min · English</span><span data-lang="de" hidden>1:56 Min. · Englisch</span></span>
+        </figcaption>
+        <div class="video-frame">
+          <video src="assets/video/tutorials/production.mp4" poster="assets/video/tutorials/production-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the tutorial</span><span data-lang="de" hidden>Tutorial ansehen</span></span></button>
+        </div>
+      </figure>
+      <figure class="tut">
+        <figcaption>
+          <h2><span data-lang="en">The Research tab</span><span data-lang="de" hidden>Der Bereich Marktforschung</span></h2>
+          <p><span data-lang="en">How to use market studies: choose what you need to know, decide between basic and in-depth, order a study and read the report.</span><span data-lang="de" hidden>So nutzen Sie Marktstudien: auswählen, was Sie wissen müssen, zwischen Basis- und Detailstudie entscheiden, eine Studie beauftragen und den Bericht lesen.</span></p>
+          <span class="meta"><span data-lang="en">1:49 min · English</span><span data-lang="de" hidden>1:49 Min. · Englisch</span></span>
+        </figcaption>
+        <div class="video-frame">
+          <video src="assets/video/tutorials/research.mp4" poster="assets/video/tutorials/research-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the tutorial</span><span data-lang="de" hidden>Tutorial ansehen</span></span></button>
+        </div>
+      </figure>
+      <figure class="tut">
+        <figcaption>
+          <h2><span data-lang="en">The Controlling tab</span><span data-lang="de" hidden>Der Bereich Controlling</span></h2>
+          <p><span data-lang="en">What Controlling shows: product contributions, shared company costs, how your decisions connect – and why the plan is not yet reality.</span><span data-lang="de" hidden>Was das Controlling zeigt: Produktbeiträge, gemeinsame Unternehmenskosten, wie Ihre Entscheidungen zusammenhängen – und warum der Plan noch nicht die Realität ist.</span></p>
+          <span class="meta"><span data-lang="en">2:35 min · English</span><span data-lang="de" hidden>2:35 Min. · Englisch</span></span>
+        </figcaption>
+        <div class="video-frame">
+          <video src="assets/video/tutorials/controlling.mp4" poster="assets/video/tutorials/controlling-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the tutorial</span><span data-lang="de" hidden>Tutorial ansehen</span></span></button>
+        </div>
+      </figure>
+      <figure class="tut">
+        <figcaption>
+          <h2><span data-lang="en">The Finance tab</span><span data-lang="de" hidden>Der Bereich Finanzen</span></h2>
+          <p><span data-lang="en">Cash, debt and equity: why capital is not a budget, fixed costs, credit and rating, profit and loss, and cash flow.</span><span data-lang="de" hidden>Liquidität, Schulden und Eigenkapital: warum Kapital kein Budget ist, Fixkosten, Kredit und Rating, Gewinn und Verlust sowie der Cashflow.</span></p>
+          <span class="meta"><span data-lang="en">2:57 min · English</span><span data-lang="de" hidden>2:57 Min. · Englisch</span></span>
+        </figcaption>
+        <div class="video-frame">
+          <video src="assets/video/tutorials/finance.mp4" poster="assets/video/tutorials/finance-poster.jpg" preload="none" playsinline width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span><span data-lang="en">Watch the tutorial</span><span data-lang="de" hidden>Tutorial ansehen</span></span></button>
         </div>
       </figure>
     </div>
