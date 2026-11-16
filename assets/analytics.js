@@ -2,7 +2,7 @@
  * Nothing is stored on the visitor's device (persistence: memory), no session recordings,
  * and visitors with "Do Not Track" are not tracked. Does nothing until POSTHOG_KEY is set. */
 (function () {
-  var POSTHOG_KEY = '';
+  var POSTHOG_KEY = 'phc_ttciWc3qRDm9g3RGoGepTe4R36f38UzcqnUmR2c2t26c';
   var POSTHOG_HOST = 'https://eu.i.posthog.com';
   if (!POSTHOG_KEY) return;
 
@@ -14,6 +14,7 @@
     persistence: 'memory',          // no cookies, no localStorage
     person_profiles: 'identified_only',
     disable_session_recording: true,
+    disable_surveys: true,
     respect_dnt: true,
     autocapture: true,
     capture_pageview: true,
