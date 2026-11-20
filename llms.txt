@@ -1,0 +1,32 @@
+# Helix Impulse
+
+> Helix Impulse is a team-based marketing and strategy business simulation for universities, business schools and professional training programs – built by educators, for educators. Participants manage virtual companies, develop products, define their market positioning and make strategic marketing decisions, competing for customers and market share over several rounds.
+
+Helix Impulse is developed by Helix Impulse GbR (Niestetal, Germany). The founders have taught with business simulations in higher education for more than 20 years. The guiding idea: keep the strategic decisions that matter and remove unnecessary complexity – a focused simulation with an intuitive interface that is easy to prepare, explain and integrate into teaching.
+
+## Key facts
+
+- Type: web-based marketing and strategy business simulation (participants only need a web browser; nothing to install)
+- Audience: lecturers and professors at universities and business schools; professional training for companies is coming soon
+- Course formats: intensive courses, seminars across the semester, business school programmes (bachelor's, master's, MBA, executive education)
+- Teams: between 2 and 10 teams per simulation, each running its own company
+- Rounds: chosen by the educator; the number of fiscal years varies by course, with recommendations for different formats
+- Educators receive: introduction videos, teaching materials and documents, recommendations for their course format and support in the background
+- Languages: website in English and German
+
+## Pages
+
+- [Home](https://www.heliximpulse.com/): overview, teaching formats, team, FAQ and contact form
+- [Tutorials](https://www.heliximpulse.com/tutorials.html): video tutorials on the simulation (welcome, target groups, marketing, production, sales, lab, research, controlling, finance)
+- [Legal notice](https://www.heliximpulse.com/impressum.html)
+
+## Team
+
+- Johan Klee – Founder; M.Sc. Customer Relationship Marketing (Valencia, Katowice, Aschaffenburg, Bergamo)
+- Leon Müller – Founder; Master's student in Business Administration, University of Cologne
+- Dr. Sarah Kniel – Founder; Project Manager at Volkswagen, Lecturer at the University of Kassel
+- Alexander Hartmann – Founder; university lecturer and management consultant
+
+## Contact
+
+Use the contact form at https://www.heliximpulse.com/#contact
