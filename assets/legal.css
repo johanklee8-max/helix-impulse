@@ -40,3 +40,4 @@ footer a:hover { color: var(--ink); }
 .locale button[aria-pressed="true"] { color: var(--accent); font-weight: 600; }
 [hidden] { display: none !important; }
 @media (max-width: 640px) { .back { display: none; } }
+.social { display: inline-flex; gap: 16px; align-items: center; } .social a { display: inline-flex; } .social svg { width: 18px; height: 18px; fill: currentColor; }
