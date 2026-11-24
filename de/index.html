@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="de"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung</title>
+  <meta name="description" content="Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.">
+  <meta name="theme-color" content="#071018">
+  
+  <link rel="alternate" hreflang="en" href="https://www.heliximpulse.com/">
+  <link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/de/">
+  <link rel="alternate" hreflang="x-default" href="https://www.heliximpulse.com/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="canonical" href="https://www.heliximpulse.com/de/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Helix Impulse">
+  <meta property="og:title" content="Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung">
+  <meta property="og:description" content="Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.">
+  <meta property="og:url" content="https://www.heliximpulse.com/de/">
+  <meta property="og:image" content="https://www.heliximpulse.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="../assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="stylesheet" href="../assets/fonts.css">
+  <style>
+    /* Design tokens taken from the Helix Impulse app */
+    :root {
+      --bg: #071018; --bg-2: #0c1824; --surf: #10202e; --surf-2: #162838;
+      --line: rgba(150, 196, 224, .18);
+      --ink: #e8f2f8; --muted: #8ea4b5;
+      --accent: #3ec6ff; --accent-ink: #041018;
+      --glow: rgba(62, 198, 255, .16);
+      --font: "DM Sans", "Segoe UI", sans-serif;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body, html { margin: 0; padding: 0; overflow-x: clip; }
+    body {
+      font-family: var(--font); font-size: 17px; line-height: 1.6; color: var(--ink);
+      background:
+        radial-gradient(900px 420px at 100% -10%, var(--glow), transparent 55%),
+        radial-gradient(700px 380px at -10% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 50%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    h1, h2, h3 { font-weight: 600; letter-spacing: -.02em; margin: 0 0 .4em; line-height: 1.2; }
+    p { margin: 0 0 1em; }
+    a { color: var(--accent); }
+
+    /* Top bar */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 12px 28px; border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 8;
+      background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px);
+    }
+    .brand { color: var(--ink); font-weight: 600; font-size: 20px; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
+    .brand { display: inline-flex; align-items: center; }
+    .brand-mark { height: 36px; width: auto; margin-right: 10px; }
+    .brand span { color: var(--accent); margin-left: .25em; }
+    .row { display: flex; align-items: center; gap: 8px; }
+    .nav { display: flex; gap: 2px; margin-right: 8px; }
+    .nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; font-size: 15px; }
+    .nav a:hover { color: var(--ink); }
+    .locale { display: flex; gap: 2px; }
+    .locale button { padding: 8px; min-height: 40px; background: transparent; border: 0; cursor: pointer; color: var(--muted); font: inherit; font-size: 15px; }
+    .locale button[aria-pressed="true"] { color: var(--accent); font-weight: 600; }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(180deg, #6ad4ff, #2eb4ef); color: var(--accent-ink);
+      border: 0; padding: 10px 16px; border-radius: 12px; font: inherit; font-size: 16px; font-weight: 650; cursor: pointer;
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none; box-shadow: 0 8px 22px rgba(46, 180, 239, .22);
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .topbar-contact .short { display: none; }
+    .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+    .btn.cta { min-height: 52px; padding: 14px 28px; border-radius: 14px; letter-spacing: -.01em; }
+
+    /* Layout */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .narrow { max-width: 760px; }
+    .tag { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; font-weight: 500; }
+    section { padding: 88px 0; }
+    section h2 { font-size: 36px; line-height: 1.15; letter-spacing: -.03em; margin-bottom: 16px; }
+    .muted { color: var(--muted); }
+    .alt { background: color-mix(in srgb, var(--surf-2) 45%, transparent); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+    /* Hero */
+    .hero { padding: 120px 0 96px; text-align: center; }
+    .hero-logo { height: 128px; width: auto; margin: 0 auto 28px; }
+    .hero-logo { display: block; }
+    .hero h1 { font-size: 60px; line-height: 1.05; font-weight: 650; letter-spacing: -.035em; max-width: 820px; margin: 0 auto 24px; }
+    .hero .lead { font-size: 20px; line-height: 1.5; color: var(--muted); max-width: 680px; margin: 0 auto; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
+    .team-strip { display: inline-flex; align-items: center; gap: 14px; margin-top: 48px; padding: 8px 18px 8px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 15px; text-decoration: none; transition: border-color .2s; }
+    .team-strip:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+    .team-strip strong { color: var(--ink); font-weight: 600; }
+    .faces { display: flex; }
+    .faces img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--bg); filter: grayscale(1); }
+    .faces img + img { margin-left: -10px; }
+
+    /* Simple three-column text blocks */
+    .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 40px; }
+    .cols h3 { font-size: 20px; }
+    .cols p { color: var(--muted); margin: 0; }
+    .cols .n { display: block; color: var(--accent); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+
+    /* History quote */
+    .quote { font-size: 26px; line-height: 1.35; letter-spacing: -.02em; font-weight: 500; margin: 8px 0 28px; padding-left: 20px; border-left: 3px solid var(--accent); }
+    .cols.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* Upcoming offers: label sits above the heading so headings stay aligned across columns */
+    .upcoming { position: relative; }
+    .upcoming h3, .upcoming p { opacity: .7; }
+    .soon { position: absolute; left: 54px; top: 10px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
+    .sub { font-size: 20px; margin: 64px 0 0; }
+    .get { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+    .get li { border-top: 1px solid var(--line); padding-top: 16px; }
+    .get strong { display: block; margin-bottom: 4px; }
+    .get span { color: var(--muted); font-size: 15px; }
+    select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 36px; cursor: pointer; }
+    select.input option { background: var(--bg-2); }
+    .cols.four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+
+    /* Team */
+    .people { display: grid; gap: 88px; margin-top: 48px; }
+    .person:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); }
+    .person:nth-child(even) .portrait { order: 2; }
+    .person { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px; align-items: center; }
+    .portrait { margin: 0; position: relative; border-radius: 24px; padding: 2px; background: linear-gradient(160deg, var(--accent), transparent 45%, color-mix(in srgb, #7fa8d8 70%, transparent)); box-shadow: 0 30px 80px -30px var(--glow); }
+    .portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 22px; filter: grayscale(1) contrast(1.05); }
+    .role { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 8px; }
+    .person-name { font-size: 32px; letter-spacing: -.03em; margin: 0 0 4px; }
+    .person-meta { color: var(--ink); opacity: .8; margin: 0 0 18px; }
+    .person-body .muted { max-width: 36rem; margin-bottom: 14px; }
+    .linkedin { gap: 8px; margin-top: 8px; }
+    .linkedin svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* Icons for columns and lists */
+    .ico { display: inline-grid; place-items: center; width: 42px; height: 42px; margin-bottom: 14px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+    .ico svg { width: 21px; height: 21px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .get .ico { width: 36px; height: 36px; border-radius: 10px; margin-bottom: 12px; }
+    .get .ico svg { width: 18px; height: 18px; }
+    .upcoming .ico { opacity: .7; }
+
+    /* Helix motif from the logo behind the tinted sections, alternating sides */
+    #about, #history, #faq { position: relative; overflow: hidden; }
+    #about::before, #history::before, #faq::before { content: ""; position: absolute; top: 50%; width: 340px; height: 880px; background: url("../assets/logo-mark.png") no-repeat center / contain; opacity: .065; pointer-events: none; }
+    #history::before { right: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(8deg); }
+    #about::before, #faq::before { left: max(-120px, calc((100vw - 1100px) / 2 - 200px)); transform: translateY(-50%) rotate(-8deg) scaleX(-1); }
+    #about .wrap, #history .wrap, #faq .wrap { position: relative; }
+
+    /* Overview video */
+    .video-card { margin: 40px 0 8px; max-width: 960px; }
+    .video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); box-shadow: 0 30px 80px -30px var(--glow); background: #050b12; }
+    .video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; inset: 0; display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 12px; padding: 0 0 20px 20px; border: 0; background: linear-gradient(180deg, transparent 60%, rgba(4, 10, 18, .7)); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+    .video-play svg { width: 52px; height: 52px; padding: 15px 13px 15px 17px; border-radius: 50%; background: linear-gradient(180deg, #6ad4ff, #2eb4ef); fill: var(--accent-ink); box-shadow: 0 10px 30px rgba(46, 180, 239, .35); transition: transform .2s ease; }
+    .video-play:hover svg, .video-play:focus-visible svg { transform: scale(1.08); }
+    .video-play:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+    .video-frame.playing .video-play { display: none; }
+    .video-play span { padding-bottom: 14px; }
+
+    /* Link to the tutorials page */
+    .tut-link { display: flex; align-items: center; gap: 16px; margin-top: 32px; padding: 16px 20px; max-width: 560px; border-radius: 14px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surf) 92%, transparent); color: var(--ink); text-decoration: none; transition: border-color .15s ease; }
+    .tut-link:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+    .tut-link .ico { margin: 0; flex: none; }
+    .tut-link strong { display: block; }
+    .tut-link strong + span { color: var(--muted); font-size: 15px; }
+    .tut-arrow { margin-left: auto; color: var(--accent); font-size: 20px; transition: transform .15s ease; }
+    .tut-link:hover .tut-arrow { transform: translateX(4px); }
+
+    /* FAQ */
+    .faq { display: grid; gap: 12px; max-width: 860px; margin-top: 32px; }
+    .faq details { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 14px; padding: 0 22px; transition: border-color .15s ease; }
+    .faq details[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; font-weight: 600; font-size: 17px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; flex: none; color: var(--accent); font-size: 22px; font-weight: 400; line-height: 1; transition: transform .2s ease; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    .faq details:hover { border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .faq details[open] summary { color: var(--accent); }
+    .faq-a { overflow: hidden; }
+    .faq-a p { color: var(--muted); margin: 0 0 18px; max-width: 46rem; }
+    .faq-more { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; max-width: 860px; margin-top: 24px; padding: 22px; border-radius: 14px; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .faq-more h3 { font-size: 18px; margin: 0 0 4px; }
+    .faq-more p { color: var(--muted); margin: 0; }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+    form { background: color-mix(in srgb, var(--surf) 92%, transparent); border: 1px solid var(--line); border-radius: 16px; padding: 26px; display: grid; gap: 4px; }
+    label { display: block; margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+    .input, textarea {
+      display: block; width: 100%; margin-top: 6px; background: var(--bg-2); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; min-height: 44px; font: inherit; font-size: 16px;
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    .input:focus, textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 50%, transparent); outline-offset: 1px; border-color: var(--accent); }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; }
+    .check input { margin-top: 3px; }
+    .honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .note.error { color: #ff5d73; }
+    .note { color: var(--accent); font-size: 14px; min-height: 1.4em; margin: 8px 0 0; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+    .social { display: inline-flex; gap: 8px; align-items: center; } .social a, .mobile-menu .social a.soc { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); transition: color .2s, box-shadow .2s; } .social a:hover, .mobile-menu .social a.soc:hover { color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); } .social svg { width: 19px; height: 19px; fill: currentColor; } .mobile-menu .social { margin-top: 20px; gap: 10px; } @media (max-width: 640px) { .top-social { display: none; } }
+
+    /* Dropdown menu, shown wherever the inline nav is hidden */
+    .menu-toggle { display: none; position: relative; width: 44px; height: 40px; border: 1px solid var(--line); border-radius: 12px; background: transparent; cursor: pointer; }
+    .menu-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .25s ease, opacity .2s ease; }
+    .menu-toggle span:nth-child(1) { top: 13px; }
+    .menu-toggle span:nth-child(2) { top: 19px; }
+    .menu-toggle span:nth-child(3) { top: 25px; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu { position: absolute; left: 0; right: 0; top: 100%; display: grid; padding: 8px 28px 24px; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .75); animation: menu-in .22s ease; }
+    .mobile-menu[hidden] { display: none; }
+    .mobile-menu a:not(.btn) { color: var(--ink); text-decoration: none; font-size: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .mobile-menu a:not(.btn):hover { color: var(--accent); }
+    .mobile-menu .btn { margin-top: 20px; }
+    @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 1220px) { .nav { display: none; } .menu-toggle { display: inline-block; } }
+    @media (max-width: 860px) {
+      .hero { padding: 80px 0 64px; }
+      .hero h1 { font-size: 42px; }
+      .cols, .cols.two, .contact { grid-template-columns: 1fr; gap: 32px; }
+      .person, .person:nth-child(even) { grid-template-columns: 1fr; gap: 28px; }
+      .person:nth-child(even) .portrait { order: 0; }
+      .people { gap: 64px; }
+      .portrait { max-width: 340px; }
+      .cols.four, .get { grid-template-columns: 1fr 1fr; }
+      #history::before { right: -140px; }
+      #about::before, #faq::before { left: -140px; }
+      #about::before, #history::before, #faq::before { opacity: .05; }
+      .video-frame { border-radius: 14px; }
+      .video-play { padding: 0 0 10px 10px; }
+      .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
+      .video-play span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    }
+    @media (max-width: 640px) {
+      .wrap, .topbar { padding-left: 16px; padding-right: 16px; }
+      .mobile-menu { padding: 4px 16px 20px; }
+      .hero h1 { font-size: 34px; line-height: 1.1; }
+      .hero-logo { height: 96px; margin-bottom: 20px; }
+      .brand-mark { height: 30px; margin-right: 8px; }
+      .hero .lead { font-size: 17px; }
+      section { padding: 60px 0; }
+      section h2 { font-size: 28px; }
+      .quote { font-size: 21px; }
+      .pair, .get, .cols.four { grid-template-columns: 1fr; }
+      .topbar-cta { display: none; }
+      .topbar-contact { min-height: 40px; padding: 8px 12px; font-size: 14px; white-space: nowrap; }
+      .topbar-contact .long { display: none; }
+      .topbar-contact .short { display: inline; }
+      .row { gap: 4px; }
+      .team-strip { border-radius: 18px; text-align: left; font-size: 14px; }
+      .hero-actions .btn { flex: 1 1 100%; }
+    }
+    .js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .js-reveal .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+  <script src="../assets/analytics.js" defer=""></script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://www.heliximpulse.com/#organization",
+   "name": "Helix Impulse",
+   "legalName": "Helix Impulse GbR",
+   "url": "https://www.heliximpulse.com/",
+   "logo": "https://www.heliximpulse.com/assets/logo-mark.png",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Niestetal",
+    "postalCode": "34266",
+    "addressCountry": "DE"
+   },
+   "founder": [
+    {
+     "@type": "Person",
+     "name": "Johan Klee",
+     "jobTitle": "Founder",
+     "description": "M.Sc. Customer Relationship Marketing · Valencia · Katowice · Aschaffenburg · Bergamo",
+     "image": "https://www.heliximpulse.com/assets/team-johan-klee.jpg",
+     "sameAs": [
+      "https://www.linkedin.com/in/johan-klee-14b252242/"
+     ]
+    },
+    {
+     "@type": "Person",
+     "name": "Leon Müller",
+     "jobTitle": "Founder",
+     "description": "Masterstudium BWL · Universität zu Köln",
+     "image": "https://www.heliximpulse.com/assets/team-leon-mueller.jpg",
+     "sameAs": [
+      "https://www.linkedin.com/in/leon-m%C3%BCller1208/"
+     ]
+    },
+    {
+     "@type": "Person",
+     "name": "Sarah Kniel",
+     "jobTitle": "Founder",
+     "description": "Projektmanagement bei Volkswagen · Lehrauftrag an der Universität Kassel",
+     "image": "https://www.heliximpulse.com/assets/team-sarah-kniel.jpg",
+     "sameAs": [
+      "https://www.linkedin.com/in/sarahkniel/"
+     ],
+     "honorificPrefix": "Dr."
+    },
+    {
+     "@type": "Person",
+     "name": "Alexander Hartmann",
+     "jobTitle": "Founder",
+     "description": "Hochschuldozent & Unternehmensberater",
+     "image": "https://www.heliximpulse.com/assets/team-alexander-hartmann.jpg",
+     "sameAs": [
+      "https://www.linkedin.com/in/alexanderhartmann-kassel/"
+     ]
+    }
+   ],
+   "sameAs": [
+    "https://www.linkedin.com/company/heliximpulse/",
+    "https://www.instagram.com/heliximpulse/"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://www.heliximpulse.com/#website",
+   "name": "Helix Impulse",
+   "url": "https://www.heliximpulse.com/",
+   "inLanguage": [
+    "en",
+    "de"
+   ],
+   "publisher": {
+    "@id": "https://www.heliximpulse.com/#organization"
+   }
+  },
+  {
+   "@type": "Service",
+   "@id": "https://www.heliximpulse.com/#simulation",
+   "name": "Helix Impulse",
+   "serviceType": "Marketing-Unternehmenssimulation",
+   "description": "Helix Impulse ist eine Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Sie macht Unternehmensstrategie und Marketing durch wettbewerbsorientierte Entscheidungen im Team erlebbar. Die Teilnehmenden führen virtuelle Unternehmen, entwickeln Produkte, legen ihre Marktpositionierung fest und treffen strategische Marketingentscheidungen. Sie konkurrieren um Kundschaft und Marktanteile und erleben über mehrere Runden, wie ihre Entscheidungen den Unternehmenserfolg beeinflussen.",
+   "provider": {
+    "@id": "https://www.heliximpulse.com/#organization"
+   },
+   "image": "https://www.heliximpulse.com/assets/og-image.png",
+   "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "teacher"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Was ist Helix Impulse?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren um Kundschaft und Marktanteile und treffen über mehrere Runden strategische Entscheidungen."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Für welche Kursformate eignet sich die Simulation?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Für Intensivkurse, semesterbegleitende Seminare und Programme an Business Schools – vom Bachelor und Master bis zu MBA und Executive Education."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Wie viele Runden werden gespielt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Das entscheiden Sie. Die Zahl der Geschäftsjahre richtet sich nach Ihrer Veranstaltung, und wir geben Ihnen Empfehlungen für verschiedene Formate."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Wie viele Teams können teilnehmen?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In einer Simulation treten 2 bis 10 Teams gegeneinander an. Jedes Team führt ein eigenes Unternehmen."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Was erhalten Lehrende?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Einführungsvideos, Lehrmaterialien und Unterlagen, Empfehlungen für Ihr Kursformat und Support im Hintergrund, während Sie die Simulation durchführen."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Was brauchen die Teilnehmenden?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nur einen Webbrowser. Es muss nichts installiert werden."
+     }
+    }
+   ],
+   "inLanguage": "de"
+  },
+  {
+   "@type": "VideoObject",
+   "name": "How the Helix Impulse simulation works",
+   "description": "A 30-second overview of how a round of the Helix Impulse marketing business simulation works.",
+   "thumbnailUrl": "https://www.heliximpulse.com/assets/video/how-the-simulation-works-poster.jpg",
+   "contentUrl": "https://www.heliximpulse.com/assets/video/how-the-simulation-works.mp4",
+   "uploadDate": "2026-10-29T17:18:02+00:00",
+   "duration": "PT0M30S",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://www.heliximpulse.com/#organization"
+   }
+  },
+  {
+   "@type": "VideoObject",
+   "name": "What educators get with Helix Impulse",
+   "description": "A 30-second overview of what educators receive when they use Helix Impulse in their course.",
+   "thumbnailUrl": "https://www.heliximpulse.com/assets/video/what-you-get-poster.jpg",
+   "contentUrl": "https://www.heliximpulse.com/assets/video/what-you-get.mp4",
+   "uploadDate": "2026-10-29T17:18:02+00:00",
+   "duration": "PT0M30S",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://www.heliximpulse.com/#organization"
+   }
+  }
+ ]
+}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><img class="brand-mark" src="../assets/logo-mark.png" alt="" width="14" height="36">Helix<span>Impulse</span></a>
+    <div class="row">
+      <nav class="nav" aria-label="Hauptmenü">
+        <a href="#about" data-i18n="nav.about">Über uns</a>
+        <a href="#teaching" data-i18n="nav.teaching">Lehre</a>
+        <a href="#history" data-i18n="nav.history">Geschichte</a>
+        <a href="#team" data-i18n="nav.team">Team</a>
+        <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="../tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
+      </nav>
+      <span class="social top-social"><a class="soc" href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg></a><a class="soc" href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse auf Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"></path></svg></a></span>
+      <div class="locale" role="group" aria-label="Sprache">
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      </div>
+      <a class="btn ghost topbar-cta" href="#about" data-i18n="hero.secondary">Mehr erfahren</a>
+      <a class="btn topbar-contact" href="#contact"><span class="long" data-i18n="nav.cta">Kontakt aufnehmen</span><span class="short" data-i18n="nav.ctaShort">Kontakt</span></a>
+      <button type="button" class="menu-toggle" aria-label="Menü" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Hauptmenü" hidden="">
+      <a href="#about" data-i18n="nav.about">Über uns</a>
+      <a href="#teaching" data-i18n="nav.teaching">Lehre</a>
+      <a href="#history" data-i18n="nav.history">Geschichte</a>
+      <a href="#team" data-i18n="nav.team">Team</a>
+      <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="../tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
+      <span class="social"><a class="soc" href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg></a><a class="soc" href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse auf Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"></path></svg></a></span>
+      <a class="btn" href="#contact" data-i18n="hero.cta">Kontakt aufnehmen</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero wrap">
+      <img class="hero-logo" src="../assets/logo-mark.png" alt="Helix Impulse" width="50" height="128">
+      <div class="tag" data-i18n="hero.tag">Marketing-Unternehmenssimulation für die Hochschullehre</div>
+      <h1 data-i18n="hero.title">Strategie lernt man, indem man entscheidet.</h1>
+      <p class="lead" data-i18n="hero.lead">Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools – von Lehrenden für Lehrende.</p>
+      <div class="hero-actions">
+        <a class="btn cta" href="#contact" data-i18n="hero.cta">Kontakt aufnehmen</a>
+        <a class="btn cta ghost" href="#team" data-i18n="hero.cta2">Das Team kennenlernen</a>
+      </div>
+      <a class="team-strip" href="#team">
+        <span class="faces" aria-hidden="true">
+          <img src="../assets/team-johan-klee.jpg" alt="" width="44" height="44">
+          <img src="../assets/team-leon-mueller.jpg" alt="" width="44" height="44">
+          <img src="../assets/team-sarah-kniel.jpg" alt="" width="44" height="44">
+          <img src="../assets/team-alexander-hartmann.jpg" alt="" width="44" height="44">
+        </span>
+        <span data-i18n="hero.strip"><strong>Über 20 Jahre</strong> Erfahrung mit Unternehmenssimulationen · Zum Team</span>
+      </a>
+    </div>
+  </main>
+
+  <section id="about" class="alt">
+    <div class="wrap">
+      <div class="tag" data-i18n="ab.tag">Über uns</div>
+      <h2 data-i18n="ab.title">Unternehmensstrategie und Marketing zum Erleben</h2>
+      <div class="narrow">
+        <p class="muted" data-i18n="ab.p1">Helix Impulse ist eine Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Sie macht Unternehmensstrategie und Marketing durch wettbewerbsorientierte Entscheidungen im Team erlebbar.</p>
+        <p class="muted" data-i18n="ab.p2">Die Teilnehmenden führen virtuelle Unternehmen, entwickeln Produkte, legen ihre Marktpositionierung fest und treffen strategische Marketingentscheidungen. Sie konkurrieren um Kundschaft und Marktanteile und erleben über mehrere Runden, wie ihre Entscheidungen den Unternehmenserfolg beeinflussen.</p>
+      </div>
+      <figure class="video-card">
+        <div class="video-frame">
+          <video src="../assets/video/how-the-simulation-works.mp4" poster="../assets/video/how-the-simulation-works-poster.jpg" preload="none" playsinline="" width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Video abspielen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"></path></svg><span data-i18n="vid.round">In 30 Sekunden sehen, wie die Simulation funktioniert</span></button>
+        </div>
+      </figure>
+      <div class="cols two">
+        <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg></span><h3 data-i18n="ab.1t">Für Hochschulen und Business Schools</h3><p data-i18n="ab.1p">Eine interaktive Möglichkeit, Marketing, Wettbewerbsstrategie und strategische Entscheidungsfindung zu lehren.</p></div>
+        <div class="upcoming"><span class="soon" data-i18n="soon">Demnächst</span><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"></path></svg></span><h3 data-i18n="ab.2t">Für Unternehmen und Weiterbildungsanbieter</h3><p data-i18n="ab.2p">Ein Umfeld, in dem Führungskräfte und Teams strategische Optionen erkunden, ihre Annahmen überprüfen und aus den Folgen lernen können – ohne reales unternehmerisches Risiko.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="wrap">
+      <div class="tag" data-i18n="te.tag">Lehre</div>
+      <h2 data-i18n="te.title">Passt in Ihre Lehre</h2>
+      <p class="muted narrow" data-i18n="te.intro">Sie entscheiden, wie viele Runden gespielt werden und wie sich die Simulation in Ihre Veranstaltung einfügt. Wir geben Ihnen Empfehlungen für verschiedene Formate.</p>
+      <figure class="video-card">
+        <div class="video-frame">
+          <video src="../assets/video/what-you-get.mp4" poster="../assets/video/what-you-get-poster.jpg" preload="none" playsinline="" width="1920" height="1080"></video>
+          <button type="button" class="video-play" aria-label="Video abspielen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"></path></svg><span data-i18n="vid.play">Überblick in 30 Sekunden ansehen</span></button>
+        </div>
+      </figure>
+      <div class="cols four">
+        <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"></path></svg></span><h3 data-i18n="te.1t">Intensivkurse</h3><p data-i18n="te.1p">Eine vollständige Simulation in kurzer Zeit – fokussiert und intensiv.</p></div>
+        <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></span><h3 data-i18n="te.2t">Seminare</h3><p data-i18n="te.2p">Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.</p></div>
+        <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg></span><h3 data-i18n="te.3t">Business Schools</h3><p data-i18n="te.3p">Für Bachelor, Master, MBA und Executive Education.</p></div>
+        <div class="upcoming"><span class="soon" data-i18n="soon">Demnächst</span><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"></path></svg></span><h3 data-i18n="te.4t">Berufliche Weiterbildung</h3><p data-i18n="te.4p">Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.</p></div>
+      </div>
+
+      <h3 class="sub" data-i18n="te.getTitle">Was Sie als Lehrende erhalten</h3>
+      <ul class="get">
+        <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m10 8 6 4-6 4V8Z"></path></svg></span><strong data-i18n="te.g1t">Einführungsvideos</strong><span data-i18n="te.g1p">Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.</span></li>
+        <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6M8 13h8M8 17h6"></path></svg></span><strong data-i18n="te.g2t">Materialien und Unterlagen</strong><span data-i18n="te.g2p">Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.</span></li>
+        <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m16 8-2 6-6 2 2-6 6-2Z"></path></svg></span><strong data-i18n="te.g3t">Empfehlungen</strong><span data-i18n="te.g3p">Vorschläge zur Zahl der Runden und zum Zeitplan für Ihr Format.</span></li>
+        <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path><path d="M8 9h8M8 13h5"></path></svg></span><strong data-i18n="te.g4t">Support im Hintergrund</strong><span data-i18n="te.g4p">Wir sind für Sie da, während Sie die Simulation durchführen.</span></li>
+      </ul>
+      <a class="tut-link" href="../tutorials.html">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m10 8 6 4-6 4V8Z"></path></svg></span>
+        <span><strong data-i18n="tl.title">Tutorials</strong><span data-i18n="tl.text">Kurze Videos, die die Simulation Schritt für Schritt erklären.</span></span>
+        <span class="tut-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="history" class="alt">
+    <div class="wrap narrow">
+      <div class="tag" data-i18n="hi.tag">Geschichte</div>
+      <h2 data-i18n="hi.title">Aus der Lehrpraxis entwickelt. Für besseres Lernen gestaltet.</h2>
+      <p class="muted" data-i18n="hi.p1">Wir unterrichten seit mehr als 20 Jahren mit Unternehmenssimulationen an Hochschulen. Wir wissen, was sie wertvoll macht – und was es schwer machen kann, sie vorzubereiten, zu erklären und in die Lehre einzubinden.</p>
+      <p class="muted" data-i18n="hi.p2">Deshalb haben wir Helix Impulse um eine einfache Idee herum gebaut:</p>
+      <p class="quote" data-i18n="hi.quote">Die strategischen Entscheidungen behalten, die zählen. Unnötige Komplexität weglassen.</p>
+      <p class="muted" data-i18n="hi.p3">Das Ergebnis ist eine fokussierte Marketing- und Strategiesimulation mit intuitiver Oberfläche – ausgerichtet auf echte Anforderungen der Lehre und leichter zu nutzen für Teilnehmende wie Lehrende.</p>
+      <p class="muted" data-i18n="hi.p4">Unser Ziel ist einfach: Unternehmenssimulationen sollen leichter einzusetzen, spannender zu erleben und relevanter für die Menschen sein, die mit ihnen lernen.</p>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="tag" data-i18n="tm.tag">Team</div>
+      <h2 data-i18n="tm.title">Die Lehrenden hinter Helix Impulse</h2>
+      <p class="muted narrow" data-i18n="tm.intro">Lehrende und Praktiker mit akademischem Hintergrund in Deutschland, Spanien, Italien und Polen – verbunden durch langjährige Erfahrung mit Unternehmenssimulationen.</p>
+      <div class="people">
+        <article class="person">
+          <figure class="portrait"><img src="../assets/team-johan-klee.jpg" alt="Johan Klee" width="640" height="800" loading="lazy"></figure>
+          <div class="person-body">
+            <p class="role">Founder</p>
+            <h3 class="person-name">Johan Klee</h3>
+            <p class="person-meta" data-i18n="tm.2meta">M.Sc. Customer Relationship Marketing · Valencia · Katowice · Aschaffenburg · Bergamo</p>
+            <p class="muted" data-i18n="tm.2p1">Ich habe kürzlich ein vierfaches Masterprogramm in Customer Relationship Marketing abgeschlossen und bringe über vier Jahre Erfahrung als Tutor in einem internationalen Kurs mit Unternehmenssimulation mit. Die enge Arbeit mit Studierenden aus vielen Ländern hat mir gezeigt, wie wirkungsvoll erfahrungsbasiertes Lernen die Lücke zwischen akademischer Theorie und realen unternehmerischen Entscheidungen schließen kann.</p>
+            <p class="muted" data-i18n="tm.2p2">Am meisten motiviert mich, wenn Studierende ihr strategisches Denken entwickeln, ihre Annahmen hinterfragen und Sicherheit bei komplexen unternehmerischen Entscheidungen gewinnen. Mit Helix Impulse möchte ich auf diesen Erfahrungen aufbauen und interaktive, praxisnahe Managementausbildung für Studierende und Lehrende weltweit zugänglicher, spannender und wirkungsvoller machen.</p>
+            <a class="btn ghost linkedin" href="https://www.linkedin.com/in/johan-klee-14b252242/" target="_blank" rel="noopener" aria-label="Johan Klee auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg>LinkedIn</a>
+          </div>
+        </article>
+        <article class="person">
+          <figure class="portrait"><img src="../assets/team-leon-mueller.jpg" alt="Leon Müller" width="640" height="800" loading="lazy"></figure>
+          <div class="person-body">
+            <p class="role">Founder</p>
+            <h3 class="person-name">Leon Müller</h3>
+            <p class="person-meta" data-i18n="tm.4meta">Masterstudium BWL · Universität zu Köln</p>
+            <p class="muted" data-i18n="tm.4p1">Ich studiere im Master Betriebswirtschaftslehre an der Universität zu Köln mit dem Schwerpunkt Corporate Development. Mich interessieren vor allem Unternehmensstrategie, M&amp;A, Private Equity und Venture Capital.</p>
+            <p class="muted" data-i18n="tm.4p2">Im Studium habe ich gemerkt, wie viel mehr ich lerne, wenn ich unternehmerische Entscheidungen tatsächlich treffen muss, statt nur darüber zu lesen. Geschäftsmodelle analysieren, Zielkonflikte abwägen und sehen, wie sich die Folgen einer Entscheidung entfalten – genau dadurch wird Strategie greifbar.</p>
+            <p class="muted" data-i18n="tm.4p3">Mit Helix Impulse möchte ich mehr Studierenden helfen, über die Theorie hinauszugehen, ihre Annahmen zu hinterfragen und zu entdecken, wie unternehmerische Entscheidungen wirklich funktionieren – und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.</p>
+            <a class="btn ghost linkedin" href="https://www.linkedin.com/in/leon-m%C3%BCller1208/" target="_blank" rel="noopener" aria-label="Leon Müller auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg>LinkedIn</a>
+          </div>
+        </article>
+        <article class="person">
+          <figure class="portrait"><img src="../assets/team-sarah-kniel.jpg" alt="Dr. Sarah Kniel" width="640" height="800" loading="lazy"></figure>
+          <div class="person-body">
+            <p class="role">Founder</p>
+            <h3 class="person-name">Dr. Sarah Kniel</h3>
+            <p class="person-meta" data-i18n="tm.3meta">Projektmanagement bei Volkswagen · Lehrauftrag an der Universität Kassel</p>
+            <p class="muted" data-i18n="tm.3p1">Ich arbeite im Projektmanagement bei Volkswagen und lehre an der Universität Kassel, wo ich auch einen Kurs mit Unternehmenssimulation entwickelt habe. Seit mehr als 15 Jahren leite ich Projekte mit Unternehmenssimulationen und verbinde dabei meine Expertise in Technologie, Unternehmensstrategie und Bildung, um spannende, praxisnahe Lernerfahrungen zu schaffen.</p>
+            <p class="muted" data-i18n="tm.3p2">Was mich an Helix Impulse begeistert, ist das Potenzial, komplexe unternehmerische Herausforderungen in spannende Lernerfahrungen zum Anfassen zu verwandeln. Ich bin fest davon überzeugt, dass Unternehmenssimulationen strategisches Denken, Entscheidungskompetenz und ein tieferes Verständnis wirtschaftlicher Zusammenhänge fördern. Helix Impulse gibt Studierenden die Möglichkeit, zu experimentieren, Entscheidungen zu treffen, ihre Folgen zu erleben und in einem realistischen, aber risikofreien Umfeld zu lernen – genau deshalb glaube ich an diesen Bildungsansatz und unterstütze ihn.</p>
+            <a class="btn ghost linkedin" href="https://www.linkedin.com/in/sarahkniel/" target="_blank" rel="noopener" aria-label="Dr. Sarah Kniel auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg>LinkedIn</a>
+          </div>
+        </article>
+        <article class="person">
+          <figure class="portrait"><img src="../assets/team-alexander-hartmann.jpg" alt="Alexander Hartmann" width="640" height="800" loading="lazy"></figure>
+          <div class="person-body">
+            <p class="role">Founder</p>
+            <h3 class="person-name">Alexander Hartmann</h3>
+            <p class="person-meta" data-i18n="tm.1meta">Hochschuldozent &amp; Unternehmensberater</p>
+            <p class="muted" data-i18n="tm.1p1">Ich bin Hochschuldozent und Unternehmensberater mit einem Hintergrund in Strategie, Organisationsforschung und Managementausbildung. Über die Jahre habe ich Studierende aus vielen Ländern unterrichtet und selbst erlebt, wie wirkungsvoll Unternehmenssimulationen sein können.</p>
+            <p class="muted" data-i18n="tm.1p2">Am meisten begeistert mich, wenn Studierende über die Theorie hinausgehen, ihre Annahmen hinterfragen und entdecken, wie unternehmerische Entscheidungen tatsächlich funktionieren. Mit Helix Impulse möchte ich mehr dieser Momente in die Lehre bringen und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.</p>
+            <a class="btn ghost linkedin" href="https://www.linkedin.com/in/alexanderhartmann-kassel/" target="_blank" rel="noopener" aria-label="Alexander Hartmann auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg>LinkedIn</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <div class="tag" data-i18n="ct.tag">Kontakt</div>
+        <h2 data-i18n="ct.title">Kontakt</h2>
+        <p class="muted" data-i18n="ct.intro">Sie möchten Helix Impulse in Aktion sehen oder in Ihrer Veranstaltung einsetzen? Wählen Sie Ihr Anliegen und senden Sie uns eine kurze Nachricht.</p>
+      </div>
+      <form id="contact-form" novalidate="">
+        <label style="margin-top:0"><span data-i18n="f.type">Ich interessiere mich für</span>
+          <select class="input" name="type">
+            <option value="Demo for a course" data-i18n="f.t1">Eine Demo für meine Veranstaltung</option>
+            <option value="License" data-i18n="f.t4">Eine Lizenz für meine Institution</option>
+            <option value="General question" data-i18n="f.t2">Eine allgemeine Frage</option>
+            <option value="Professional training" data-i18n="f.t3">Berufliche Weiterbildung (demnächst)</option>
+          </select>
+        </label>
+        <div class="pair">
+          <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" required=""></label>
+          <label><span data-i18n="f.email">E-Mail</span><input class="input" name="email" type="email" autocomplete="email" required=""></label>
+        </div>
+        <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
+        <label><span data-i18n="f.msg">Nachricht</span><textarea name="message" required=""></textarea></label>
+        <input type="text" name="botcheck" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" name="consent" required=""><span data-i18n="f.consent">Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.</span></label>
+        <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Anfrage senden</button></div>
+        <p class="note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="tag" data-i18n="faq.tag">FAQ</div>
+      <h2 data-i18n="faq.title">Fragen von Lehrenden</h2>
+      <div class="faq">
+        <details>
+          <summary data-i18n="faq.q1">Was ist Helix Impulse?</summary>
+          <div class="faq-a"><p data-i18n="faq.a1">Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren um Kundschaft und Marktanteile und treffen über mehrere Runden strategische Entscheidungen.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q2">Für welche Kursformate eignet sich die Simulation?</summary>
+          <div class="faq-a"><p data-i18n="faq.a2">Für Intensivkurse, semesterbegleitende Seminare und Programme an Business Schools – vom Bachelor und Master bis zu MBA und Executive Education.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q3">Wie viele Runden werden gespielt?</summary>
+          <div class="faq-a"><p data-i18n="faq.a3">Das entscheiden Sie. Die Zahl der Geschäftsjahre richtet sich nach Ihrer Veranstaltung, und wir geben Ihnen Empfehlungen für verschiedene Formate.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q4">Wie viele Teams können teilnehmen?</summary>
+          <div class="faq-a"><p data-i18n="faq.a4">In einer Simulation treten 2 bis 10 Teams gegeneinander an. Jedes Team führt ein eigenes Unternehmen.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q5">Was erhalten Lehrende?</summary>
+          <div class="faq-a"><p data-i18n="faq.a5">Einführungsvideos, Lehrmaterialien und Unterlagen, Empfehlungen für Ihr Kursformat und Support im Hintergrund, während Sie die Simulation durchführen.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q6">Was brauchen die Teilnehmenden?</summary>
+          <div class="faq-a"><p data-i18n="faq.a6">Nur einen Webbrowser. Es muss nichts installiert werden.</p></div>
+        </details>
+      </div>
+      <div class="faq-more">
+        <div>
+          <h3 data-i18n="faq.moreTitle">Ihre Frage ist nicht dabei?</h3>
+          <p data-i18n="faq.moreText">Schicken Sie sie uns – wir melden uns persönlich bei Ihnen.</p>
+        </div>
+        <a class="btn" href="#contact" id="ask-question" data-i18n="faq.moreCta">Frage stellen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="y"></span> Helix Impulse</span>
+      <span><a href="#history" data-i18n="nav.history">Geschichte</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Kontakt</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="../tutorials.html" data-i18n="nav.tutorials">Tutorials</a> · <a href="../impressum.html" data-i18n="ft.imprint">Impressum</a> · <a href="../datenschutz.html" data-i18n="ft.privacy">Datenschutz</a></span>
+
+      <span class="social"><a href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse auf LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"></path></svg></a><a href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse auf Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"></path></svg></a></span>
+    </div>
+  </footer>
+
+  <script>
+    // English is the source text in the markup; German is applied on demand.
+    const DE = {
+      'meta.title': 'Helix Impulse – Marketing-Unternehmenssimulation für Hochschullehre und Weiterbildung',
+      'meta.desc': 'Helix Impulse ist eine Marketing-Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Von Lehrenden für Lehrende.',
+      'nav.about': 'Über uns', 'nav.teaching': 'Lehre', 'nav.history': 'Geschichte', 'nav.team': 'Team', 'nav.faq': 'FAQ', 'nav.tutorials': 'Tutorials', 'ft.imprint': 'Impressum', 'ft.privacy': 'Datenschutz', 'nav.contact': 'Kontakt', 'nav.cta': 'Kontakt aufnehmen', 'nav.ctaShort': 'Kontakt',
+      'hero.tag': 'Marketing-Unternehmenssimulation für die Hochschullehre',
+      'hero.title': 'Strategie lernt man, indem man entscheidet.',
+      'hero.lead': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools – von Lehrenden für Lehrende.',
+      'hero.secondary': 'Mehr erfahren',
+      'hero.cta': 'Kontakt aufnehmen', 'hero.cta2': 'Das Team kennenlernen',
+      'hero.strip': '<strong>Über 20 Jahre</strong> Erfahrung mit Unternehmenssimulationen · Zum Team',
+      'ab.tag': 'Über uns', 'ab.title': 'Unternehmensstrategie und Marketing zum Erleben',
+      'ab.p1': 'Helix Impulse ist eine Unternehmenssimulation für Hochschulen, Business Schools und berufliche Weiterbildung. Sie macht Unternehmensstrategie und Marketing durch wettbewerbsorientierte Entscheidungen im Team erlebbar.',
+      'ab.p2': 'Die Teilnehmenden führen virtuelle Unternehmen, entwickeln Produkte, legen ihre Marktpositionierung fest und treffen strategische Marketingentscheidungen. Sie konkurrieren um Kundschaft und Marktanteile und erleben über mehrere Runden, wie ihre Entscheidungen den Unternehmenserfolg beeinflussen.',
+      'ab.1t': 'Für Hochschulen und Business Schools', 'ab.1p': 'Eine interaktive Möglichkeit, Marketing, Wettbewerbsstrategie und strategische Entscheidungsfindung zu lehren.',
+      'ab.2t': 'Für Unternehmen und Weiterbildungsanbieter', 'ab.2p': 'Ein Umfeld, in dem Führungskräfte und Teams strategische Optionen erkunden, ihre Annahmen überprüfen und aus den Folgen lernen können – ohne reales unternehmerisches Risiko.',
+      'soon': 'Demnächst',
+      'te.tag': 'Lehre', 'te.title': 'Passt in Ihre Lehre',
+      'te.intro': 'Sie entscheiden, wie viele Runden gespielt werden und wie sich die Simulation in Ihre Veranstaltung einfügt. Wir geben Ihnen Empfehlungen für verschiedene Formate.',
+      'te.1t': 'Intensivkurse', 'te.1p': 'Eine vollständige Simulation in kurzer Zeit – fokussiert und intensiv.',
+      'te.2t': 'Seminare', 'te.2p': 'Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.',
+      'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
+      'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
+      'vid.play': 'Überblick in 30 Sekunden ansehen',
+      'vid.round': 'In 30 Sekunden sehen, wie die Simulation funktioniert',
+      'tl.title': 'Tutorials', 'tl.text': 'Kurze Videos, die die Simulation Schritt für Schritt erklären.',
+      'te.getTitle': 'Was Sie als Lehrende erhalten',
+      'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
+      'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
+      'te.g3t': 'Empfehlungen', 'te.g3p': 'Vorschläge zur Zahl der Runden und zum Zeitplan für Ihr Format.',
+      'te.g4t': 'Support im Hintergrund', 'te.g4p': 'Wir sind für Sie da, während Sie die Simulation durchführen.',
+      'hi.tag': 'Geschichte', 'hi.title': 'Aus der Lehrpraxis entwickelt. Für besseres Lernen gestaltet.',
+      'hi.p1': 'Wir unterrichten seit mehr als 20 Jahren mit Unternehmenssimulationen an Hochschulen. Wir wissen, was sie wertvoll macht – und was es schwer machen kann, sie vorzubereiten, zu erklären und in die Lehre einzubinden.',
+      'hi.p2': 'Deshalb haben wir Helix Impulse um eine einfache Idee herum gebaut:',
+      'hi.quote': 'Die strategischen Entscheidungen behalten, die zählen. Unnötige Komplexität weglassen.',
+      'hi.p3': 'Das Ergebnis ist eine fokussierte Marketing- und Strategiesimulation mit intuitiver Oberfläche – ausgerichtet auf echte Anforderungen der Lehre und leichter zu nutzen für Teilnehmende wie Lehrende.',
+      'hi.p4': 'Unser Ziel ist einfach: Unternehmenssimulationen sollen leichter einzusetzen, spannender zu erleben und relevanter für die Menschen sein, die mit ihnen lernen.',
+      'tm.tag': 'Team', 'tm.title': 'Die Lehrenden hinter Helix Impulse',
+      'tm.intro': 'Lehrende und Praktiker mit akademischem Hintergrund in Deutschland, Spanien, Italien und Polen – verbunden durch langjährige Erfahrung mit Unternehmenssimulationen.',
+      'tm.1meta': 'Hochschuldozent &amp; Unternehmensberater',
+      'tm.1p1': 'Ich bin Hochschuldozent und Unternehmensberater mit einem Hintergrund in Strategie, Organisationsforschung und Managementausbildung. Über die Jahre habe ich Studierende aus vielen Ländern unterrichtet und selbst erlebt, wie wirkungsvoll Unternehmenssimulationen sein können.',
+      'tm.1p2': 'Am meisten begeistert mich, wenn Studierende über die Theorie hinausgehen, ihre Annahmen hinterfragen und entdecken, wie unternehmerische Entscheidungen tatsächlich funktionieren. Mit Helix Impulse möchte ich mehr dieser Momente in die Lehre bringen und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.',
+      'tm.2meta': 'M.Sc. Customer Relationship Marketing · Valencia · Katowice · Aschaffenburg · Bergamo',
+      'tm.2p1': 'Ich habe kürzlich ein vierfaches Masterprogramm in Customer Relationship Marketing abgeschlossen und bringe über vier Jahre Erfahrung als Tutor in einem internationalen Kurs mit Unternehmenssimulation mit. Die enge Arbeit mit Studierenden aus vielen Ländern hat mir gezeigt, wie wirkungsvoll erfahrungsbasiertes Lernen die Lücke zwischen akademischer Theorie und realen unternehmerischen Entscheidungen schließen kann.',
+      'tm.2p2': 'Am meisten motiviert mich, wenn Studierende ihr strategisches Denken entwickeln, ihre Annahmen hinterfragen und Sicherheit bei komplexen unternehmerischen Entscheidungen gewinnen. Mit Helix Impulse möchte ich auf diesen Erfahrungen aufbauen und interaktive, praxisnahe Managementausbildung für Studierende und Lehrende weltweit zugänglicher, spannender und wirkungsvoller machen.',
+      'tm.3meta': 'Projektmanagement bei Volkswagen · Lehrauftrag an der Universität Kassel',
+      'tm.3p1': 'Ich arbeite im Projektmanagement bei Volkswagen und lehre an der Universität Kassel, wo ich auch einen Kurs mit Unternehmenssimulation entwickelt habe. Seit mehr als 15 Jahren leite ich Projekte mit Unternehmenssimulationen und verbinde dabei meine Expertise in Technologie, Unternehmensstrategie und Bildung, um spannende, praxisnahe Lernerfahrungen zu schaffen.',
+      'tm.3p2': 'Was mich an Helix Impulse begeistert, ist das Potenzial, komplexe unternehmerische Herausforderungen in spannende Lernerfahrungen zum Anfassen zu verwandeln. Ich bin fest davon überzeugt, dass Unternehmenssimulationen strategisches Denken, Entscheidungskompetenz und ein tieferes Verständnis wirtschaftlicher Zusammenhänge fördern. Helix Impulse gibt Studierenden die Möglichkeit, zu experimentieren, Entscheidungen zu treffen, ihre Folgen zu erleben und in einem realistischen, aber risikofreien Umfeld zu lernen – genau deshalb glaube ich an diesen Bildungsansatz und unterstütze ihn.',
+      'tm.4meta': 'Masterstudium BWL · Universität zu Köln',
+      'tm.4p1': 'Ich studiere im Master Betriebswirtschaftslehre an der Universität zu Köln mit dem Schwerpunkt Corporate Development. Mich interessieren vor allem Unternehmensstrategie, M&amp;A, Private Equity und Venture Capital.',
+      'tm.4p2': 'Im Studium habe ich gemerkt, wie viel mehr ich lerne, wenn ich unternehmerische Entscheidungen tatsächlich treffen muss, statt nur darüber zu lesen. Geschäftsmodelle analysieren, Zielkonflikte abwägen und sehen, wie sich die Folgen einer Entscheidung entfalten – genau dadurch wird Strategie greifbar.',
+      'tm.4p3': 'Mit Helix Impulse möchte ich mehr Studierenden helfen, über die Theorie hinauszugehen, ihre Annahmen zu hinterfragen und zu entdecken, wie unternehmerische Entscheidungen wirklich funktionieren – und erfahrungsbasiertes Lernen mehr Lehrenden und Studierenden zugänglich machen.',
+      'faq.tag': 'FAQ', 'faq.title': 'Fragen von Lehrenden',
+      'faq.moreTitle': 'Ihre Frage ist nicht dabei?', 'faq.moreText': 'Schicken Sie sie uns – wir melden uns persönlich bei Ihnen.', 'faq.moreCta': 'Frage stellen',
+      'faq.q1': 'Was ist Helix Impulse?',
+      'faq.a1': 'Eine teambasierte Marketing- und Strategiesimulation für Hochschulen und Business Schools. Die Teilnehmenden führen virtuelle Unternehmen, konkurrieren um Kundschaft und Marktanteile und treffen über mehrere Runden strategische Entscheidungen.',
+      'faq.q2': 'Für welche Kursformate eignet sich die Simulation?',
+      'faq.a2': 'Für Intensivkurse, semesterbegleitende Seminare und Programme an Business Schools – vom Bachelor und Master bis zu MBA und Executive Education.',
+      'faq.q3': 'Wie viele Runden werden gespielt?',
+      'faq.a3': 'Das entscheiden Sie. Die Zahl der Geschäftsjahre richtet sich nach Ihrer Veranstaltung, und wir geben Ihnen Empfehlungen für verschiedene Formate.',
+      'faq.q4': 'Wie viele Teams können teilnehmen?',
+      'faq.a4': 'In einer Simulation treten 2 bis 10 Teams gegeneinander an. Jedes Team führt ein eigenes Unternehmen.',
+      'faq.q5': 'Was erhalten Lehrende?',
+      'faq.a5': 'Einführungsvideos, Lehrmaterialien und Unterlagen, Empfehlungen für Ihr Kursformat und Support im Hintergrund, während Sie die Simulation durchführen.',
+      'faq.q6': 'Was brauchen die Teilnehmenden?',
+      'faq.a6': 'Nur einen Webbrowser. Es muss nichts installiert werden.',
+      'ct.tag': 'Kontakt', 'ct.title': 'Kontakt',
+      'ct.intro': 'Sie möchten Helix Impulse in Aktion sehen oder in Ihrer Veranstaltung einsetzen? Wählen Sie Ihr Anliegen und senden Sie uns eine kurze Nachricht.',
+      'f.type': 'Ich interessiere mich für', 'f.t1': 'Eine Demo für meine Veranstaltung', 'f.t4': 'Eine Lizenz für meine Institution', 'f.t2': 'Eine allgemeine Frage', 'f.t3': 'Berufliche Weiterbildung (demnächst)',
+      'f.name': 'Name', 'f.email': 'E-Mail', 'f.org': 'Institution (optional)', 'f.msg': 'Nachricht',
+      'f.consent': 'Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden.',
+      'f.submit': 'Anfrage senden',
+      'f.invalid': 'Bitte Name, E-Mail und Nachricht ausfüllen und die Einwilligung bestätigen.',
+      'f.sending': 'Wird gesendet …',
+      'f.sent': 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze.',
+      'f.failed': 'Ihre Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es später erneut.',
+      'f.subject': 'Anfrage Helix Impulse',
+    };
+    const EN = {
+      'meta.title': document.title,
+      'meta.desc': document.querySelector('meta[name="description"]').content,
+      'f.invalid': 'Please fill in name, email and message and confirm your consent.',
+      'f.sending': 'Sending …',
+      'f.sent': 'Thank you! Your request has been sent. We will get back to you shortly.',
+      'f.failed': 'Sorry, your request could not be sent. Please try again later.',
+      'f.subject': 'Request Helix Impulse'
+    };
+    // Capture the English markup so switching back restores it.
+    document.querySelectorAll('[data-i18n]').forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
+
+    // English lives at /, German at /de/ (generated from this file by tools/build-de.cjs).
+    const lang = document.documentElement.lang === 'de' ? 'de' : 'en';
+    const t = (k) => (lang === 'de' ? DE : EN)[k] ?? EN[k];
+
+    document.querySelectorAll('.locale button').forEach(b => b.addEventListener('click', () => {
+      const next = b.dataset.lang;
+      try { localStorage.setItem('helix-locale', next); } catch (e) {}
+      if (next !== lang) location.href = (next === 'de' ? 'de/' : '../') + location.hash;
+    }));
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // FAQ: animated accordion, one question open at a time
+    const faqItems = [...document.querySelectorAll('.faq details')];
+    const animate = (d, open) => {
+      const body = d.querySelector('.faq-a');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { d.open = open; return; }
+      if (open) d.open = true;
+      const full = body.scrollHeight;
+      const anim = body.animate({ height: open ? ['0px', full + 'px'] : [full + 'px', '0px'], opacity: open ? [0, 1] : [1, 0] }, { duration: 260, easing: 'ease' });
+      anim.onfinish = () => { if (!open) d.open = false; };
+    };
+    faqItems.forEach(d => d.querySelector('summary').addEventListener('click', (e) => {
+      e.preventDefault();
+      const opening = !d.open;
+      if (opening) faqItems.forEach(o => { if (o !== d && o.open) animate(o, false); });
+      animate(d, opening);
+    }));
+
+    // "Ask your question": jump to the form with a general question preselected
+    document.getElementById('ask-question').addEventListener('click', (e) => {
+      e.preventDefault();
+      form.type.value = 'General question';
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => form.message.focus({ preventScroll: true }), 600);
+    });
+
+    // Overview video: poster with a play button; native controls once it plays
+    document.querySelectorAll('.video-frame').forEach(frame => {
+      const video = frame.querySelector('video');
+      frame.querySelector('.video-play').addEventListener('click', () => {
+        // only one video plays at a time
+        document.querySelectorAll('.video-frame video').forEach(v => { if (v !== video) v.pause(); });
+        frame.classList.add('playing');
+        video.controls = true;
+        video.play();
+      });
+    });
+
+    // Dropdown menu for narrow screens
+    const menuBtn = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const setMenu = (open) => { menu.hidden = !open; menuBtn.setAttribute('aria-expanded', String(open)); };
+    menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener('click', (e) => { if (!menu.hidden && !e.target.closest('.topbar')) setMenu(false); });
+    matchMedia('(min-width: 1221px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
+    // Fade sections in as they scroll into view; skipped when the visitor prefers reduced motion.
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const items = document.querySelectorAll('section h2, section .narrow, .cols > div, .get li, .person, .quote, .faq details, #contact form');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      items.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+      document.documentElement.classList.add('js-reveal');
+    }
+
+
+    // Static site without a backend: requests are delivered by email through Web3Forms.
+    // The access key is public by design; it only allows sending to the inbox it was issued for.
+    const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+    const FORM_KEY = '55e42784-0aa0-4377-9266-629e1a128979';
+    const form = document.getElementById('contact-form');
+    const note = document.getElementById('form-note');
+    const submit = form.querySelector('button[type="submit"]');
+    const show = (key, isError = false) => { note.textContent = t(key); note.classList.toggle('error', isError); };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        show('f.invalid', true);
+        form.reportValidity();
+        return;
+      }
+      const d = new FormData(form);
+      if (d.get('botcheck')) return;
+      submit.disabled = true;
+      show('f.sending');
+      try {
+        // Sent as form data (no custom headers) so the browser needs no CORS preflight.
+        const payload = new FormData();
+        Object.entries({
+          access_key: FORM_KEY,
+          name: d.get('name'),
+          email: d.get('email'),
+          request: form.type.selectedOptions[0].textContent,
+          institution: d.get('org') || '–',
+          message: d.get('message'),
+          language: lang.toUpperCase(),
+          subject: `${t('f.subject')} – ${form.type.selectedOptions[0].textContent} – ${d.get('name')}`,
+          from_name: 'Helix Impulse Website',
+          botcheck: ''
+        }).forEach(([k, v]) => payload.append(k, v));
+        const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: payload });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.success !== true) throw new Error(data.message || res.status);
+        form.reset();
+        show('f.sent');
+      } catch (err) {
+        show('f.failed', true);
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  </script>
+
+
+</body></html>

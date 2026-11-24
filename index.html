@@ -6,8 +6,16 @@
   <title>Helix Impulse – Marketing Business Simulation for Higher Education and Training</title>
   <meta name="description" content="Helix Impulse is a marketing business simulation for universities, business schools and professional training. By educators, for educators.">
   <meta name="theme-color" content="#071018">
+  <script data-lang-redirect>
+    // Visitors who chose German (or open ?lang=de) get the German page.
+    (function () {
+      var p = new URLSearchParams(location.search).get('lang'), s = null;
+      try { s = localStorage.getItem('helix-locale'); } catch (e) {}
+      if (p === 'de' || (!p && s === 'de')) location.replace('de/' + location.hash);
+    })();
+  </script>
   <link rel="alternate" hreflang="en" href="https://www.heliximpulse.com/">
-  <link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/?lang=de">
+  <link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/de/">
   <link rel="alternate" hreflang="x-default" href="https://www.heliximpulse.com/">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -794,27 +802,15 @@
     // Capture the English markup so switching back restores it.
     document.querySelectorAll('[data-i18n]').forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
 
-    let lang = 'en';
+    // English lives at /, German at /de/ (generated from this file by tools/build-de.cjs).
+    const lang = document.documentElement.lang === 'de' ? 'de' : 'en';
     const t = (k) => (lang === 'de' ? DE : EN)[k] ?? EN[k];
 
-    function setLang(next) {
-      lang = next === 'de' ? 'de' : 'en';
-      document.documentElement.lang = lang;
-      document.title = t('meta.title');
-      document.querySelector('meta[name="description"]').content = t('meta.desc');
-      document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
-      document.querySelectorAll('.locale button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-      document.getElementById('form-note').textContent = '';
-      try { localStorage.setItem('helix-locale', lang); } catch (e) {}
-      const url = new URL(location.href);
-      if (lang === 'de') url.searchParams.set('lang', 'de'); else url.searchParams.delete('lang');
-      history.replaceState(null, '', url);
-    }
-
-    document.querySelectorAll('.locale button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-    let initial = new URLSearchParams(location.search).get('lang');
-    if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
-    if (initial) setLang(initial);
+    document.querySelectorAll('.locale button').forEach(b => b.addEventListener('click', () => {
+      const next = b.dataset.lang;
+      try { localStorage.setItem('helix-locale', next); } catch (e) {}
+      if (next !== lang) location.href = (next === 'de' ? 'de/' : '../') + location.hash;
+    }));
 
     document.getElementById('y').textContent = new Date().getFullYear();
 

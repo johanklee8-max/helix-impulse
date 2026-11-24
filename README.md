@@ -16,3 +16,12 @@ Website von Helix Impulse, gehostet mit GitHub Pages.
 | CNAME | www         | johanklee8-max.github.io    |
 
 3. Nach der DNS-Aktualisierung (Minuten bis einige Stunden) in **Settings → Pages** „Enforce HTTPS“ aktivieren.
+
+## Deutsche Startseite
+
+`index.html` ist die einzige Quelle: Englisch steht im HTML, Deutsch im `DE`-Wörterbuch im Skript.
+`de/index.html` wird daraus erzeugt – nach jeder Änderung an `index.html` ausführen:
+
+```
+node tools/build-de.cjs
+```
