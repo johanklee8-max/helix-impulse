@@ -86,6 +86,15 @@
     section { padding: 88px 0; }
     section h2 { font-size: 36px; line-height: 1.15; letter-spacing: -.03em; margin-bottom: 16px; }
     .muted { color: var(--muted); }
+    .voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .voice { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--surf); }
+    .voice blockquote { margin: 0; font-size: 18px; line-height: 1.55; color: var(--ink); }
+    .voice blockquote::before { content: "\201C"; display: block; font-size: 48px; line-height: .8; color: var(--accent); margin-bottom: 6px; }
+    .voice figcaption { color: var(--muted); font-size: 15px; line-height: 1.45; }
+    .voice figcaption strong { display: block; color: var(--ink); font-weight: 600; }
+    .proof { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-top: 36px; color: var(--muted); }
+    .proof strong { display: block; font-size: 32px; letter-spacing: -.02em; color: var(--ink); }
+    @media (max-width: 860px) { .voices { grid-template-columns: 1fr; } }
     .alt { background: color-mix(in srgb, var(--surf-2) 45%, transparent); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
     /* Hero */
@@ -624,6 +633,33 @@
     </div>
   </section>
 
+  <section id="voices" class="alt">
+    <div class="wrap">
+      <div class="tag" data-i18n="vo.tag">Stimmen aus der Lehre</div>
+      <h2 data-i18n="vo.title">Was Lehrende und Teilnehmende sagen</h2>
+      <p class="muted narrow" data-i18n="vo.intro">BEISPIEL – Helix Impulse wurde in einem Seminar mit 60 Studierenden an einer deutschen Hochschule erprobt.</p>
+      <div class="voices">
+        <figure class="voice">
+          <blockquote data-i18n="vo.q1">BEISPIELZITAT – Meine Studierenden haben intensiver über Strategie diskutiert als in jeder Vorlesung dieses Semesters.</blockquote>
+          <figcaption><strong>Prof. Dr. Example Name</strong><span data-i18n="vo.r1">Professorin für Marketing, Beispiel-Universität</span></figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote data-i18n="vo.q2">BEISPIELZITAT – Die Vorbereitung des Kurses hat deutlich weniger Zeit gekostet als bei anderen Simulationen.</blockquote>
+          <figcaption><strong>Dr. Example Name</strong><span data-i18n="vo.r2">Dozent, Beispiel Business School</span></figcaption>
+        </figure>
+        <figure class="voice">
+          <blockquote data-i18n="vo.q3">BEISPIELZITAT – Zum ersten Mal habe ich gesehen, wie eine Preisentscheidung Marktanteil und Gewinn beeinflusst.</blockquote>
+          <figcaption><strong>Example Name</strong><span data-i18n="vo.r3">Masterstudentin, Beispiel-Universität</span></figcaption>
+        </figure>
+      </div>
+      <div class="proof">
+        <div><strong>00</strong><span data-i18n="vo.s1">Teilnehmende (BEISPIEL)</span></div>
+        <div><strong>00</strong><span data-i18n="vo.s2">Teams (BEISPIEL)</span></div>
+        <div><strong>00 %</strong><span data-i18n="vo.s3">würden es weiterempfehlen (BEISPIEL)</span></div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="wrap contact">
       <div class="contact-info">
@@ -741,6 +777,12 @@
       'hi.p2': 'Deshalb haben wir Helix Impulse um eine einfache Idee herum gebaut:',
       'hi.quote': 'Die strategischen Entscheidungen behalten, die zählen. Unnötige Komplexität weglassen.',
       'hi.p3': 'Das Ergebnis ist eine fokussierte Marketing- und Strategiesimulation mit intuitiver Oberfläche – ausgerichtet auf echte Anforderungen der Lehre und leichter zu nutzen für Teilnehmende wie Lehrende.',
+      'vo.tag': 'Stimmen aus der Lehre', 'vo.title': 'Was Lehrende und Teilnehmende sagen',
+      'vo.intro': 'BEISPIEL – Helix Impulse wurde in einem Seminar mit 60 Studierenden an einer deutschen Hochschule erprobt.',
+      'vo.q1': 'BEISPIELZITAT – Meine Studierenden haben intensiver über Strategie diskutiert als in jeder Vorlesung dieses Semesters.', 'vo.r1': 'Professorin für Marketing, Beispiel-Universität',
+      'vo.q2': 'BEISPIELZITAT – Die Vorbereitung des Kurses hat deutlich weniger Zeit gekostet als bei anderen Simulationen.', 'vo.r2': 'Dozent, Beispiel Business School',
+      'vo.q3': 'BEISPIELZITAT – Zum ersten Mal habe ich gesehen, wie eine Preisentscheidung Marktanteil und Gewinn beeinflusst.', 'vo.r3': 'Masterstudentin, Beispiel-Universität',
+      'vo.s1': 'Teilnehmende (BEISPIEL)', 'vo.s2': 'Teams (BEISPIEL)', 'vo.s3': 'würden es weiterempfehlen (BEISPIEL)',
       'hi.p4': 'Unser Ziel ist einfach: Unternehmenssimulationen sollen leichter einzusetzen, spannender zu erleben und relevanter für die Menschen sein, die mit ihnen lernen.',
       'tm.tag': 'Team', 'tm.title': 'Die Lehrenden hinter Helix Impulse',
       'tm.intro': 'Lehrende und Praktiker mit akademischem Hintergrund in Deutschland, Spanien, Italien und Polen – verbunden durch langjährige Erfahrung mit Unternehmenssimulationen.',
