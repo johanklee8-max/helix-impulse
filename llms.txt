@@ -17,6 +17,7 @@ Helix Impulse is developed by Helix Impulse GbR (Niestetal, Germany). The founde
 ## Pages
 
 - [Home](https://www.heliximpulse.com/): overview, teaching formats, team, FAQ and contact form
+- [Startseite (Deutsch)](https://www.heliximpulse.com/de/): German version of the home page
 - [Tutorials](https://www.heliximpulse.com/tutorials.html): video tutorials on the simulation (welcome, target groups, marketing, production, sales, lab, research, controlling, finance)
 - [Legal notice](https://www.heliximpulse.com/impressum.html)
 

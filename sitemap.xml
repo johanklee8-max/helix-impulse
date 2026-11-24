@@ -2,13 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.heliximpulse.com/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.heliximpulse.com/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heliximpulse.com/"/>
+  </url>
+  <url>
+    <loc>https://www.heliximpulse.com/de/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.heliximpulse.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.heliximpulse.com/de/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.heliximpulse.com/"/>
   </url>
   <url>
     <loc>https://www.heliximpulse.com/tutorials.html</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-24</lastmod>
   </url>
 </urlset>
