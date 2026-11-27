@@ -72,7 +72,26 @@
     .g-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; padding: 0; list-style: none; }
     .g-toc a { display: inline-flex; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14px; }
     .g-toc a:hover { border-color: var(--accent); color: var(--accent); }
-    .g-sec { padding: 64px 0 8px; border-top: 1px solid var(--line); margin-top: 56px; scroll-margin-top: 80px; }
+    .g-sec { margin-top: 20px; scroll-margin-top: 90px; }
+    .g-sec:first-of-type { margin-top: 40px; }
+    .g-fold { border: 1px solid var(--line); border-radius: 18px; background: color-mix(in srgb, var(--surf) 55%, transparent); transition: border-color .15s ease; }
+    .g-fold:hover { border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .g-fold[open] { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+    .g-fold > summary { list-style: none; cursor: pointer; padding: 28px 28px 24px; }
+    .g-fold > summary::-webkit-details-marker { display: none; }
+    .g-fold > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; border-radius: 18px; }
+    .g-fold > summary .lead { margin-bottom: 18px; }
+    .g-body { padding: 0 28px 32px; animation: g-in .25s ease; }
+    .g-body > .rows:first-child, .g-body > h3:first-child { margin-top: 0; }
+    @keyframes g-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+    .g-more { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font-weight: 600; font-size: 15px; }
+    .g-more i { position: relative; width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--line)); transition: transform .2s ease; }
+    .g-more i::before, .g-more i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: currentColor; transform: translate(-50%, -50%); }
+    .g-more i::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .g-fold[open] .g-more i { transform: rotate(45deg); }
+    .g-close, .g-fold[open] .g-open { display: none; }
+    .g-fold[open] .g-close { display: inline; }
+    @media (max-width: 640px) { .g-fold > summary { padding: 22px 18px 20px; } .g-body { padding: 0 18px 24px; } }
     .g-sec > .tag { margin-bottom: 8px; }
     .g-sec h2 { font-size: 32px; line-height: 1.15; letter-spacing: -.02em; margin: 0 0 14px; }
     .g-sec h2 em { font-style: normal; color: var(--accent); }
@@ -245,107 +264,134 @@
     </ul>
 
     <section class="g-sec" id="simulation">
-      <div class="tag"><span data-lang="en">Experiential learning</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen</span></div>
-      <h2><span data-lang="en">What is a business <em>simulation?</em></span><span data-lang="de" hidden>Was ist eine <em>Unternehmenssimulation?</em></span></h2>
-      <p class="lead"><span data-lang="en">Students use what they’ve learned in class to make decisions in a simulated business setting. They see how those decisions affect one another and what happens when they change their approach.</span><span data-lang="de" hidden>Studierende nutzen das im Kurs Gelernte, um Entscheidungen in einem simulierten Unternehmensumfeld zu treffen. Sie sehen, wie sich diese Entscheidungen gegenseitig beeinflussen und was passiert, wenn sie ihren Ansatz ändern.</span></p>
-      <div class="loop"><b><i>01</i><span data-lang="en">Make a decision</span><span data-lang="de" hidden>Entscheiden</span></b><span class="arr">→</span><b><i>02</i><span data-lang="en">Review the result</span><span data-lang="de" hidden>Ergebnis prüfen</span></b><span class="arr">→</span><b><i>03</i><span data-lang="en">Rethink the plan</span><span data-lang="de" hidden>Plan überdenken</span></b></div>
-      <p class="muted"><span data-lang="en">Some simulations focus on one topic in a single class. Others let students run a company over several rounds.</span><span data-lang="de" hidden>Manche Simulationen behandeln ein Thema in einer einzelnen Sitzung. Andere lassen Studierende über mehrere Runden ein Unternehmen führen.</span></p>
+      <details class="g-fold">
+        <summary>
+          <div class="tag"><span data-lang="en">Experiential learning</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen</span></div>
+          <h2><span data-lang="en">What is a business <em>simulation?</em></span><span data-lang="de" hidden>Was ist eine <em>Unternehmenssimulation?</em></span></h2>
+          <p class="lead"><span data-lang="en">Students use what they’ve learned in class to make decisions in a simulated business setting. They see how those decisions affect one another and what happens when they change their approach.</span><span data-lang="de" hidden>Studierende nutzen das im Kurs Gelernte, um Entscheidungen in einem simulierten Unternehmensumfeld zu treffen. Sie sehen, wie sich diese Entscheidungen gegenseitig beeinflussen und was passiert, wenn sie ihren Ansatz ändern.</span></p>
+          <span class="g-more" aria-hidden="true"><span class="g-open"><span data-lang="en">Read more</span><span data-lang="de" hidden>Mehr lesen</span></span><span class="g-close"><span data-lang="en">Show less</span><span data-lang="de" hidden>Weniger anzeigen</span></span><i></i></span>
+        </summary>
+        <div class="g-body">
+          <div class="loop"><b><i>01</i><span data-lang="en">Make a decision</span><span data-lang="de" hidden>Entscheiden</span></b><span class="arr">→</span><b><i>02</i><span data-lang="en">Review the result</span><span data-lang="de" hidden>Ergebnis prüfen</span></b><span class="arr">→</span><b><i>03</i><span data-lang="en">Rethink the plan</span><span data-lang="de" hidden>Plan überdenken</span></b></div>
+          <p class="muted"><span data-lang="en">Some simulations focus on one topic in a single class. Others let students run a company over several rounds.</span><span data-lang="de" hidden>Manche Simulationen behandeln ein Thema in einer einzelnen Sitzung. Andere lassen Studierende über mehrere Runden ein Unternehmen führen.</span></p>
 
-      <h3><span data-lang="en">What students do in Helix Impulse: run a company in a consumer market</span><span data-lang="de" hidden>Was Studierende in Helix Impulse tun: ein Unternehmen in einem Konsumgütermarkt führen</span></h3>
-      <div class="rows">
-        <div><strong><span data-lang="en">Read the market</span><span data-lang="de" hidden>Den Markt verstehen</span></strong><p><span data-lang="en">Interpret market studies, identify customer segments and analyse competitors.</span><span data-lang="de" hidden>Marktstudien auswerten, Kundensegmente erkennen und Wettbewerber analysieren.</span></p></div>
-        <div><strong><span data-lang="en">Manage several products</span><span data-lang="de" hidden>Mehrere Produkte steuern</span></strong><p><span data-lang="en">Develop or improve products through R&amp;D. Set prices, plan campaigns and choose distribution channels.</span><span data-lang="de" hidden>Produkte durch Forschung und Entwicklung entwickeln oder verbessern. Preise festlegen, Kampagnen planen und Vertriebskanäle wählen.</span></p></div>
-        <div><strong><span data-lang="en">Plan production and track finances</span><span data-lang="de" hidden>Produktion planen und Finanzen im Blick behalten</span></strong><p><span data-lang="en">Forecast sales, decide how much to produce and work within a budget.</span><span data-lang="de" hidden>Absatz prognostizieren, Produktionsmengen festlegen und mit einem Budget arbeiten.</span></p></div>
-      </div>
-      <p class="note"><span data-lang="en">After each round, teams check sales, inventory and profitability before deciding what to change.</span><span data-lang="de" hidden>Nach jeder Runde prüfen die Teams Absatz, Lagerbestand und Profitabilität, bevor sie entscheiden, was sie ändern.</span></p>
+          <h3><span data-lang="en">What students do in Helix Impulse: run a company in a consumer market</span><span data-lang="de" hidden>Was Studierende in Helix Impulse tun: ein Unternehmen in einem Konsumgütermarkt führen</span></h3>
+          <div class="rows">
+            <div><strong><span data-lang="en">Read the market</span><span data-lang="de" hidden>Den Markt verstehen</span></strong><p><span data-lang="en">Interpret market studies, identify customer segments and analyse competitors.</span><span data-lang="de" hidden>Marktstudien auswerten, Kundensegmente erkennen und Wettbewerber analysieren.</span></p></div>
+            <div><strong><span data-lang="en">Manage several products</span><span data-lang="de" hidden>Mehrere Produkte steuern</span></strong><p><span data-lang="en">Develop or improve products through R&amp;D. Set prices, plan campaigns and choose distribution channels.</span><span data-lang="de" hidden>Produkte durch Forschung und Entwicklung entwickeln oder verbessern. Preise festlegen, Kampagnen planen und Vertriebskanäle wählen.</span></p></div>
+            <div><strong><span data-lang="en">Plan production and track finances</span><span data-lang="de" hidden>Produktion planen und Finanzen im Blick behalten</span></strong><p><span data-lang="en">Forecast sales, decide how much to produce and work within a budget.</span><span data-lang="de" hidden>Absatz prognostizieren, Produktionsmengen festlegen und mit einem Budget arbeiten.</span></p></div>
+          </div>
+          <p class="note"><span data-lang="en">After each round, teams check sales, inventory and profitability before deciding what to change.</span><span data-lang="de" hidden>Nach jeder Runde prüfen die Teams Absatz, Lagerbestand und Profitabilität, bevor sie entscheiden, was sie ändern.</span></p>
 
-      <h3><span data-lang="en">Is Helix Impulse right for my students?</span><span data-lang="de" hidden>Passt Helix Impulse zu meinen Studierenden?</span></h3>
-      <div class="rows">
-        <div><span class="k"><span data-lang="en">When to start</span><span data-lang="de" hidden>Wann einsteigen</span></span><p><span data-lang="en">Once students know the marketing basics. We’d typically start in the second or third year of a bachelor’s degree, or at master’s level.</span><span data-lang="de" hidden>Sobald die Studierenden die Marketing-Grundlagen kennen. Wir starten typischerweise im zweiten oder dritten Jahr des Bachelorstudiums oder im Master.</span></p></div>
-        <div><span class="k"><span data-lang="en">How students work</span><span data-lang="de" hidden>Wie Studierende arbeiten</span></span><p><span data-lang="en">Teams discuss the trade-offs and make their own decisions, with guidance from the instructor.</span><span data-lang="de" hidden>Die Teams diskutieren Zielkonflikte und treffen ihre eigenen Entscheidungen – begleitet von der Lehrperson.</span></p></div>
-        <div><span class="k"><span data-lang="en">One format from our teaching</span><span data-lang="de" hidden>Ein Format aus unserer Lehre</span></span><p><span data-lang="en">A full-time, one-week block seminar – see the course formats below.</span><span data-lang="de" hidden>Ein ganztägiges, einwöchiges Blockseminar – siehe die Kursformate unten.</span></p></div>
-      </div>
+          <h3><span data-lang="en">Is Helix Impulse right for my students?</span><span data-lang="de" hidden>Passt Helix Impulse zu meinen Studierenden?</span></h3>
+          <div class="rows">
+            <div><span class="k"><span data-lang="en">When to start</span><span data-lang="de" hidden>Wann einsteigen</span></span><p><span data-lang="en">Once students know the marketing basics. We’d typically start in the second or third year of a bachelor’s degree, or at master’s level.</span><span data-lang="de" hidden>Sobald die Studierenden die Marketing-Grundlagen kennen. Wir starten typischerweise im zweiten oder dritten Jahr des Bachelorstudiums oder im Master.</span></p></div>
+            <div><span class="k"><span data-lang="en">How students work</span><span data-lang="de" hidden>Wie Studierende arbeiten</span></span><p><span data-lang="en">Teams discuss the trade-offs and make their own decisions, with guidance from the instructor.</span><span data-lang="de" hidden>Die Teams diskutieren Zielkonflikte und treffen ihre eigenen Entscheidungen – begleitet von der Lehrperson.</span></p></div>
+            <div><span class="k"><span data-lang="en">One format from our teaching</span><span data-lang="de" hidden>Ein Format aus unserer Lehre</span></span><p><span data-lang="en">A full-time, one-week block seminar – see the course formats below.</span><span data-lang="de" hidden>Ein ganztägiges, einwöchiges Blockseminar – siehe die Kursformate unten.</span></p></div>
+          </div>
+        </div>
+      </details>
     </section>
 
     <section class="g-sec" id="experiential-learning">
-      <div class="tag"><span data-lang="en">The learning process</span><span data-lang="de" hidden>Der Lernprozess</span></div>
-      <h2><span data-lang="en">What is experiential <em>learning?</em></span><span data-lang="de" hidden>Was ist erfahrungsbasiertes <em>Lernen?</em></span></h2>
-      <p class="lead"><span data-lang="en">Experiential learning is the process of building knowledge by making sense of experience and testing what you’ve learned in a new situation.</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen bedeutet, Wissen aufzubauen, indem man Erfahrungen deutet und das Gelernte in einer neuen Situation erprobt.</span></p>
-      <div class="kolb">
-        <div class="card">
-          <h3><span data-lang="en">The learning cycle</span><span data-lang="de" hidden>Der Lernzyklus</span></h3>
-          <ol class="steps">
-            <li><span class="n">1</span><div><strong><span data-lang="en">Experience</span><span data-lang="de" hidden>Erfahren</span></strong><small><span data-lang="en">Concrete experience</span><span data-lang="de" hidden>Konkrete Erfahrung</span></small><p><span data-lang="en">Do something and see what happens.</span><span data-lang="de" hidden>Etwas tun und sehen, was passiert.</span></p></div></li>
-            <li><span class="n">2</span><div><strong><span data-lang="en">Reflect</span><span data-lang="de" hidden>Reflektieren</span></strong><small><span data-lang="en">Reflective observation</span><span data-lang="de" hidden>Reflektierende Beobachtung</span></small><p><span data-lang="en">Compare what happened with what you expected.</span><span data-lang="de" hidden>Das Ergebnis mit den eigenen Erwartungen vergleichen.</span></p></div></li>
-            <li><span class="n">3</span><div><strong><span data-lang="en">Build an explanation</span><span data-lang="de" hidden>Erklären</span></strong><small><span data-lang="en">Abstract conceptualisation</span><span data-lang="de" hidden>Abstrakte Begriffsbildung</span></small><p><span data-lang="en">Use a concept to make sense of the result.</span><span data-lang="de" hidden>Ein Konzept nutzen, um das Ergebnis zu verstehen.</span></p></div></li>
-            <li><span class="n">4</span><div><strong><span data-lang="en">Test it</span><span data-lang="de" hidden>Erproben</span></strong><small><span data-lang="en">Active experimentation</span><span data-lang="de" hidden>Aktives Experimentieren</span></small><p><span data-lang="en">Apply your explanation to a new decision.</span><span data-lang="de" hidden>Die Erklärung auf eine neue Entscheidung anwenden.</span></p></div></li>
-          </ol>
+      <details class="g-fold">
+        <summary>
+          <div class="tag"><span data-lang="en">The learning process</span><span data-lang="de" hidden>Der Lernprozess</span></div>
+          <h2><span data-lang="en">What is experiential <em>learning?</em></span><span data-lang="de" hidden>Was ist erfahrungsbasiertes <em>Lernen?</em></span></h2>
+          <p class="lead"><span data-lang="en">Experiential learning is the process of building knowledge by making sense of experience and testing what you’ve learned in a new situation.</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen bedeutet, Wissen aufzubauen, indem man Erfahrungen deutet und das Gelernte in einer neuen Situation erprobt.</span></p>
+          <span class="g-more" aria-hidden="true"><span class="g-open"><span data-lang="en">Read more</span><span data-lang="de" hidden>Mehr lesen</span></span><span class="g-close"><span data-lang="en">Show less</span><span data-lang="de" hidden>Weniger anzeigen</span></span><i></i></span>
+        </summary>
+        <div class="g-body">
+          <div class="kolb">
+            <div class="card">
+              <h3><span data-lang="en">The learning cycle</span><span data-lang="de" hidden>Der Lernzyklus</span></h3>
+              <ol class="steps">
+                <li><span class="n">1</span><div><strong><span data-lang="en">Experience</span><span data-lang="de" hidden>Erfahren</span></strong><small><span data-lang="en">Concrete experience</span><span data-lang="de" hidden>Konkrete Erfahrung</span></small><p><span data-lang="en">Do something and see what happens.</span><span data-lang="de" hidden>Etwas tun und sehen, was passiert.</span></p></div></li>
+                <li><span class="n">2</span><div><strong><span data-lang="en">Reflect</span><span data-lang="de" hidden>Reflektieren</span></strong><small><span data-lang="en">Reflective observation</span><span data-lang="de" hidden>Reflektierende Beobachtung</span></small><p><span data-lang="en">Compare what happened with what you expected.</span><span data-lang="de" hidden>Das Ergebnis mit den eigenen Erwartungen vergleichen.</span></p></div></li>
+                <li><span class="n">3</span><div><strong><span data-lang="en">Build an explanation</span><span data-lang="de" hidden>Erklären</span></strong><small><span data-lang="en">Abstract conceptualisation</span><span data-lang="de" hidden>Abstrakte Begriffsbildung</span></small><p><span data-lang="en">Use a concept to make sense of the result.</span><span data-lang="de" hidden>Ein Konzept nutzen, um das Ergebnis zu verstehen.</span></p></div></li>
+                <li><span class="n">4</span><div><strong><span data-lang="en">Test it</span><span data-lang="de" hidden>Erproben</span></strong><small><span data-lang="en">Active experimentation</span><span data-lang="de" hidden>Aktives Experimentieren</span></small><p><span data-lang="en">Apply your explanation to a new decision.</span><span data-lang="de" hidden>Die Erklärung auf eine neue Entscheidung anwenden.</span></p></div></li>
+              </ol>
+            </div>
+            <div class="card">
+              <h3><span data-lang="en">Why a business simulation fits</span><span data-lang="de" hidden>Warum eine Unternehmenssimulation passt</span></h3>
+              <ol class="steps">
+                <li><span class="n">1</span><div><strong><span data-lang="en">Experience</span><span data-lang="de" hidden>Erfahren</span></strong><p><span data-lang="en">Teams shift marketing budget between products.</span><span data-lang="de" hidden>Teams verschieben Marketingbudget zwischen Produkten.</span></p></div></li>
+                <li><span class="n">2</span><div><strong><span data-lang="en">Reflect</span><span data-lang="de" hidden>Reflektieren</span></strong><p><span data-lang="en">They compare the results with what they expected.</span><span data-lang="de" hidden>Sie vergleichen die Ergebnisse mit ihren Erwartungen.</span></p></div></li>
+                <li><span class="n">3</span><div><strong><span data-lang="en">Build an explanation</span><span data-lang="de" hidden>Erklären</span></strong><p><span data-lang="en">They look at product contribution and competitor moves to explain what happened.</span><span data-lang="de" hidden>Sie betrachten Produktbeiträge und die Schritte der Wettbewerber, um das Ergebnis zu erklären.</span></p></div></li>
+                <li><span class="n">4</span><div><strong><span data-lang="en">Test it</span><span data-lang="de" hidden>Erproben</span></strong><p><span data-lang="en">They adjust the budget and test their reasoning in the next round.</span><span data-lang="de" hidden>Sie passen das Budget an und prüfen ihre Überlegungen in der nächsten Runde.</span></p></div></li>
+              </ol>
+            </div>
+          </div>
+          <p class="src"><span data-lang="en">In Helix Impulse, teams run competing companies. The market responds to the decisions of all teams. · Learning cycle adapted from Kolb (1984), <i>Experiential Learning</i>.</span><span data-lang="de" hidden>In Helix Impulse führen Teams konkurrierende Unternehmen. Der Markt reagiert auf die Entscheidungen aller Teams. · Lernzyklus nach Kolb (1984), <i>Experiential Learning</i>.</span></p>
         </div>
-        <div class="card">
-          <h3><span data-lang="en">Why a business simulation fits</span><span data-lang="de" hidden>Warum eine Unternehmenssimulation passt</span></h3>
-          <ol class="steps">
-            <li><span class="n">1</span><div><strong><span data-lang="en">Experience</span><span data-lang="de" hidden>Erfahren</span></strong><p><span data-lang="en">Teams shift marketing budget between products.</span><span data-lang="de" hidden>Teams verschieben Marketingbudget zwischen Produkten.</span></p></div></li>
-            <li><span class="n">2</span><div><strong><span data-lang="en">Reflect</span><span data-lang="de" hidden>Reflektieren</span></strong><p><span data-lang="en">They compare the results with what they expected.</span><span data-lang="de" hidden>Sie vergleichen die Ergebnisse mit ihren Erwartungen.</span></p></div></li>
-            <li><span class="n">3</span><div><strong><span data-lang="en">Build an explanation</span><span data-lang="de" hidden>Erklären</span></strong><p><span data-lang="en">They look at product contribution and competitor moves to explain what happened.</span><span data-lang="de" hidden>Sie betrachten Produktbeiträge und die Schritte der Wettbewerber, um das Ergebnis zu erklären.</span></p></div></li>
-            <li><span class="n">4</span><div><strong><span data-lang="en">Test it</span><span data-lang="de" hidden>Erproben</span></strong><p><span data-lang="en">They adjust the budget and test their reasoning in the next round.</span><span data-lang="de" hidden>Sie passen das Budget an und prüfen ihre Überlegungen in der nächsten Runde.</span></p></div></li>
-          </ol>
-        </div>
-      </div>
-      <p class="src"><span data-lang="en">In Helix Impulse, teams run competing companies. The market responds to the decisions of all teams. · Learning cycle adapted from Kolb (1984), <i>Experiential Learning</i>.</span><span data-lang="de" hidden>In Helix Impulse führen Teams konkurrierende Unternehmen. Der Markt reagiert auf die Entscheidungen aller Teams. · Lernzyklus nach Kolb (1984), <i>Experiential Learning</i>.</span></p>
+      </details>
     </section>
 
     <section class="g-sec" id="formats">
-      <div class="tag"><span data-lang="en">Teaching with business simulations</span><span data-lang="de" hidden>Lehren mit Unternehmenssimulationen</span></div>
-      <h2><span data-lang="en">One round in 90 minutes. <em>Or 8–12 in a week?</em></span><span data-lang="de" hidden>Eine Runde in 90 Minuten. <em>Oder 8–12 in einer Woche?</em></span></h2>
-      <p class="lead"><span data-lang="en">You can use a business simulation in a weekly seminar or build an intensive course around it.</span><span data-lang="de" hidden>Sie können eine Unternehmenssimulation in einem wöchentlichen Seminar einsetzen oder einen Intensivkurs darum herum aufbauen.</span></p>
+      <details class="g-fold">
+        <summary>
+          <div class="tag"><span data-lang="en">Teaching with business simulations</span><span data-lang="de" hidden>Lehren mit Unternehmenssimulationen</span></div>
+          <h2><span data-lang="en">One round in 90 minutes. <em>Or 8–12 in a week?</em></span><span data-lang="de" hidden>Eine Runde in 90 Minuten. <em>Oder 8–12 in einer Woche?</em></span></h2>
+          <p class="lead"><span data-lang="en">You can use a business simulation in a weekly seminar or build an intensive course around it.</span><span data-lang="de" hidden>Sie können eine Unternehmenssimulation in einem wöchentlichen Seminar einsetzen oder einen Intensivkurs darum herum aufbauen.</span></p>
+          <span class="g-more" aria-hidden="true"><span class="g-open"><span data-lang="en">Read more</span><span data-lang="de" hidden>Mehr lesen</span></span><span class="g-close"><span data-lang="en">Show less</span><span data-lang="de" hidden>Weniger anzeigen</span></span><i></i></span>
+        </summary>
+        <div class="g-body">
+          <h3><span data-lang="en">Weekly 90-minute seminar: one full round, one teaching focus</span><span data-lang="de" hidden>Wöchentliches 90-Minuten-Seminar: eine Runde, ein Lehrschwerpunkt</span></h3>
+          <p class="muted"><span data-lang="en">All decisions are available from the start. An example session:</span><span data-lang="de" hidden>Alle Entscheidungen stehen von Beginn an zur Verfügung. Eine Beispielsitzung:</span></p>
+          <div class="stats">
+            <div><strong>20 min</strong><span><span data-lang="en">Set the focus</span><span data-lang="de" hidden>Schwerpunkt setzen</span></span></div>
+            <div><strong>50 min</strong><span><span data-lang="en">Play a full round</span><span data-lang="de" hidden>Eine Runde spielen</span></span></div>
+            <div><strong>20 min</strong><span><span data-lang="en">Review trade-offs</span><span data-lang="de" hidden>Zielkonflikte besprechen</span></span></div>
+          </div>
+          <p class="muted"><span data-lang="en">A second round is optional once teams know the routine.</span><span data-lang="de" hidden>Eine zweite Runde ist möglich, sobald die Teams die Abläufe kennen.</span></p>
+          <div class="rows">
+            <div><span class="k"><span data-lang="en">Example focus: pricing</span><span data-lang="de" hidden>Beispiel-Schwerpunkt: Preis</span></span><p><span data-lang="en">If a team changes its price, what does that mean for its sales forecast and production? In the debrief, compare expectations with results.</span><span data-lang="de" hidden>Wenn ein Team seinen Preis ändert – was bedeutet das für Absatzprognose und Produktion? In der Nachbesprechung werden Erwartungen und Ergebnisse verglichen.</span></p></div>
+            <div><span class="k"><span data-lang="en">If students play between classes</span><span data-lang="de" hidden>Wenn zwischen den Sitzungen gespielt wird</span></span><p><span data-lang="en">Set a deadline and debrief in class. Solo play is easier to schedule. In teams, how students organise their work becomes part of the exercise.</span><span data-lang="de" hidden>Legen Sie eine Frist fest und besprechen Sie die Ergebnisse im Kurs. Einzeln zu spielen ist leichter zu planen. Im Team wird die Arbeitsorganisation selbst Teil der Übung.</span></p></div>
+          </div>
 
-      <h3><span data-lang="en">Weekly 90-minute seminar: one full round, one teaching focus</span><span data-lang="de" hidden>Wöchentliches 90-Minuten-Seminar: eine Runde, ein Lehrschwerpunkt</span></h3>
-      <p class="muted"><span data-lang="en">All decisions are available from the start. An example session:</span><span data-lang="de" hidden>Alle Entscheidungen stehen von Beginn an zur Verfügung. Eine Beispielsitzung:</span></p>
-      <div class="stats">
-        <div><strong>20 min</strong><span><span data-lang="en">Set the focus</span><span data-lang="de" hidden>Schwerpunkt setzen</span></span></div>
-        <div><strong>50 min</strong><span><span data-lang="en">Play a full round</span><span data-lang="de" hidden>Eine Runde spielen</span></span></div>
-        <div><strong>20 min</strong><span><span data-lang="en">Review trade-offs</span><span data-lang="de" hidden>Zielkonflikte besprechen</span></span></div>
-      </div>
-      <p class="muted"><span data-lang="en">A second round is optional once teams know the routine.</span><span data-lang="de" hidden>Eine zweite Runde ist möglich, sobald die Teams die Abläufe kennen.</span></p>
-      <div class="rows">
-        <div><span class="k"><span data-lang="en">Example focus: pricing</span><span data-lang="de" hidden>Beispiel-Schwerpunkt: Preis</span></span><p><span data-lang="en">If a team changes its price, what does that mean for its sales forecast and production? In the debrief, compare expectations with results.</span><span data-lang="de" hidden>Wenn ein Team seinen Preis ändert – was bedeutet das für Absatzprognose und Produktion? In der Nachbesprechung werden Erwartungen und Ergebnisse verglichen.</span></p></div>
-        <div><span class="k"><span data-lang="en">If students play between classes</span><span data-lang="de" hidden>Wenn zwischen den Sitzungen gespielt wird</span></span><p><span data-lang="en">Set a deadline and debrief in class. Solo play is easier to schedule. In teams, how students organise their work becomes part of the exercise.</span><span data-lang="de" hidden>Legen Sie eine Frist fest und besprechen Sie die Ergebnisse im Kurs. Einzeln zu spielen ist leichter zu planen. Im Team wird die Arbeitsorganisation selbst Teil der Übung.</span></p></div>
-      </div>
-
-      <div class="formats">
-        <div class="card"><span class="k"><span data-lang="en">Format 01</span><span data-lang="de" hidden>Format 01</span></span><h3><span data-lang="en">Weekly seminar</span><span data-lang="de" hidden>Wöchentliches Seminar</span></h3><p><span data-lang="en">Give each full round a teaching focus – one round per 90-minute session, as in the example above.</span><span data-lang="de" hidden>Jede Runde bekommt einen eigenen Lehrschwerpunkt – eine Runde pro 90-Minuten-Sitzung, wie im Beispiel oben.</span></p></div>
-        <div class="card"><span class="k"><span data-lang="en">Format 02 · our university partnership</span><span data-lang="de" hidden>Format 02 · unsere Hochschulkooperation</span></span><h3><span data-lang="en">Five-day intensive seminar</span><span data-lang="de" hidden>Fünftägiges Intensivseminar</span></h3><p><span data-lang="en">In our full-time format, students from partner universities work in mixed teams: 8–12 rounds across the week, 2–4 rounds on play days. Adjust the number of rounds to the group’s pace.</span><span data-lang="de" hidden>In unserem ganztägigen Format arbeiten Studierende von Partnerhochschulen in gemischten Teams: 8–12 Runden über die Woche, 2–4 Runden an Spieltagen. Die Zahl der Runden richtet sich nach dem Tempo der Gruppe.</span></p><p><span data-lang="en">Also part of the week: an introduction, mini-lectures on selected topics, short business reports and final presentations.</span><span data-lang="de" hidden>Außerdem Teil der Woche: eine Einführung, Kurzvorträge zu ausgewählten Themen, kurze Geschäftsberichte und Abschlusspräsentationen.</span></p></div>
-        <div class="card"><span class="k"><span data-lang="en">Format 03</span><span data-lang="de" hidden>Format 03</span></span><h3><span data-lang="en">One class, five days</span><span data-lang="de" hidden>Eine Klasse, fünf Tage</span></h3><p><span data-lang="en"><b>Form teams of three or four</b> that compete in the same market; let their pace in the first rounds guide how many you run.</span><span data-lang="de" hidden><b>Teams mit drei oder vier Personen bilden,</b> die im selben Markt konkurrieren; ihr Tempo in den ersten Runden bestimmt, wie viele Runden Sie spielen.</span></p><p><span data-lang="en"><b>Teach a concept when teams need it</b> – for example, before a production decision, a mini-lesson on turning a sales forecast into a plan.</span><span data-lang="de" hidden><b>Konzepte dann vermitteln, wenn Teams sie brauchen</b> – etwa vor einer Produktionsentscheidung eine kurze Einheit dazu, wie aus einer Absatzprognose ein Plan wird.</span></p><p><span data-lang="en"><b>Close with a short team presentation:</b> each team explains one decision it changed and why.</span><span data-lang="de" hidden><b>Mit einer kurzen Teampräsentation abschließen:</b> Jedes Team erklärt eine Entscheidung, die es geändert hat, und warum.</span></p></div>
-      </div>
+          <div class="formats">
+            <div class="card"><span class="k"><span data-lang="en">Format 01</span><span data-lang="de" hidden>Format 01</span></span><h3><span data-lang="en">Weekly seminar</span><span data-lang="de" hidden>Wöchentliches Seminar</span></h3><p><span data-lang="en">Give each full round a teaching focus – one round per 90-minute session, as in the example above.</span><span data-lang="de" hidden>Jede Runde bekommt einen eigenen Lehrschwerpunkt – eine Runde pro 90-Minuten-Sitzung, wie im Beispiel oben.</span></p></div>
+            <div class="card"><span class="k"><span data-lang="en">Format 02 · our university partnership</span><span data-lang="de" hidden>Format 02 · unsere Hochschulkooperation</span></span><h3><span data-lang="en">Five-day intensive seminar</span><span data-lang="de" hidden>Fünftägiges Intensivseminar</span></h3><p><span data-lang="en">In our full-time format, students from partner universities work in mixed teams: 8–12 rounds across the week, 2–4 rounds on play days. Adjust the number of rounds to the group’s pace.</span><span data-lang="de" hidden>In unserem ganztägigen Format arbeiten Studierende von Partnerhochschulen in gemischten Teams: 8–12 Runden über die Woche, 2–4 Runden an Spieltagen. Die Zahl der Runden richtet sich nach dem Tempo der Gruppe.</span></p><p><span data-lang="en">Also part of the week: an introduction, mini-lectures on selected topics, short business reports and final presentations.</span><span data-lang="de" hidden>Außerdem Teil der Woche: eine Einführung, Kurzvorträge zu ausgewählten Themen, kurze Geschäftsberichte und Abschlusspräsentationen.</span></p></div>
+            <div class="card"><span class="k"><span data-lang="en">Format 03</span><span data-lang="de" hidden>Format 03</span></span><h3><span data-lang="en">One class, five days</span><span data-lang="de" hidden>Eine Klasse, fünf Tage</span></h3><p><span data-lang="en"><b>Form teams of three or four</b> that compete in the same market; let their pace in the first rounds guide how many you run.</span><span data-lang="de" hidden><b>Teams mit drei oder vier Personen bilden,</b> die im selben Markt konkurrieren; ihr Tempo in den ersten Runden bestimmt, wie viele Runden Sie spielen.</span></p><p><span data-lang="en"><b>Teach a concept when teams need it</b> – for example, before a production decision, a mini-lesson on turning a sales forecast into a plan.</span><span data-lang="de" hidden><b>Konzepte dann vermitteln, wenn Teams sie brauchen</b> – etwa vor einer Produktionsentscheidung eine kurze Einheit dazu, wie aus einer Absatzprognose ein Plan wird.</span></p><p><span data-lang="en"><b>Close with a short team presentation:</b> each team explains one decision it changed and why.</span><span data-lang="de" hidden><b>Mit einer kurzen Teampräsentation abschließen:</b> Jedes Team erklärt eine Entscheidung, die es geändert hat, und warum.</span></p></div>
+          </div>
+        </div>
+      </details>
     </section>
 
     <section class="g-sec" id="classroom">
-      <div class="tag"><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></div>
-      <h2><span data-lang="en">30 students. <em>Six teams of five.</em></span><span data-lang="de" hidden>30 Studierende. <em>Sechs Teams à fünf.</em></span></h2>
-      <p class="lead"><span data-lang="en">Each team runs one company and manages its own product portfolio. All teams compete for customers in the same simulated consumer market.</span><span data-lang="de" hidden>Jedes Team führt ein Unternehmen mit eigenem Produktportfolio. Alle Teams konkurrieren im selben simulierten Konsumgütermarkt um Kundinnen und Kunden.</span></p>
-      <div class="room" aria-hidden="true">
-        <div class="front"><span data-lang="en">Front of the room</span><span data-lang="de" hidden>Vorne im Raum</span></div>
-        <div class="staff"><span><span data-lang="en">Instructor</span><span data-lang="de" hidden>Lehrperson</span></span><span><span data-lang="en">Assistant</span><span data-lang="de" hidden>Assistenz</span></span></div>
-        <div class="teams"><div class="team"><span data-lang="en">Team A</span><span data-lang="de" hidden>Team A</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team B</span><span data-lang="de" hidden>Team B</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team C</span><span data-lang="de" hidden>Team C</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team D</span><span data-lang="de" hidden>Team D</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team E</span><span data-lang="de" hidden>Team E</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team F</span><span data-lang="de" hidden>Team F</span><i>●●●●●</i></div></div>
-      </div>
-      <p class="muted"><span data-lang="en">We typically use 4–6 teams of 3–6 students per market; technically, up to 10 teams can compete in one simulation. In our experience, one instructor and one assistant can guide a group of this size.</span><span data-lang="de" hidden>Wir arbeiten typischerweise mit 4–6 Teams à 3–6 Studierenden pro Markt; technisch können bis zu 10 Teams in einer Simulation antreten. Nach unserer Erfahrung können eine Lehrperson und eine Assistenz eine Gruppe dieser Größe gut begleiten.</span></p>
+      <details class="g-fold">
+        <summary>
+          <div class="tag"><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></div>
+          <h2><span data-lang="en">30 students. <em>Six teams of five.</em></span><span data-lang="de" hidden>30 Studierende. <em>Sechs Teams à fünf.</em></span></h2>
+          <p class="lead"><span data-lang="en">Each team runs one company and manages its own product portfolio. All teams compete for customers in the same simulated consumer market.</span><span data-lang="de" hidden>Jedes Team führt ein Unternehmen mit eigenem Produktportfolio. Alle Teams konkurrieren im selben simulierten Konsumgütermarkt um Kundinnen und Kunden.</span></p>
+          <span class="g-more" aria-hidden="true"><span class="g-open"><span data-lang="en">Read more</span><span data-lang="de" hidden>Mehr lesen</span></span><span class="g-close"><span data-lang="en">Show less</span><span data-lang="de" hidden>Weniger anzeigen</span></span><i></i></span>
+        </summary>
+        <div class="g-body">
+          <div class="room" aria-hidden="true">
+            <div class="front"><span data-lang="en">Front of the room</span><span data-lang="de" hidden>Vorne im Raum</span></div>
+            <div class="staff"><span><span data-lang="en">Instructor</span><span data-lang="de" hidden>Lehrperson</span></span><span><span data-lang="en">Assistant</span><span data-lang="de" hidden>Assistenz</span></span></div>
+            <div class="teams"><div class="team"><span data-lang="en">Team A</span><span data-lang="de" hidden>Team A</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team B</span><span data-lang="de" hidden>Team B</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team C</span><span data-lang="de" hidden>Team C</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team D</span><span data-lang="de" hidden>Team D</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team E</span><span data-lang="de" hidden>Team E</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team F</span><span data-lang="de" hidden>Team F</span><i>●●●●●</i></div></div>
+          </div>
+          <p class="muted"><span data-lang="en">We typically use 4–6 teams of 3–6 students per market; technically, up to 10 teams can compete in one simulation. In our experience, one instructor and one assistant can guide a group of this size.</span><span data-lang="de" hidden>Wir arbeiten typischerweise mit 4–6 Teams à 3–6 Studierenden pro Markt; technisch können bis zu 10 Teams in einer Simulation antreten. Nach unserer Erfahrung können eine Lehrperson und eine Assistenz eine Gruppe dieser Größe gut begleiten.</span></p>
 
-      <h3><span data-lang="en">40 students: two parallel markets</span><span data-lang="de" hidden>40 Studierende: zwei parallele Märkte</span></h3>
-      <p class="muted"><span data-lang="en">Example: eight teams of five, split into two markets. Teams compete within their own market.</span><span data-lang="de" hidden>Beispiel: acht Teams à fünf, aufgeteilt auf zwei Märkte. Die Teams konkurrieren innerhalb ihres eigenen Marktes.</span></p>
-      <div class="markets" aria-hidden="true">
-        <div class="market"><span class="k"><span data-lang="en">Market 1</span><span data-lang="de" hidden>Markt 1</span></span><strong><span data-lang="en">4 teams · 20 students</span><span data-lang="de" hidden>4 Teams · 20 Studierende</span></strong><div class="teams"><div class="team"><span data-lang="en">Team A</span><span data-lang="de" hidden>Team A</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team B</span><span data-lang="de" hidden>Team B</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team C</span><span data-lang="de" hidden>Team C</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team D</span><span data-lang="de" hidden>Team D</span><i>●●●●●</i></div></div></div>
-        <div class="market"><span class="k"><span data-lang="en">Market 2</span><span data-lang="de" hidden>Markt 2</span></span><strong><span data-lang="en">4 teams · 20 students</span><span data-lang="de" hidden>4 Teams · 20 Studierende</span></strong><div class="teams"><div class="team"><span data-lang="en">Team E</span><span data-lang="de" hidden>Team E</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team F</span><span data-lang="de" hidden>Team F</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team G</span><span data-lang="de" hidden>Team G</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team H</span><span data-lang="de" hidden>Team H</span><i>●●●●●</i></div></div></div>
-      </div>
-      <p class="muted"><span data-lang="en">With 20 students, four teams of five can share one market.</span><span data-lang="de" hidden>Mit 20 Studierenden können vier Teams à fünf einen gemeinsamen Markt bilden.</span></p>
+          <h3><span data-lang="en">40 students: two parallel markets</span><span data-lang="de" hidden>40 Studierende: zwei parallele Märkte</span></h3>
+          <p class="muted"><span data-lang="en">Example: eight teams of five, split into two markets. Teams compete within their own market.</span><span data-lang="de" hidden>Beispiel: acht Teams à fünf, aufgeteilt auf zwei Märkte. Die Teams konkurrieren innerhalb ihres eigenen Marktes.</span></p>
+          <div class="markets" aria-hidden="true">
+            <div class="market"><span class="k"><span data-lang="en">Market 1</span><span data-lang="de" hidden>Markt 1</span></span><strong><span data-lang="en">4 teams · 20 students</span><span data-lang="de" hidden>4 Teams · 20 Studierende</span></strong><div class="teams"><div class="team"><span data-lang="en">Team A</span><span data-lang="de" hidden>Team A</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team B</span><span data-lang="de" hidden>Team B</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team C</span><span data-lang="de" hidden>Team C</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team D</span><span data-lang="de" hidden>Team D</span><i>●●●●●</i></div></div></div>
+            <div class="market"><span class="k"><span data-lang="en">Market 2</span><span data-lang="de" hidden>Markt 2</span></span><strong><span data-lang="en">4 teams · 20 students</span><span data-lang="de" hidden>4 Teams · 20 Studierende</span></strong><div class="teams"><div class="team"><span data-lang="en">Team E</span><span data-lang="de" hidden>Team E</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team F</span><span data-lang="de" hidden>Team F</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team G</span><span data-lang="de" hidden>Team G</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team H</span><span data-lang="de" hidden>Team H</span><i>●●●●●</i></div></div></div>
+          </div>
+          <p class="muted"><span data-lang="en">With 20 students, four teams of five can share one market.</span><span data-lang="de" hidden>Mit 20 Studierenden können vier Teams à fünf einen gemeinsamen Markt bilden.</span></p>
 
-      <h3><span data-lang="en">Handouts to share with colleagues</span><span data-lang="de" hidden>Handouts zum Weitergeben</span></h3>
-      <p class="muted"><span data-lang="en">The content of this guide as short PDFs.</span><span data-lang="de" hidden>Die Inhalte dieses Leitfadens als kurze PDFs.</span> <span data-lang="en"></span><span data-lang="de" hidden>(auf Englisch)</span></p>
-      <div class="downloads">
-        <a href="assets/guides/what-is-a-business-simulation.pdf" download><span><span data-lang="en">What is a business simulation?</span><span data-lang="de" hidden>Was ist eine Unternehmenssimulation?</span></span><span>PDF · <span data-lang="en">3 pages</span><span data-lang="de" hidden>3 Seiten</span></span></a>
-        <a href="assets/guides/what-is-experiential-learning.pdf" download><span><span data-lang="en">What is experiential learning?</span><span data-lang="de" hidden>Was ist erfahrungsbasiertes Lernen?</span></span><span>PDF · <span data-lang="en">2 pages</span><span data-lang="de" hidden>2 Seiten</span></span></a>
-        <a href="assets/guides/course-formats.pdf" download><span><span data-lang="en">Course formats</span><span data-lang="de" hidden>Kursformate</span></span><span>PDF · <span data-lang="en">4 pages</span><span data-lang="de" hidden>4 Seiten</span></span></a>
-        <a href="assets/guides/classroom-setup.pdf" download><span><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></span><span>PDF · <span data-lang="en">3 pages</span><span data-lang="de" hidden>3 Seiten</span></span></a>
-      </div>
+          <h3><span data-lang="en">Handouts to share with colleagues</span><span data-lang="de" hidden>Handouts zum Weitergeben</span></h3>
+          <p class="muted"><span data-lang="en">The content of this guide as short PDFs.</span><span data-lang="de" hidden>Die Inhalte dieses Leitfadens als kurze PDFs.</span> <span data-lang="en"></span><span data-lang="de" hidden>(auf Englisch)</span></p>
+          <div class="downloads">
+            <a href="assets/guides/what-is-a-business-simulation.pdf" download><span><span data-lang="en">What is a business simulation?</span><span data-lang="de" hidden>Was ist eine Unternehmenssimulation?</span></span><span>PDF · <span data-lang="en">3 pages</span><span data-lang="de" hidden>3 Seiten</span></span></a>
+            <a href="assets/guides/what-is-experiential-learning.pdf" download><span><span data-lang="en">What is experiential learning?</span><span data-lang="de" hidden>Was ist erfahrungsbasiertes Lernen?</span></span><span>PDF · <span data-lang="en">2 pages</span><span data-lang="de" hidden>2 Seiten</span></span></a>
+            <a href="assets/guides/course-formats.pdf" download><span><span data-lang="en">Course formats</span><span data-lang="de" hidden>Kursformate</span></span><span>PDF · <span data-lang="en">4 pages</span><span data-lang="de" hidden>4 Seiten</span></span></a>
+            <a href="assets/guides/classroom-setup.pdf" download><span><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></span><span>PDF · <span data-lang="en">3 pages</span><span data-lang="de" hidden>3 Seiten</span></span></a>
+          </div>
+        </div>
+      </details>
     </section>
 
     <div class="tut-cta">
@@ -381,6 +427,18 @@
       var initial = new URLSearchParams(location.search).get('lang');
       if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
       setLang(initial);
+
+      // Teaching guide: open the section an anchor points to
+      function openFromHash() {
+        var el = location.hash && document.getElementById(location.hash.slice(1));
+        var d = el && el.querySelector('details.g-fold');
+        if (d) { d.open = true; el.scrollIntoView(); }
+      }
+      openFromHash();
+      window.addEventListener('hashchange', openFromHash);
+      document.querySelectorAll('.g-toc a').forEach(function (a) {
+        a.addEventListener('click', function () { var d = document.querySelector(a.getAttribute('href') + ' details.g-fold'); if (d) d.open = true; });
+      });
       document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
       // Dropdown menu for narrow screens
