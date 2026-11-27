@@ -124,6 +124,11 @@
     .upcoming h3, .upcoming p { opacity: .7; }
     .soon { position: absolute; left: 54px; top: 10px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4; white-space: nowrap; }
     .sub { font-size: 20px; margin: 64px 0 0; }
+    .sub-first { margin-top: 48px; }
+    .cols.formats { gap: 20px; margin-top: 24px; }
+    .cols.formats > div { padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surf) 70%, transparent); }
+    .cols.formats h3 { font-size: 18px; margin: 0 0 6px; }
+    .cols.formats p { font-size: 15px; }
     .get { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
     .get li { border-top: 1px solid var(--line); padding-top: 16px; }
     .get strong { display: block; margin-bottom: 4px; }
@@ -546,7 +551,8 @@
           <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.play">Watch the 30-second overview</span></button>
         </div>
       </figure>
-      <div class="cols">
+      <h3 class="sub sub-first" data-i18n="te.formatsTitle">Course formats</h3>
+      <div class="cols formats">
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span><h3 data-i18n="te.1t">Intensive courses</h3><p data-i18n="te.1p">A complete simulation in a short time – focused and intensive.</p></div>
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3 data-i18n="te.2t">Seminars</h3><p data-i18n="te.2p">Spread across the semester and linked to the content of your course.</p></div>
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><h3 data-i18n="te.3t">Business schools</h3><p data-i18n="te.3p">For bachelor's, master's, MBA and executive education programmes.</p></div>
@@ -747,6 +753,7 @@
       'vid.round': 'In 30 Sekunden sehen, wie die Simulation funktioniert',
       'tl.title': 'Tutorials', 'tl.text': 'Kurze Videos, die die Simulation Schritt für Schritt erklären.',
       'ct.nextTitle': 'So geht es weiter', 'ct.n1': 'Sie senden uns Ihre Anfrage.', 'ct.n2': 'Wir melden uns persönlich bei Ihnen.', 'ct.n3': 'Gemeinsam finden wir das passende Setup für Ihren Kurs – mit Empfehlungen für Ihr Format.',
+      'te.formatsTitle': 'Kursformate',
       'te.getTitle': 'Für Lehrende inklusive',
       'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
       'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
