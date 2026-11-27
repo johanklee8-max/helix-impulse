@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Teaching guide – Helix Impulse</title>
+  <meta name="description" content="How to teach with a business simulation: experiential learning, course formats from a 90-minute seminar to an intensive week, team sizes and classroom setup.">
+  <meta name="theme-color" content="#071018">
+  <link rel="canonical" href="https://www.heliximpulse.com/teaching-guide.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Helix Impulse">
+  <meta property="og:title" content="Teaching guide – Helix Impulse">
+  <meta property="og:description" content="How to teach with a business simulation: experiential learning, course formats from a 90-minute seminar to an intensive week, team sizes and classroom setup.">
+  <meta property="og:url" content="https://www.heliximpulse.com/teaching-guide.html">
+  <meta property="og:image" content="https://www.heliximpulse.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/legal.css">
+  <style>
+    :root { --surf-2: #162838; --accent-ink: #041018; --glow: rgba(62, 198, 255, .16); }
+    html { background: var(--bg); }
+    body {
+      min-height: 100vh;
+      background-repeat: no-repeat;
+      background:
+        radial-gradient(900px 420px at 100% -10%, var(--glow), transparent 55%),
+        radial-gradient(700px 380px at -10% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 50%),
+        var(--bg);
+    }
+    main.tutorials { max-width: 1100px; padding-top: 72px; }
+    .intro { color: var(--muted); max-width: 44rem; font-size: 17px; margin-bottom: 40px; }
+
+    /* Tutorial grid */
+    .tut-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+    .tut { margin: 0; }
+    .tut.featured { grid-column: 1 / -1; max-width: 900px; }
+    .tut { display: flex; flex-direction: column; }
+    .tut figcaption { margin-bottom: 18px; flex: 1; }
+    .tut.featured figcaption { flex: none; }
+    .tut h2 { font-size: 21px; margin: 0 0 6px; }
+    .tut p { margin: 0; font-size: 15px; }
+    .tut .meta { display: inline-block; margin-top: 12px; padding: 2px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-size: 12px; font-weight: 600; }
+
+    /* Video frame and play button, same as on the home page */
+    .video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); box-shadow: 0 24px 60px -30px var(--glow); background: #050b12; }
+    .video-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video-play { position: absolute; inset: 0; display: flex; flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 12px; padding: 0 0 16px 16px; border: 0; background: linear-gradient(180deg, transparent 60%, rgba(4, 10, 18, .7)); color: var(--ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .video-play svg { width: 46px; height: 46px; padding: 13px 11px 13px 15px; border-radius: 50%; background: linear-gradient(180deg, #6ad4ff, #2eb4ef); fill: var(--accent-ink); box-shadow: 0 10px 30px rgba(46, 180, 239, .35); transition: transform .2s ease; }
+    .video-play:hover svg, .video-play:focus-visible svg { transform: scale(1.08); }
+    .video-play:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+    .video-play span { padding-bottom: 12px; }
+    .video-frame.playing .video-play { display: none; }
+
+    .tut-cta { margin-top: 56px; padding: 22px; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+    .tut-cta h2 { font-size: 18px; margin: 0 0 4px; }
+    .tut-cta p { margin: 0; }
+    .btn { background: linear-gradient(180deg, #6ad4ff, #2eb4ef); color: var(--accent-ink); border: 0; padding: 10px 16px; border-radius: 12px; font: inherit; font-size: 16px; font-weight: 650; cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 8px 22px rgba(46, 180, 239, .22); }
+
+    @media (max-width: 760px) {
+      .tut-grid { grid-template-columns: 1fr; }
+      .video-play { padding: 0 0 10px 10px; }
+      .video-play svg { width: 40px; height: 40px; padding: 11px 9px 11px 12px; }
+      .video-play span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    }
+
+
+    /* Teaching guide */
+    main.guide { max-width: 1100px; padding-top: 72px; }
+    .g-toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; padding: 0; list-style: none; }
+    .g-toc a { display: inline-flex; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14px; }
+    .g-toc a:hover { border-color: var(--accent); color: var(--accent); }
+    .g-sec { padding: 64px 0 8px; border-top: 1px solid var(--line); margin-top: 56px; scroll-margin-top: 80px; }
+    .g-sec > .tag { margin-bottom: 8px; }
+    .g-sec h2 { font-size: 32px; line-height: 1.15; letter-spacing: -.02em; margin: 0 0 14px; }
+    .g-sec h2 em { font-style: normal; color: var(--accent); }
+    .g-sec h3 { font-size: 20px; margin: 40px 0 12px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 46rem; }
+    .loop { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 28px 0; padding: 18px 0; border-top: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); border-bottom: 1px solid var(--line); }
+    .loop b { font-size: 17px; } .loop i { font-style: normal; color: var(--accent); font-size: 13px; font-weight: 600; margin-right: 4px; } .loop .arr { color: var(--accent); }
+    .rows { display: grid; gap: 0; margin: 20px 0; max-width: 52rem; }
+    .rows > div { padding: 18px 0; border-top: 1px solid var(--line); }
+    .rows > div:last-child { border-bottom: 1px solid var(--line); }
+    .rows strong { display: block; font-size: 17px; margin-bottom: 4px; }
+    .rows .k { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+    .rows p { margin: 0; color: var(--muted); }
+    .note { color: var(--accent); max-width: 46rem; border: 0; padding: 0; margin: 16px 0 0; background: none; font-size: 16px; }
+    .kolb { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+    .card { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: color-mix(in srgb, var(--surf) 70%, transparent); }
+    .card h3 { margin: 0 0 16px; font-size: 18px; }
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+    .steps li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; }
+    .steps .n { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-size: 13px; font-weight: 600; color: var(--accent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    .steps strong { display: block; } .steps small { color: var(--accent); font-size: 12px; } .steps p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+    .src { color: var(--muted); font-size: 14px; margin-top: 16px; }
+    .stats { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0; }
+    .stats > div { padding: 4px 32px 4px 0; margin-right: 32px; border-right: 1px solid var(--line); }
+    .stats > div:last-child { border-right: 0; }
+    .stats strong { display: block; font-size: 34px; letter-spacing: -.02em; line-height: 1.1; }
+    .stats span { color: var(--muted); font-size: 15px; }
+    .formats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+    .formats .card h3 { margin-bottom: 6px; } .formats .card .k { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+    .formats .card p { color: var(--muted); font-size: 15px; margin: 10px 0 0; }
+    .room { border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin: 24px 0; background: color-mix(in srgb, var(--surf) 60%, transparent); max-width: 760px; }
+    .room .front { text-align: center; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .room .staff { display: flex; justify-content: center; gap: 12px; margin-bottom: 22px; }
+    .room .staff > span { padding: 6px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; }
+    .teams { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .team { text-align: center; padding: 12px 8px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); font-weight: 600; font-size: 15px; }
+    .team i { display: block; font-style: normal; color: var(--accent); letter-spacing: 3px; font-size: 12px; margin-top: 4px; }
+    .markets { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; max-width: 760px; }
+    .market { border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 16px; padding: 18px; }
+    .market .k { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    .market strong { display: block; margin: 4px 0 12px; }
+    .market .teams { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .downloads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; max-width: 760px; }
+    .downloads a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 15px; }
+    .downloads a:hover { border-color: var(--accent); }
+    .downloads a > span:last-child { color: var(--accent); font-size: 13px; white-space: nowrap; }
+    @media (max-width: 860px) { .kolb, .formats, .markets, .downloads { grid-template-columns: 1fr; } .g-sec h2 { font-size: 26px; } }
+    @media (max-width: 520px) { .teams { grid-template-columns: 1fr 1fr; } .stats > div { border-right: 0; margin-right: 0; padding-right: 24px; } }
+
+    /* Header and menus, same as on the home page */
+    .topbar { gap: 10px; z-index: 8; }
+    .brand { white-space: nowrap; }
+    .brand .brand-mark { height: 36px; width: auto; margin-right: 10px; }
+    .row { display: flex; align-items: center; gap: 8px; }
+    .nav { display: flex; gap: 2px; margin-right: 8px; }
+    .nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; font-size: 15px; }
+    .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
+    .nav a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); }
+    .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+    .btn:hover { filter: brightness(1.05); }
+    .topbar-contact .short { display: none; }
+    .menu-toggle { display: none; position: relative; width: 44px; height: 40px; border: 1px solid var(--line); border-radius: 12px; background: transparent; cursor: pointer; }
+    .menu-toggle span { position: absolute; left: 12px; right: 12px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .25s ease, opacity .2s ease; }
+    .menu-toggle span:nth-child(1) { top: 13px; }
+    .menu-toggle span:nth-child(2) { top: 19px; }
+    .menu-toggle span:nth-child(3) { top: 25px; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu { position: absolute; left: 0; right: 0; top: 100%; display: grid; padding: 8px 28px 24px; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .75); animation: menu-in .22s ease; }
+    .mobile-menu[hidden] { display: none; }
+    .mobile-menu a:not(.btn) { color: var(--ink); text-decoration: none; font-size: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .mobile-menu a:not(.btn):hover, .mobile-menu a[aria-current="page"] { color: var(--accent); }
+    .mobile-menu .btn { margin-top: 20px; justify-content: center; }
+    @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 1220px) { .nav { display: none; } .menu-toggle { display: inline-block; } }
+    @media (max-width: 640px) {
+      .mobile-menu { padding: 4px 16px 20px; }
+      .brand .brand-mark { height: 30px; margin-right: 8px; }
+      .topbar-cta { display: none; }
+      .topbar-contact { min-height: 40px; padding: 8px 12px; font-size: 14px; white-space: nowrap; }
+      .topbar-contact .long { display: none; }
+      .topbar-contact .short { display: inline; }
+      .row { gap: 4px; }
+    }
+  </style>
+  <script src="assets/analytics.js" defer></script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Teaching with a business simulation – a guide for educators",
+ "description": "How to teach with a business simulation: experiential learning, course formats from a 90-minute seminar to an intensive week, team sizes and classroom setup.",
+ "url": "https://www.heliximpulse.com/teaching-guide.html",
+ "inLanguage": "en",
+ "image": "https://www.heliximpulse.com/assets/og-image.png",
+ "author": {
+  "@type": "Organization",
+  "@id": "https://www.heliximpulse.com/#organization",
+  "name": "Helix Impulse",
+  "url": "https://www.heliximpulse.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "@id": "https://www.heliximpulse.com/#organization",
+  "name": "Helix Impulse"
+ },
+ "about": [
+  "Business simulation",
+  "Experiential learning",
+  "Marketing education"
+ ],
+ "citation": {
+  "@type": "Book",
+  "name": "Experiential Learning: Experience as the Source of Learning and Development",
+  "author": {
+   "@type": "Person",
+   "name": "David A. Kolb"
+  },
+  "datePublished": "1984"
+ }
+}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><img class="brand-mark" src="assets/logo-mark.png" alt="" width="14" height="36">Helix<span>Impulse</span></a>
+    <div class="row">
+      <nav class="nav" aria-label="Main">
+        <a href="./#about"><span data-lang="en">About</span><span data-lang="de" hidden>Über uns</span></a>
+        <a href="./#teaching"><span data-lang="en">Teaching</span><span data-lang="de" hidden>Lehre</span></a>
+        <a href="./#history"><span data-lang="en">History</span><span data-lang="de" hidden>Geschichte</span></a>
+        <a href="./#team"><span data-lang="en">Team</span><span data-lang="de" hidden>Team</span></a>
+        <a href="./#faq"><span data-lang="en">FAQ</span><span data-lang="de" hidden>FAQ</span></a>
+        <a href="./#contact"><span data-lang="en">Contact</span><span data-lang="de" hidden>Kontakt</span></a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="teaching-guide.html" aria-current="page"><span data-lang="en">Teaching guide</span><span data-lang="de" hidden>Leitfaden</span></a>
+      </nav>
+      <span class="social top-social"><a class="soc" href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg></a><a class="soc" href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a></span>
+      <div class="locale" role="group" aria-label="Language">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="de" aria-pressed="false">DE</button>
+      </div>
+      <a class="btn topbar-contact" href="./#contact"><span class="long"><span data-lang="en">Contact us</span><span data-lang="de" hidden>Kontakt aufnehmen</span></span><span class="short"><span data-lang="en">Contact</span><span data-lang="de" hidden>Kontakt</span></span></a>
+      <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Main" hidden>
+      <a href="./#about"><span data-lang="en">About</span><span data-lang="de" hidden>Über uns</span></a>
+      <a href="./#teaching"><span data-lang="en">Teaching</span><span data-lang="de" hidden>Lehre</span></a>
+      <a href="./#history"><span data-lang="en">History</span><span data-lang="de" hidden>Geschichte</span></a>
+      <a href="./#team"><span data-lang="en">Team</span><span data-lang="de" hidden>Team</span></a>
+      <a href="./#faq"><span data-lang="en">FAQ</span><span data-lang="de" hidden>FAQ</span></a>
+      <a href="./#contact"><span data-lang="en">Contact</span><span data-lang="de" hidden>Kontakt</span></a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="teaching-guide.html" aria-current="page"><span data-lang="en">Teaching guide</span><span data-lang="de" hidden>Leitfaden</span></a>
+      <span class="social"><a class="soc" href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg></a><a class="soc" href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a></span>
+      <a class="btn" href="./#contact"><span data-lang="en">Contact us</span><span data-lang="de" hidden>Kontakt aufnehmen</span></a>
+    </nav>
+  </header>
+
+  <main class="guide">
+    <div class="tag"><span data-lang="en">Teaching guide</span><span data-lang="de" hidden>Leitfaden</span></div>
+    <h1><span data-lang="en">Teaching with a business simulation</span><span data-lang="de" hidden>Lehren mit einer Unternehmenssimulation</span></h1>
+    <p class="intro"><span data-lang="en">Practical notes from our own teaching: how experiential learning works, which course formats fit and how to set up the room.</span><span data-lang="de" hidden>Praxisnotizen aus unserer eigenen Lehre: wie erfahrungsbasiertes Lernen funktioniert, welche Kursformate passen und wie Sie den Raum einrichten.</span></p>
+    <ul class="g-toc">
+      <li><a href="#simulation"><span data-lang="en">What is a business simulation?</span><span data-lang="de" hidden>Was ist eine Unternehmenssimulation?</span></a></li>
+      <li><a href="#experiential-learning"><span data-lang="en">Experiential learning</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen</span></a></li>
+      <li><a href="#formats"><span data-lang="en">Course formats</span><span data-lang="de" hidden>Kursformate</span></a></li>
+      <li><a href="#classroom"><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></a></li>
+    </ul>
+
+    <section class="g-sec" id="simulation">
+      <div class="tag"><span data-lang="en">Experiential learning</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen</span></div>
+      <h2><span data-lang="en">What is a business <em>simulation?</em></span><span data-lang="de" hidden>Was ist eine <em>Unternehmenssimulation?</em></span></h2>
+      <p class="lead"><span data-lang="en">Students use what they’ve learned in class to make decisions in a simulated business setting. They see how those decisions affect one another and what happens when they change their approach.</span><span data-lang="de" hidden>Studierende nutzen das im Kurs Gelernte, um Entscheidungen in einem simulierten Unternehmensumfeld zu treffen. Sie sehen, wie sich diese Entscheidungen gegenseitig beeinflussen und was passiert, wenn sie ihren Ansatz ändern.</span></p>
+      <div class="loop"><b><i>01</i><span data-lang="en">Make a decision</span><span data-lang="de" hidden>Entscheiden</span></b><span class="arr">→</span><b><i>02</i><span data-lang="en">Review the result</span><span data-lang="de" hidden>Ergebnis prüfen</span></b><span class="arr">→</span><b><i>03</i><span data-lang="en">Rethink the plan</span><span data-lang="de" hidden>Plan überdenken</span></b></div>
+      <p class="muted"><span data-lang="en">Some simulations focus on one topic in a single class. Others let students run a company over several rounds.</span><span data-lang="de" hidden>Manche Simulationen behandeln ein Thema in einer einzelnen Sitzung. Andere lassen Studierende über mehrere Runden ein Unternehmen führen.</span></p>
+
+      <h3><span data-lang="en">What students do in Helix Impulse: run a company in a consumer market</span><span data-lang="de" hidden>Was Studierende in Helix Impulse tun: ein Unternehmen in einem Konsumgütermarkt führen</span></h3>
+      <div class="rows">
+        <div><strong><span data-lang="en">Read the market</span><span data-lang="de" hidden>Den Markt verstehen</span></strong><p><span data-lang="en">Interpret market studies, identify customer segments and analyse competitors.</span><span data-lang="de" hidden>Marktstudien auswerten, Kundensegmente erkennen und Wettbewerber analysieren.</span></p></div>
+        <div><strong><span data-lang="en">Manage several products</span><span data-lang="de" hidden>Mehrere Produkte steuern</span></strong><p><span data-lang="en">Develop or improve products through R&amp;D. Set prices, plan campaigns and choose distribution channels.</span><span data-lang="de" hidden>Produkte durch Forschung und Entwicklung entwickeln oder verbessern. Preise festlegen, Kampagnen planen und Vertriebskanäle wählen.</span></p></div>
+        <div><strong><span data-lang="en">Plan production and track finances</span><span data-lang="de" hidden>Produktion planen und Finanzen im Blick behalten</span></strong><p><span data-lang="en">Forecast sales, decide how much to produce and work within a budget.</span><span data-lang="de" hidden>Absatz prognostizieren, Produktionsmengen festlegen und mit einem Budget arbeiten.</span></p></div>
+      </div>
+      <p class="note"><span data-lang="en">After each round, teams check sales, inventory and profitability before deciding what to change.</span><span data-lang="de" hidden>Nach jeder Runde prüfen die Teams Absatz, Lagerbestand und Profitabilität, bevor sie entscheiden, was sie ändern.</span></p>
+
+      <h3><span data-lang="en">Is Helix Impulse right for my students?</span><span data-lang="de" hidden>Passt Helix Impulse zu meinen Studierenden?</span></h3>
+      <div class="rows">
+        <div><span class="k"><span data-lang="en">When to start</span><span data-lang="de" hidden>Wann einsteigen</span></span><p><span data-lang="en">Once students know the marketing basics. We’d typically start in the second or third year of a bachelor’s degree, or at master’s level.</span><span data-lang="de" hidden>Sobald die Studierenden die Marketing-Grundlagen kennen. Wir starten typischerweise im zweiten oder dritten Jahr des Bachelorstudiums oder im Master.</span></p></div>
+        <div><span class="k"><span data-lang="en">How students work</span><span data-lang="de" hidden>Wie Studierende arbeiten</span></span><p><span data-lang="en">Teams discuss the trade-offs and make their own decisions, with guidance from the instructor.</span><span data-lang="de" hidden>Die Teams diskutieren Zielkonflikte und treffen ihre eigenen Entscheidungen – begleitet von der Lehrperson.</span></p></div>
+        <div><span class="k"><span data-lang="en">One format from our teaching</span><span data-lang="de" hidden>Ein Format aus unserer Lehre</span></span><p><span data-lang="en">A full-time, one-week block seminar – see the course formats below.</span><span data-lang="de" hidden>Ein ganztägiges, einwöchiges Blockseminar – siehe die Kursformate unten.</span></p></div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="experiential-learning">
+      <div class="tag"><span data-lang="en">The learning process</span><span data-lang="de" hidden>Der Lernprozess</span></div>
+      <h2><span data-lang="en">What is experiential <em>learning?</em></span><span data-lang="de" hidden>Was ist erfahrungsbasiertes <em>Lernen?</em></span></h2>
+      <p class="lead"><span data-lang="en">Experiential learning is the process of building knowledge by making sense of experience and testing what you’ve learned in a new situation.</span><span data-lang="de" hidden>Erfahrungsbasiertes Lernen bedeutet, Wissen aufzubauen, indem man Erfahrungen deutet und das Gelernte in einer neuen Situation erprobt.</span></p>
+      <div class="kolb">
+        <div class="card">
+          <h3><span data-lang="en">The learning cycle</span><span data-lang="de" hidden>Der Lernzyklus</span></h3>
+          <ol class="steps">
+            <li><span class="n">1</span><div><strong><span data-lang="en">Experience</span><span data-lang="de" hidden>Erfahren</span></strong><small><span data-lang="en">Concrete experience</span><span data-lang="de" hidden>Konkrete Erfahrung</span></small><p><span data-lang="en">Do something and see what happens.</span><span data-lang="de" hidden>Etwas tun und sehen, was passiert.</span></p></div></li>
+            <li><span class="n">2</span><div><strong><span data-lang="en">Reflect</span><span data-lang="de" hidden>Reflektieren</span></strong><small><span data-lang="en">Reflective observation</span><span data-lang="de" hidden>Reflektierende Beobachtung</span></small><p><span data-lang="en">Compare what happened with what you expected.</span><span data-lang="de" hidden>Das Ergebnis mit den eigenen Erwartungen vergleichen.</span></p></div></li>
+            <li><span class="n">3</span><div><strong><span data-lang="en">Build an explanation</span><span data-lang="de" hidden>Erklären</span></strong><small><span data-lang="en">Abstract conceptualisation</span><span data-lang="de" hidden>Abstrakte Begriffsbildung</span></small><p><span data-lang="en">Use a concept to make sense of the result.</span><span data-lang="de" hidden>Ein Konzept nutzen, um das Ergebnis zu verstehen.</span></p></div></li>
+            <li><span class="n">4</span><div><strong><span data-lang="en">Test it</span><span data-lang="de" hidden>Erproben</span></strong><small><span data-lang="en">Active experimentation</span><span data-lang="de" hidden>Aktives Experimentieren</span></small><p><span data-lang="en">Apply your explanation to a new decision.</span><span data-lang="de" hidden>Die Erklärung auf eine neue Entscheidung anwenden.</span></p></div></li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3><span data-lang="en">Why a business simulation fits</span><span data-lang="de" hidden>Warum eine Unternehmenssimulation passt</span></h3>
+          <ol class="steps">
+            <li><span class="n">1</span><div><strong><span data-lang="en">Experience</span><span data-lang="de" hidden>Erfahren</span></strong><p><span data-lang="en">Teams shift marketing budget between products.</span><span data-lang="de" hidden>Teams verschieben Marketingbudget zwischen Produkten.</span></p></div></li>
+            <li><span class="n">2</span><div><strong><span data-lang="en">Reflect</span><span data-lang="de" hidden>Reflektieren</span></strong><p><span data-lang="en">They compare the results with what they expected.</span><span data-lang="de" hidden>Sie vergleichen die Ergebnisse mit ihren Erwartungen.</span></p></div></li>
+            <li><span class="n">3</span><div><strong><span data-lang="en">Build an explanation</span><span data-lang="de" hidden>Erklären</span></strong><p><span data-lang="en">They look at product contribution and competitor moves to explain what happened.</span><span data-lang="de" hidden>Sie betrachten Produktbeiträge und die Schritte der Wettbewerber, um das Ergebnis zu erklären.</span></p></div></li>
+            <li><span class="n">4</span><div><strong><span data-lang="en">Test it</span><span data-lang="de" hidden>Erproben</span></strong><p><span data-lang="en">They adjust the budget and test their reasoning in the next round.</span><span data-lang="de" hidden>Sie passen das Budget an und prüfen ihre Überlegungen in der nächsten Runde.</span></p></div></li>
+          </ol>
+        </div>
+      </div>
+      <p class="src"><span data-lang="en">In Helix Impulse, teams run competing companies. The market responds to the decisions of all teams. · Learning cycle adapted from Kolb (1984), <i>Experiential Learning</i>.</span><span data-lang="de" hidden>In Helix Impulse führen Teams konkurrierende Unternehmen. Der Markt reagiert auf die Entscheidungen aller Teams. · Lernzyklus nach Kolb (1984), <i>Experiential Learning</i>.</span></p>
+    </section>
+
+    <section class="g-sec" id="formats">
+      <div class="tag"><span data-lang="en">Teaching with business simulations</span><span data-lang="de" hidden>Lehren mit Unternehmenssimulationen</span></div>
+      <h2><span data-lang="en">One round in 90 minutes. <em>Or 8–12 in a week?</em></span><span data-lang="de" hidden>Eine Runde in 90 Minuten. <em>Oder 8–12 in einer Woche?</em></span></h2>
+      <p class="lead"><span data-lang="en">You can use a business simulation in a weekly seminar or build an intensive course around it.</span><span data-lang="de" hidden>Sie können eine Unternehmenssimulation in einem wöchentlichen Seminar einsetzen oder einen Intensivkurs darum herum aufbauen.</span></p>
+
+      <h3><span data-lang="en">Weekly 90-minute seminar: one full round, one teaching focus</span><span data-lang="de" hidden>Wöchentliches 90-Minuten-Seminar: eine Runde, ein Lehrschwerpunkt</span></h3>
+      <p class="muted"><span data-lang="en">All decisions are available from the start. An example session:</span><span data-lang="de" hidden>Alle Entscheidungen stehen von Beginn an zur Verfügung. Eine Beispielsitzung:</span></p>
+      <div class="stats">
+        <div><strong>20 min</strong><span><span data-lang="en">Set the focus</span><span data-lang="de" hidden>Schwerpunkt setzen</span></span></div>
+        <div><strong>50 min</strong><span><span data-lang="en">Play a full round</span><span data-lang="de" hidden>Eine Runde spielen</span></span></div>
+        <div><strong>20 min</strong><span><span data-lang="en">Review trade-offs</span><span data-lang="de" hidden>Zielkonflikte besprechen</span></span></div>
+      </div>
+      <p class="muted"><span data-lang="en">A second round is optional once teams know the routine.</span><span data-lang="de" hidden>Eine zweite Runde ist möglich, sobald die Teams die Abläufe kennen.</span></p>
+      <div class="rows">
+        <div><span class="k"><span data-lang="en">Example focus: pricing</span><span data-lang="de" hidden>Beispiel-Schwerpunkt: Preis</span></span><p><span data-lang="en">If a team changes its price, what does that mean for its sales forecast and production? In the debrief, compare expectations with results.</span><span data-lang="de" hidden>Wenn ein Team seinen Preis ändert – was bedeutet das für Absatzprognose und Produktion? In der Nachbesprechung werden Erwartungen und Ergebnisse verglichen.</span></p></div>
+        <div><span class="k"><span data-lang="en">If students play between classes</span><span data-lang="de" hidden>Wenn zwischen den Sitzungen gespielt wird</span></span><p><span data-lang="en">Set a deadline and debrief in class. Solo play is easier to schedule. In teams, how students organise their work becomes part of the exercise.</span><span data-lang="de" hidden>Legen Sie eine Frist fest und besprechen Sie die Ergebnisse im Kurs. Einzeln zu spielen ist leichter zu planen. Im Team wird die Arbeitsorganisation selbst Teil der Übung.</span></p></div>
+      </div>
+
+      <div class="formats">
+        <div class="card"><span class="k"><span data-lang="en">Format 01</span><span data-lang="de" hidden>Format 01</span></span><h3><span data-lang="en">Weekly seminar</span><span data-lang="de" hidden>Wöchentliches Seminar</span></h3><p><span data-lang="en">Give each full round a teaching focus – one round per 90-minute session, as in the example above.</span><span data-lang="de" hidden>Jede Runde bekommt einen eigenen Lehrschwerpunkt – eine Runde pro 90-Minuten-Sitzung, wie im Beispiel oben.</span></p></div>
+        <div class="card"><span class="k"><span data-lang="en">Format 02 · our university partnership</span><span data-lang="de" hidden>Format 02 · unsere Hochschulkooperation</span></span><h3><span data-lang="en">Five-day intensive seminar</span><span data-lang="de" hidden>Fünftägiges Intensivseminar</span></h3><p><span data-lang="en">In our full-time format, students from partner universities work in mixed teams: 8–12 rounds across the week, 2–4 rounds on play days. Adjust the number of rounds to the group’s pace.</span><span data-lang="de" hidden>In unserem ganztägigen Format arbeiten Studierende von Partnerhochschulen in gemischten Teams: 8–12 Runden über die Woche, 2–4 Runden an Spieltagen. Die Zahl der Runden richtet sich nach dem Tempo der Gruppe.</span></p><p><span data-lang="en">Also part of the week: an introduction, mini-lectures on selected topics, short business reports and final presentations.</span><span data-lang="de" hidden>Außerdem Teil der Woche: eine Einführung, Kurzvorträge zu ausgewählten Themen, kurze Geschäftsberichte und Abschlusspräsentationen.</span></p></div>
+        <div class="card"><span class="k"><span data-lang="en">Format 03</span><span data-lang="de" hidden>Format 03</span></span><h3><span data-lang="en">One class, five days</span><span data-lang="de" hidden>Eine Klasse, fünf Tage</span></h3><p><span data-lang="en"><b>Form teams of three or four</b> that compete in the same market; let their pace in the first rounds guide how many you run.</span><span data-lang="de" hidden><b>Teams mit drei oder vier Personen bilden,</b> die im selben Markt konkurrieren; ihr Tempo in den ersten Runden bestimmt, wie viele Runden Sie spielen.</span></p><p><span data-lang="en"><b>Teach a concept when teams need it</b> – for example, before a production decision, a mini-lesson on turning a sales forecast into a plan.</span><span data-lang="de" hidden><b>Konzepte dann vermitteln, wenn Teams sie brauchen</b> – etwa vor einer Produktionsentscheidung eine kurze Einheit dazu, wie aus einer Absatzprognose ein Plan wird.</span></p><p><span data-lang="en"><b>Close with a short team presentation:</b> each team explains one decision it changed and why.</span><span data-lang="de" hidden><b>Mit einer kurzen Teampräsentation abschließen:</b> Jedes Team erklärt eine Entscheidung, die es geändert hat, und warum.</span></p></div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="classroom">
+      <div class="tag"><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></div>
+      <h2><span data-lang="en">30 students. <em>Six teams of five.</em></span><span data-lang="de" hidden>30 Studierende. <em>Sechs Teams à fünf.</em></span></h2>
+      <p class="lead"><span data-lang="en">Each team runs one company and manages its own product portfolio. All teams compete for customers in the same simulated consumer market.</span><span data-lang="de" hidden>Jedes Team führt ein Unternehmen mit eigenem Produktportfolio. Alle Teams konkurrieren im selben simulierten Konsumgütermarkt um Kundinnen und Kunden.</span></p>
+      <div class="room" aria-hidden="true">
+        <div class="front"><span data-lang="en">Front of the room</span><span data-lang="de" hidden>Vorne im Raum</span></div>
+        <div class="staff"><span><span data-lang="en">Instructor</span><span data-lang="de" hidden>Lehrperson</span></span><span><span data-lang="en">Assistant</span><span data-lang="de" hidden>Assistenz</span></span></div>
+        <div class="teams"><div class="team"><span data-lang="en">Team A</span><span data-lang="de" hidden>Team A</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team B</span><span data-lang="de" hidden>Team B</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team C</span><span data-lang="de" hidden>Team C</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team D</span><span data-lang="de" hidden>Team D</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team E</span><span data-lang="de" hidden>Team E</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team F</span><span data-lang="de" hidden>Team F</span><i>●●●●●</i></div></div>
+      </div>
+      <p class="muted"><span data-lang="en">We typically use 4–6 teams of 3–6 students per market; technically, up to 10 teams can compete in one simulation. In our experience, one instructor and one assistant can guide a group of this size.</span><span data-lang="de" hidden>Wir arbeiten typischerweise mit 4–6 Teams à 3–6 Studierenden pro Markt; technisch können bis zu 10 Teams in einer Simulation antreten. Nach unserer Erfahrung können eine Lehrperson und eine Assistenz eine Gruppe dieser Größe gut begleiten.</span></p>
+
+      <h3><span data-lang="en">40 students: two parallel markets</span><span data-lang="de" hidden>40 Studierende: zwei parallele Märkte</span></h3>
+      <p class="muted"><span data-lang="en">Example: eight teams of five, split into two markets. Teams compete within their own market.</span><span data-lang="de" hidden>Beispiel: acht Teams à fünf, aufgeteilt auf zwei Märkte. Die Teams konkurrieren innerhalb ihres eigenen Marktes.</span></p>
+      <div class="markets" aria-hidden="true">
+        <div class="market"><span class="k"><span data-lang="en">Market 1</span><span data-lang="de" hidden>Markt 1</span></span><strong><span data-lang="en">4 teams · 20 students</span><span data-lang="de" hidden>4 Teams · 20 Studierende</span></strong><div class="teams"><div class="team"><span data-lang="en">Team A</span><span data-lang="de" hidden>Team A</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team B</span><span data-lang="de" hidden>Team B</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team C</span><span data-lang="de" hidden>Team C</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team D</span><span data-lang="de" hidden>Team D</span><i>●●●●●</i></div></div></div>
+        <div class="market"><span class="k"><span data-lang="en">Market 2</span><span data-lang="de" hidden>Markt 2</span></span><strong><span data-lang="en">4 teams · 20 students</span><span data-lang="de" hidden>4 Teams · 20 Studierende</span></strong><div class="teams"><div class="team"><span data-lang="en">Team E</span><span data-lang="de" hidden>Team E</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team F</span><span data-lang="de" hidden>Team F</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team G</span><span data-lang="de" hidden>Team G</span><i>●●●●●</i></div><div class="team"><span data-lang="en">Team H</span><span data-lang="de" hidden>Team H</span><i>●●●●●</i></div></div></div>
+      </div>
+      <p class="muted"><span data-lang="en">With 20 students, four teams of five can share one market.</span><span data-lang="de" hidden>Mit 20 Studierenden können vier Teams à fünf einen gemeinsamen Markt bilden.</span></p>
+
+      <h3><span data-lang="en">Handouts to share with colleagues</span><span data-lang="de" hidden>Handouts zum Weitergeben</span></h3>
+      <p class="muted"><span data-lang="en">The content of this guide as short PDFs.</span><span data-lang="de" hidden>Die Inhalte dieses Leitfadens als kurze PDFs.</span> <span data-lang="en"></span><span data-lang="de" hidden>(auf Englisch)</span></p>
+      <div class="downloads">
+        <a href="assets/guides/what-is-a-business-simulation.pdf" download><span><span data-lang="en">What is a business simulation?</span><span data-lang="de" hidden>Was ist eine Unternehmenssimulation?</span></span><span>PDF · <span data-lang="en">3 pages</span><span data-lang="de" hidden>3 Seiten</span></span></a>
+        <a href="assets/guides/what-is-experiential-learning.pdf" download><span><span data-lang="en">What is experiential learning?</span><span data-lang="de" hidden>Was ist erfahrungsbasiertes Lernen?</span></span><span>PDF · <span data-lang="en">2 pages</span><span data-lang="de" hidden>2 Seiten</span></span></a>
+        <a href="assets/guides/course-formats.pdf" download><span><span data-lang="en">Course formats</span><span data-lang="de" hidden>Kursformate</span></span><span>PDF · <span data-lang="en">4 pages</span><span data-lang="de" hidden>4 Seiten</span></span></a>
+        <a href="assets/guides/classroom-setup.pdf" download><span><span data-lang="en">Classroom setup</span><span data-lang="de" hidden>Raum und Gruppen</span></span><span>PDF · <span data-lang="en">3 pages</span><span data-lang="de" hidden>3 Seiten</span></span></a>
+      </div>
+    </section>
+
+    <div class="tut-cta">
+      <div><h2><span data-lang="en">Planning a course with Helix Impulse?</span><span data-lang="de" hidden>Sie planen einen Kurs mit Helix Impulse?</span></h2><p class="muted"><span data-lang="en">Tell us about your format – we’ll get back to you personally.</span><span data-lang="de" hidden>Erzählen Sie uns von Ihrem Format – wir melden uns persönlich bei Ihnen.</span></p></div>
+      <a class="btn" href="./#contact"><span data-lang="en">Contact us</span><span data-lang="de" hidden>Kontakt aufnehmen</span></a>
+    </div>
+  </main>
+
+  <footer>
+    <span>© <span data-year>2026</span> Helix Impulse</span>
+    <span><a href="./"><span data-lang="en">Home</span><span data-lang="de" hidden>Startseite</span></a> · <a href="impressum.html"><span data-lang="en">Imprint</span><span data-lang="de" hidden>Impressum</span></a> · <a href="datenschutz.html"><span data-lang="en">Privacy</span><span data-lang="de" hidden>Datenschutz</span></a></span>
+    <span class="social"><a href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg></a><a href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a></span>
+  </footer>
+
+  <script>
+    // Same language preference as the home page: ?lang=de, then the stored choice, otherwise English.
+    (function () {
+      var titles = { en: 'Teaching guide – Helix Impulse', de: 'Leitfaden für Lehrende – Helix Impulse' };
+      function setLang(lang) {
+        lang = lang === 'de' ? 'de' : 'en';
+        document.documentElement.lang = lang;
+        document.title = titles[lang];
+        document.querySelectorAll('[data-lang]').forEach(function (el) { el.hidden = el.getAttribute('data-lang') !== lang; });
+        document.querySelectorAll('.locale button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.set === lang)); });
+        try { localStorage.setItem('helix-locale', lang); } catch (e) {}
+        // Links to the home page go to the German page (/de/) when German is active
+        document.querySelectorAll('a[data-home], a[href="./"], a[href^="./#"]').forEach(function (a) {
+          if (!a.dataset.home) a.dataset.home = a.getAttribute('href');
+          a.setAttribute('href', lang === 'de' ? a.dataset.home.replace('./', './de/') : a.dataset.home);
+        });
+      }
+      document.querySelectorAll('.locale button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
+      var initial = new URLSearchParams(location.search).get('lang');
+      if (!initial) { try { initial = localStorage.getItem('helix-locale'); } catch (e) {} }
+      setLang(initial);
+      document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+      // Dropdown menu for narrow screens
+      var menuBtn = document.querySelector('.menu-toggle'), menu = document.getElementById('mobile-menu');
+      function setMenu(open) { menu.hidden = !open; menuBtn.setAttribute('aria-expanded', String(open)); }
+      menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
+      menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+      document.addEventListener('click', function (e) { if (!menu.hidden && !e.target.closest('.topbar')) setMenu(false); });
+      matchMedia('(min-width: 1221px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
+
+      // Poster with a play button; native controls once a video plays, and only one plays at a time
+      document.querySelectorAll('.video-frame').forEach(function (frame) {
+        var video = frame.querySelector('video');
+        frame.querySelector('.video-play').addEventListener('click', function () {
+          document.querySelectorAll('.video-frame video').forEach(function (v) { if (v !== video) v.pause(); });
+          frame.classList.add('playing');
+          video.controls = true;
+          video.play();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
