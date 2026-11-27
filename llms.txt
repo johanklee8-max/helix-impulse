@@ -9,7 +9,9 @@ Helix Impulse is developed by Helix Impulse GbR (Niestetal, Germany). The founde
 - Type: web-based marketing and strategy business simulation (participants only need a web browser; nothing to install)
 - Audience: lecturers and professors at universities and business schools; professional training for companies is coming soon
 - Course formats: intensive courses, seminars across the semester, business school programmes (bachelor's, master's, MBA, executive education)
-- Teams: between 2 and 10 teams per simulation, each running its own company
+- Teams: between 2 and 10 teams per simulation, each running its own company; recommended 4–6 teams of 3–6 students per market
+- Timing: one full round fits a 90-minute session; an intensive week covers 8–12 rounds
+- Best fit: from the second or third year of a bachelor’s degree, or at master’s level
 - Rounds: chosen by the educator; the number of fiscal years varies by course, with recommendations for different formats
 - Educators receive: introduction videos, teaching materials and documents, recommendations for their course format and support in the background
 - Languages: website in English and German
@@ -19,6 +21,7 @@ Helix Impulse is developed by Helix Impulse GbR (Niestetal, Germany). The founde
 - [Home](https://www.heliximpulse.com/): overview, teaching formats, team, FAQ and contact form
 - [Startseite (Deutsch)](https://www.heliximpulse.com/de/): German version of the home page
 - [Tutorials](https://www.heliximpulse.com/tutorials.html): video tutorials on the simulation (welcome, target groups, marketing, production, sales, lab, research, controlling, finance)
+- [Teaching guide](https://www.heliximpulse.com/teaching-guide.html): how to teach with a business simulation – experiential learning (Kolb), course formats (90-minute seminar with one round per session, five-day intensive week with 8–12 rounds), team sizes (typically 4–6 teams of 3–6 students per market; parallel markets for larger groups) and classroom setup
 - [Legal notice](https://www.heliximpulse.com/impressum.html)
 
 ## Team
