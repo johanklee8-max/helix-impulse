@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Template for tutorial video covers. Rendered by tools/build-covers.cjs: covers.html?t=Marketing&s=The+Marketing+tab&n=03&d=2:01 -->
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; }
+  body {
+    font-family: "DM Sans", sans-serif; color: #e8f2f8; position: relative;
+    background:
+      radial-gradient(700px 420px at 88% 20%, rgba(62, 198, 255, .16), transparent 60%),
+      radial-gradient(600px 400px at 5% 100%, rgba(62, 198, 255, .10), transparent 60%),
+      #071018;
+  }
+  .mark { position: absolute; right: 70px; top: 50%; height: 560px; transform: translateY(-50%); opacity: .18; }
+  .brand { position: absolute; left: 88px; top: 72px; display: flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 600; letter-spacing: -.01em; }
+  .brand img { height: 46px; }
+  .brand span { color: #3ec6ff; }
+  .content { position: absolute; left: 88px; top: 46%; right: 360px; transform: translateY(-50%); }
+  .tag { font-size: 20px; letter-spacing: .14em; text-transform: uppercase; color: #3ec6ff; font-weight: 600; margin-bottom: 18px; }
+  h1 { margin: 0; font-size: 104px; line-height: 1; letter-spacing: -.035em; font-weight: 700; }
+  h1.long { font-size: 84px; }
+  .sub { display: none; }
+  .line { display: none; position: absolute; left: 88px; right: 88px; bottom: 132px; height: 1px; background: linear-gradient(90deg, rgba(62, 198, 255, .6), rgba(150, 196, 224, .08)); }
+</style>
+</head>
+<body>
+  <img class="mark" src="../assets/logo-mark.png" alt="">
+  <div class="brand"><img src="../assets/logo-mark.png" alt=""><b style="font-weight:600">Helix<span style="margin-left:.28em">Impulse</span></b></div>
+  <div class="content">
+    <div class="tag" id="tag"></div>
+    <h1 id="t"></h1>
+    <div class="sub" id="s"></div>
+  </div>
+  <div class="line"></div>
+  <script>
+    var q = new URLSearchParams(location.search);
+    document.getElementById('tag').textContent = 'Tutorial ' + q.get('n') + ' · ' + q.get('d') + ' min';
+    var t = document.getElementById('t'); t.textContent = q.get('t'); if (q.get('t').length > 14) t.className = 'long';
+    document.getElementById('s').textContent = q.get('s') || '';
+  </script>
+</body>
+</html>
