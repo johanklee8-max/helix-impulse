@@ -195,6 +195,11 @@
     .faq-a p { color: var(--muted); margin: 0 0 18px; max-width: 46rem; }
     .faq-more { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; max-width: 860px; margin-top: 24px; padding: 22px; border-radius: 14px; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
     .faq-more h3 { font-size: 18px; margin: 0 0 4px; }
+    .next-title { font-size: 18px; margin: 36px 0 16px; }
+    .next { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .next li { display: flex; gap: 14px; align-items: flex-start; color: var(--muted); }
+    .next .n { flex: none; display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; font-weight: 600; color: var(--accent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    .next li > span:last-child { padding-top: 3px; }
     .faq-more p { color: var(--muted); margin: 0; }
 
     /* Contact */
@@ -462,8 +467,8 @@
         <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
         <a href="#history" data-i18n="nav.history">History</a>
         <a href="#team" data-i18n="nav.team">Team</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
         <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
       </nav>
       <span class="social top-social"><a class="soc" href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg></a><a class="soc" href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a></span>
@@ -471,7 +476,6 @@
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="de" aria-pressed="false">DE</button>
       </div>
-      <a class="btn ghost topbar-cta" href="#about" data-i18n="hero.secondary">Learn more</a>
       <a class="btn topbar-contact" href="#contact"><span class="long" data-i18n="nav.cta">Contact us</span><span class="short" data-i18n="nav.ctaShort">Contact</span></a>
       <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
     </div>
@@ -480,8 +484,8 @@
       <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
       <a href="#history" data-i18n="nav.history">History</a>
       <a href="#team" data-i18n="nav.team">Team</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
       <span class="social"><a class="soc" href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg></a><a class="soc" href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a></span>
       <a class="btn" href="#contact" data-i18n="hero.cta">Contact us</a>
@@ -542,14 +546,13 @@
           <button type="button" class="video-play" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg><span data-i18n="vid.play">Watch the 30-second overview</span></button>
         </div>
       </figure>
-      <div class="cols four">
+      <div class="cols">
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span><h3 data-i18n="te.1t">Intensive courses</h3><p data-i18n="te.1p">A complete simulation in a short time – focused and intensive.</p></div>
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3 data-i18n="te.2t">Seminars</h3><p data-i18n="te.2p">Spread across the semester and linked to the content of your course.</p></div>
         <div><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><h3 data-i18n="te.3t">Business schools</h3><p data-i18n="te.3p">For bachelor's, master's, MBA and executive education programmes.</p></div>
-        <div class="upcoming"><span class="soon" data-i18n="soon">Coming soon</span><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg></span><h3 data-i18n="te.4t">Professional training</h3><p data-i18n="te.4p">For managers and teams – in company programs and with training providers.</p></div>
       </div>
 
-      <h3 class="sub" data-i18n="te.getTitle">What you get as an educator</h3>
+      <h3 class="sub" data-i18n="te.getTitle">Included for educators</h3>
       <ul class="get">
         <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4V8Z"/></svg></span><strong data-i18n="te.g1t">Introduction videos</strong><span data-i18n="te.g1p">Short videos that introduce you and your participants to the simulation.</span></li>
         <li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg></span><strong data-i18n="te.g2t">Materials and documents</strong><span data-i18n="te.g2p">Teaching materials and documents to prepare and run your course.</span></li>
@@ -631,37 +634,6 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="wrap contact">
-      <div class="contact-info">
-        <div class="tag" data-i18n="ct.tag">Contact</div>
-        <h2 data-i18n="ct.title">Contact us</h2>
-        <p class="muted" data-i18n="ct.intro">Would you like to see Helix Impulse in action or use it in your course? Choose what you are interested in and send us a short message.</p>
-      </div>
-      <form id="contact-form" novalidate>
-        <label style="margin-top:0"><span data-i18n="f.type">I'm interested in</span>
-          <select class="input" name="type">
-            <option value="Demo for a course" data-i18n="f.t1">A demo for my course</option>
-            <option value="License" data-i18n="f.t4">A license for my institution</option>
-            <option value="General question" data-i18n="f.t2">A general question</option>
-            <option value="Professional training" data-i18n="f.t3">Professional training (coming soon)</option>
-          </select>
-        </label>
-        <div class="pair">
-          <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" required></label>
-          <label><span data-i18n="f.email">Email</span><input class="input" name="email" type="email" autocomplete="email" required></label>
-        </div>
-        <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
-        <label><span data-i18n="f.msg">Message</span><textarea name="message" required></textarea></label>
-        <input type="text" name="botcheck" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
-        <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
-        <p class="note" id="form-note" role="status"></p>
-      </form>
-    </div>
-  </section>
-
-
   <section id="faq" class="alt">
     <div class="wrap">
       <div class="tag" data-i18n="faq.tag">FAQ</div>
@@ -702,10 +674,47 @@
     </div>
   </section>
 
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <div class="tag" data-i18n="ct.tag">Contact</div>
+        <h2 data-i18n="ct.title">Contact us</h2>
+        <p class="muted" data-i18n="ct.intro">Would you like to see Helix Impulse in action or use it in your course? Choose what you are interested in and send us a short message.</p>
+        <h3 class="next-title" data-i18n="ct.nextTitle">What happens next</h3>
+        <ol class="next">
+          <li><span class="n">1</span><span data-i18n="ct.n1">You send us your request.</span></li>
+          <li><span class="n">2</span><span data-i18n="ct.n2">We get back to you personally.</span></li>
+          <li><span class="n">3</span><span data-i18n="ct.n3">Together we find the right setup for your course – with recommendations for your format.</span></li>
+        </ol>
+      </div>
+      <form id="contact-form" novalidate>
+        <label style="margin-top:0"><span data-i18n="f.type">I'm interested in</span>
+          <select class="input" name="type">
+            <option value="Demo for a course" data-i18n="f.t1">A demo for my course</option>
+            <option value="License" data-i18n="f.t4">A license for my institution</option>
+            <option value="General question" data-i18n="f.t2">A general question</option>
+            <option value="Professional training" data-i18n="f.t3">Professional training (coming soon)</option>
+          </select>
+        </label>
+        <div class="pair">
+          <label><span data-i18n="f.name">Name</span><input class="input" name="name" autocomplete="name" required></label>
+          <label><span data-i18n="f.email">Email</span><input class="input" name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label><span data-i18n="f.org">Institution (optional)</span><input class="input" name="org" autocomplete="organization"></label>
+        <label><span data-i18n="f.msg">Message</span><textarea name="message" required></textarea></label>
+        <input type="text" name="botcheck" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" name="consent" required><span data-i18n="f.consent">I agree that my details will be used to process this request.</span></label>
+        <div style="margin-top:14px"><button class="btn" type="submit" data-i18n="f.submit">Send request</button></div>
+        <p class="note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+
   <footer>
     <div class="wrap">
       <span>© <span id="y"></span> Helix Impulse</span>
-      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
+      <span><a href="#history" data-i18n="nav.history">History</a> · <a href="#team" data-i18n="nav.team">Team</a> · <a href="#faq" data-i18n="nav.faq">FAQ</a> · <a href="#contact" data-i18n="nav.contact">Contact</a> · <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a> · <a href="impressum.html" data-i18n="ft.imprint">Imprint</a> · <a href="datenschutz.html" data-i18n="ft.privacy">Privacy</a></span>
 
       <span class="social"><a href="https://www.linkedin.com/company/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.25H3V9.75Zm6.5 0h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75Z"/></svg></a><a href="https://www.instagram.com/heliximpulse/" target="_blank" rel="noopener" aria-label="Helix Impulse on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33 0 7.05.07 2.7.27.27 2.69.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s0-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67 0 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a></span>
     </div>
@@ -734,11 +743,11 @@
       'te.1t': 'Intensivkurse', 'te.1p': 'Eine vollständige Simulation in kurzer Zeit – fokussiert und intensiv.',
       'te.2t': 'Seminare', 'te.2p': 'Über das Semester verteilt und mit den Inhalten Ihrer Veranstaltung verknüpft.',
       'te.3t': 'Business Schools', 'te.3p': 'Für Bachelor, Master, MBA und Executive Education.',
-      'te.4t': 'Berufliche Weiterbildung', 'te.4p': 'Für Führungskräfte und Teams – in Unternehmensprogrammen und bei Weiterbildungsanbietern.',
       'vid.play': 'Überblick in 30 Sekunden ansehen',
       'vid.round': 'In 30 Sekunden sehen, wie die Simulation funktioniert',
       'tl.title': 'Tutorials', 'tl.text': 'Kurze Videos, die die Simulation Schritt für Schritt erklären.',
-      'te.getTitle': 'Was Sie als Lehrende erhalten',
+      'ct.nextTitle': 'So geht es weiter', 'ct.n1': 'Sie senden uns Ihre Anfrage.', 'ct.n2': 'Wir melden uns persönlich bei Ihnen.', 'ct.n3': 'Gemeinsam finden wir das passende Setup für Ihren Kurs – mit Empfehlungen für Ihr Format.',
+      'te.getTitle': 'Für Lehrende inklusive',
       'te.g1t': 'Einführungsvideos', 'te.g1p': 'Kurze Videos, die Sie und Ihre Teilnehmenden in die Simulation einführen.',
       'te.g2t': 'Materialien und Unterlagen', 'te.g2p': 'Lehrmaterialien und Unterlagen, um Ihre Veranstaltung vorzubereiten und durchzuführen.',
       'te.g3t': 'Empfehlungen', 'te.g3p': 'Vorschläge zur Zahl der Runden und zum Zeitplan für Ihr Format.',
